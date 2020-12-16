@@ -19,6 +19,27 @@
 
 #from collections import ChainMap
 import random
+from pathlib import Path
+
+def generate_instances():
+    documents_path = Path("Falkenauer/uniform")
+    instances_falkenauer = []
+    for document in documents_path.iterdir():
+        with open(document) as f:
+            content = f.readlines()
+        instances_falkenauer.append([x.strip() for x in content])
+    
+    # Beispielhaft erste Instanz extrahieren
+    item_list = {}
+    bin_capacity = 0
+    for i, item_capacity in enumerate(instances_falkenauer[0]):
+        if i == 1:
+            bin_capacity = item_capacity # Zeile 1 enthaelt bin capacity
+        elif i > 1:
+            item_list[i] = int(item_capacity)
+    
+    return item_list    
+
 
 def is_feasible(item_capacity, bin_capacity, current_bin):
     # hat aktueller bin noch Platz fuer aktuelles Item?
@@ -149,8 +170,10 @@ def bpp_improvement_procedure(solution, permutations, bin_capacity, changed):
         for pair in pair_list: # iteriere ueber alle moeglichen Paare im aktuellen Bin
             # pair ist ein Tupel of dict der Form: ({'a':10},{'b':20})
             for h in range(0,len(permutations)): # Iteriere ueber Gruppen der Permutationen (List of Dict)
+                if moved:break
                 permutation_pair_list = generate_pairs(permutations[h]) # erzeuge alle Paare aktueller Gruppe in Permutation
                 for permutation_pair in permutation_pair_list: # Iteriere ueber Paare der aktuellen Gruppe in Permuation
+                    if moved:break
                     delta = size(permutation_pair[0]) + size(permutation_pair[1]) - size(pair[0]) - size(pair[1])
                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                         # Move items i and j into group h in p and move items k into group g in pi
@@ -161,12 +184,14 @@ def bpp_improvement_procedure(solution, permutations, bin_capacity, changed):
                         moved = True
                         changed[0] = True
                         break
-            if moved:break
+            
                         # nach move aendert sich solution und dementsprechen muesste die pair list neu generiert werden
 
         pair_list = generate_pairs(solution[g])
         for pair in pair_list: # iteriere ueber alle Paare des aktuellen Bins
+            if moved: break
             for h in range(0,len(permutations)): # iteriere ueber alle Gruppen der Permutationsmenge
+                if moved:break
                 for p_item in permutations[h].copy().items(): # fuer jedes Item in aktueller Gruppe ueberpruefe delta
                     delta = p_item[1] - (size(pair[0]) + size(pair[1]))
                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
@@ -175,13 +200,14 @@ def bpp_improvement_procedure(solution, permutations, bin_capacity, changed):
                         moved = True
                         changed[0] = True
                         break
-                if moved:break
-            if moved: break
 
         moved = False
-        for item_i, item_i_capacity in solution[g].copy().items(): 
+        for item_i, item_i_capacity in solution[g].copy().items():
+            if moved:break
             for h in range(0, len(permutations)):
+                if moved:break
                 for p_item, p_item_capacity in permutations[h].copy().items():
+                    
                     delta = p_item_capacity - item_i_capacity
                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                         print("move3()")
@@ -189,8 +215,6 @@ def bpp_improvement_procedure(solution, permutations, bin_capacity, changed):
                         moved = True
                         changed[0] = True
                         break
-                if moved:break
-            if moved:break
 
 def hill_climbing(item_list, bin_capacity):
     solution = [{}] # leere Liste aus dictionaries
@@ -209,38 +233,42 @@ def hill_climbing(item_list, bin_capacity):
     
     for group in permutations:
         solution.append(group)
-        # solution = {item_name: item_value for bin in solution for item_name, item_value in bin.items()} # flaches Dict
-        # groups = [{}]
-        # solution = greedy(solution, bin_capacity, groups)
-
+    
+    # Schritt 3
+    solution = {item_name: item_value for bin in solution for item_name, item_value in bin.items()} # flaches Dict
+    solution = greedy(solution, bin_capacity, [{}])
     return solution
     
 
-
-    
-
-
-
-
-
-            
+def print_solution(solution, name):
+    print(name)
+    print("Loesung: ", solution)
+    print("Anzahl Gruppen: ", len(solution))
+      
 
 def main():
     # to do: Greedy bekommt Lösung übergeben statt ItemList
 
-    item_list = {'a': 4, 'd':5, 'b':3, 'e':4, 'g':4, 'c':2, 'h':2, 'i':2, 'f':1, 'l':2,'j':2,'k':2,'m':5, 'z':1, 'y':1}
-    bin_capacity = 7
-    #groups = [{}]
+    #item_list = {'a': 4, 'd':5, 'b':3, 'e':4, 'g':4, 'c':2, 'h':2, 'i':2, 'f':1, 'l':2,'j':2,'k':2,'m':5, 'z':1, 'y':1}
+    
+    
+    bin_capacity = 150 # Klasse mit Attribut oder andere Loesung, hier 150 da so in Paper
 
-    #greedy(item_list, bin_capacity, groups)
-    first_solution = hill_climbing(item_list, bin_capacity)
-    print("Instanz: ", item_list)
-    print("Lösung: ", first_solution)
-    print("Anzahl Gruppen G = ", len(first_solution))
+    item_list = generate_instances()
+    solution_greedy = [{}]
+    solution_greedy = greedy(item_list, bin_capacity, solution_greedy)
+    print_solution(solution_greedy, "Greedy Heuristik")
+    
+    item_list = generate_instances()
+    solution_first_fit = [{}]
+    solution_first_fit = greedy(item_list, bin_capacity, solution_first_fit)
+    print_solution(solution_first_fit, "First Fit (mit Greedy)")
 
+    item_list = generate_instances()
+    solution_improvement = hill_climbing(item_list, bin_capacity)
+    print_solution(solution_improvement, "Improvement")
 
     #groups = {item_name: item_value for bin in groups for item_name, item_value in bin.items()} # extrahiere flaches Dictionary aus List
-
 
     return 0
 
