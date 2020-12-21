@@ -32,7 +32,7 @@ def generate_instances():
     # Beispielhaft erste Instanz extrahieren
     item_list = {}
     bin_capacity = 0
-    for i, item_capacity in enumerate(instances_falkenauer[0]):
+    for i, item_capacity in enumerate(instances_falkenauer[1]):
         if i == 1:
             bin_capacity = item_capacity # Zeile 1 enthaelt bin capacity
         elif i > 1:
@@ -98,12 +98,7 @@ def move1(pair, permutation_pair, group_in_solution, group_in_permutation):
     # pair, permuation_pair sind jeweils Tupel of dict
     # group_in_solution und group_in_permutation sind jeweils dict
     # entferne items aus der jeweiligen Gruppe
-    print("Paar ", pair)
-    print("aktuelles pi ", group_in_solution)
-    print("Tauschpartner ", permutation_pair)
-    print("P: ", group_in_permutation)
-    
-    
+
     del group_in_solution[next(iter(pair[0].keys()))]
     del group_in_solution[next(iter(pair[1].keys()))]
     del group_in_permutation[next(iter(permutation_pair[0].keys()))]
@@ -113,22 +108,12 @@ def move1(pair, permutation_pair, group_in_solution, group_in_permutation):
     group_in_permutation[next(iter(pair[1].keys()))] = next(iter(pair[1].values()))
     group_in_solution[next(iter(permutation_pair[0].keys()))] = next(iter(permutation_pair[0].values()))
     group_in_solution[next(iter(permutation_pair[1].keys()))] = next(iter(permutation_pair[1].values()))
-
-    print("Tausch durchgefuehrt")
-    print("Paar ", pair)
-    print("aktuelles pi ", group_in_solution)
-    print("Tauschpartner ", permutation_pair)
-    print("P: ", group_in_permutation)
     
 
 
 def move2(pair, p_item, group_in_solution, group_in_permutation):
     # pair, permuation_pair sind jeweils Tupel of dict
     # group_in_solution und group_in_permutation sind jeweils dict
-    print("Paar ", pair)
-    print("Loesung ", group_in_solution)
-    print("Permutationsitem ", p_item)
-    print("Permutationsmenge ", group_in_permutation)
     # entferne items aus der jeweiligen Gruppe
     del group_in_solution[next(iter(pair[0].keys()))]
     del group_in_solution[next(iter(pair[1].keys()))]
@@ -137,20 +122,11 @@ def move2(pair, p_item, group_in_solution, group_in_permutation):
     group_in_permutation[next(iter(pair[0].keys()))] = next(iter(pair[0].values()))
     group_in_permutation[next(iter(pair[1].keys()))] = next(iter(pair[1].values()))
     group_in_solution[p_item[0]] = p_item[1]
-    print("Tausch durchgefuehrt")
-    print("Paar ", pair)
-    print("Loesung ", group_in_solution)
-    print("Permutationsitem ", p_item)
-    print("Permutationsmenge ", group_in_permutation)
 
 def move3(item_i, p_item, group_in_solution, group_in_permutation):
     # pair, permuation_pair sind jeweils Tupel of dict
     # group_in_solution und group_in_permutation sind jeweils dict
     # entferne items aus der jeweiligen Gruppe
-    print("Item aus pi", item_i)
-    print("item aus p", p_item)
-    print("pi", group_in_solution)
-    print("pi", group_in_permutation)
     del group_in_solution[next(iter(item_i.keys()))]
     del group_in_permutation[next(iter(p_item.keys()))]
     # fuege items in die Gruppe der anderen Menge hinzu
@@ -216,27 +192,71 @@ def bpp_improvement_procedure(solution, permutations, bin_capacity, changed):
                         changed[0] = True
                         break
 
+def shuffle(solution):
+  # verhaeltnis der shuffle-prozeduren (5:5:3)
+  rnd_int = random.randint(1,13)
+  if rnd_int <= 5:
+    # largest first (Gruppen nach absteigender Kapazitaet)
+    solution = largest_first(solution)
+  elif rnd_int <= 10:
+    # reverse ordering
+    solution.reverse()
+  else:
+    # random ordering
+    random.shuffle(solution)
+
+def largest_first(solution):
+    sorted_dict = {}
+    for i, bin in enumerate(solution):
+        sorted_dict[i] = fullness(bin)
+
+    sorted_dict = {k: v for k, v in sorted(sorted_dict.items(), reverse=True, key=lambda item: item[1])}
+    shuffled_solution = [0] * len(solution)
+    i = 0
+    for index, capacity in sorted_dict.items():
+        shuffled_solution[i] = solution[index]
+        i = i + 1 
+    return shuffled_solution
+    
+
+
 def hill_climbing(item_list, bin_capacity):
+    # wie viele iterationen/ abbruchkriterium?
     solution = [{}] # leere Liste aus dictionaries
+
+    # (0) Konstruktionsverfahren: first fit descending
+    # sortiere Items absteigend und fuehre anschließend den Greedy Algorithmus aus (first fit)
     solution = first_fit_descending(item_list, bin_capacity, solution) # Konstruktionsverfahren
-    # (1) Teilmenge aus Loesung bildet Permutationsgruppe 
-    permutations = []
-    for i in range(0,2): # wahl der zufaelligen Teilmenge?
-        random_index = random.randint(0,len(solution)-1)  # ziehe zufaelligen Index
-        permutations.append(solution[random_index]) # fuege Gruppe aus Loesung in Permutationsgruppe ein
-        solution.pop(random_index) # entferne Gruppe/ bin aus solution (pi)
-    
-    changed = []
-    changed.append(True)
-    while changed[0]:
-        bpp_improvement_procedure(solution, permutations, bin_capacity, changed)
-    
-    for group in permutations:
-        solution.append(group)
-    
-    # Schritt 3
-    solution = {item_name: item_value for bin in solution for item_name, item_value in bin.items()} # flaches Dict
-    solution = greedy(solution, bin_capacity, [{}])
+
+    for i in range(0,1000):
+        # (1) Teilmenge aus Loesung bildet Permutationsgruppe
+        # extrahiere kleine Teilmenge von Gruppen jeweils mit WS 1/G
+        # im Erwartungswert eine Gruppe
+        permutation = []
+        probability = 1/len(solution) # probability for each group is 1/G
+        while len(permutation) == 0: 
+            for i, bin in enumerate(solution):
+                if random.uniform(0,1) <= probability:
+                    permutation.append(solution[i])
+                    solution.pop(i)
+        
+        changed = []
+        changed.append(True)
+        while changed[0]:
+            bpp_improvement_procedure(solution, permutation, bin_capacity, changed)
+        
+        # Schritt 3
+        # (3a) fuege die permutationsgruppen der bisherigen Loesung hinzu
+        for group in permutation:
+            solution.append(group)
+        # (3b) fuehre shuffle der Gruppen der aktuellen Loesung durch
+        # entweder nach Heuristik oder Random
+        shuffle(solution)
+        
+        # (3c) Uebergebe die Loesung dem Greedy (First-Fit) Algorithmus
+        # Gehe anschließend wieder zu Schritt (1)
+        solution = {item_name: item_value for bin in solution for item_name, item_value in bin.items()} # flaches Dict
+        solution = greedy(solution, bin_capacity, [{}])
     return solution
     
 
@@ -254,15 +274,15 @@ def main():
     
     bin_capacity = 150 # Klasse mit Attribut oder andere Loesung, hier 150 da so in Paper
 
-    item_list = generate_instances()
-    solution_greedy = [{}]
-    solution_greedy = greedy(item_list, bin_capacity, solution_greedy)
-    print_solution(solution_greedy, "Greedy Heuristik")
+    # item_list = generate_instances()
+    # solution_greedy = [{}]
+    # solution_greedy = greedy(item_list, bin_capacity, solution_greedy)
+    # #print_solution(solution_greedy, "Greedy Heuristik")
     
-    item_list = generate_instances()
-    solution_first_fit = [{}]
-    solution_first_fit = greedy(item_list, bin_capacity, solution_first_fit)
-    print_solution(solution_first_fit, "First Fit (mit Greedy)")
+    # item_list = generate_instances()
+    # solution_first_fit = [{}]
+    # solution_first_fit = greedy(item_list, bin_capacity, solution_first_fit)
+    # #print_solution(solution_first_fit, "First Fit (mit Greedy)")
 
     item_list = generate_instances()
     solution_improvement = hill_climbing(item_list, bin_capacity)
