@@ -1,14 +1,16 @@
 # Frage: An welche Stelle wird welches Item getauscht?
-# Hinweis: Durch Serie von Moves wird p emptified ist nicht moeglich
+# Hinweis: "Durch Serie von Moves wird p emptified" (laut paper) - ist bei BPP nicht moeglich
 import random
 import math
 from pathlib import Path
 from collections import namedtuple
+import pandas as pd
+
 
 
 Item = namedtuple('Item', 'name capacity')
 
-def generate_instances():
+def generate_instances(index_document):
     documents_path = Path("Falkenauer/uniform")
     instances_falkenauer = []
     for document in documents_path.iterdir():
@@ -20,20 +22,20 @@ def generate_instances():
     bin_capacity = 0
     n_instances = 0
     mean_lb = []
-    for i, item_capacity in enumerate(instances_falkenauer[60]):
+    for i, item_capacity in enumerate(instances_falkenauer[index_document]):
         if i == 0:
-            n_instances = int(item_capacity)
+            n_items = int(item_capacity)
         elif i == 1:
             bin_capacity = int(item_capacity) 
         elif i > 1:
             item_list.append(Item(i-1,int(item_capacity)))
-    print(n_instances)
-    print(bin_capacity)
+    print("Anzahl Items", n_items)
+    print("Bin Kapazitaet", bin_capacity)
     lower_bound = math.ceil(sum(item.capacity for item in item_list)/ bin_capacity)
-    print(lower_bound)
+    print("Lower Bound", lower_bound)
 
 
-    return item_list, bin_capacity
+    return item_list, n_items, bin_capacity, lower_bound 
 
 
 def hill_climbing(item_list, bin_capacity):
@@ -192,17 +194,22 @@ def fullness(bin):
     else:
         return sum(item.capacity for item in bin)
 
-def print_solution(solution, name):
-    print(name)
-    #print("Loesung: ", solution)
-    print("Anzahl Gruppen: ", len(solution))
 
 def main():
-    item_list, bin_capacity = generate_instances()
-    bins_hc = hill_climbing(item_list, bin_capacity)
-    bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
-    print(bins_hc)
-    print(bins_firstfit)
+    # Ergebnis DataFrame erstellen
+    df_results = pd.DataFrame(columns = ['Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD'])
+    for i in range(0,5):
+        item_list, n_items, bin_capacity, lower_bound  = generate_instances(i)
+        bins_hc = hill_climbing(item_list, bin_capacity)
+        bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
+        print("Anzahl Bins HC", bins_hc)
+        print("Anzahl Bins FFD", bins_firstfit)
+        print("-------------")
+        df_results.loc[i] = [n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound]
+
+    df_results = df_results.sort_values(by=['Anzahl Items'])
+    print(df_results.head(20))
+    df_results.to_csv('results.csv',index=False, encoding='utf-8')
 
     return 0
 

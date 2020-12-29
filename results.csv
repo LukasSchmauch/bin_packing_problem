@@ -1,0 +1,6 @@
+Anzahl Items,Bin-Kapazitaet,LB,Hill Climbing,First Fit Descending,Abs. LB HC,Abs. LB FFD
+250,150,100,101,101,1,1
+250,150,97,98,99,1,2
+500,150,207,209,210,2,3
+500,150,198,199,201,1,3
+1000,150,399,403,404,4,5
