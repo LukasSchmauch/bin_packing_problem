@@ -7,8 +7,6 @@ from collections import namedtuple
 import pandas as pd
 import time
 
-
-
 Item = namedtuple('Item', 'name capacity')
 
 def read_uniform_instances_falkenauer():
@@ -43,7 +41,7 @@ def generate_instance_falkenauer(instance_falkenauer):
 def hill_climbing(item_list, bin_capacity):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
-    best_solution = 1000000
+    #best_solution = 1000000
     for i in range(0,30):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
@@ -66,9 +64,9 @@ def hill_climbing(item_list, bin_capacity):
         # wichtig: Greedy benoetigt "flache Itemlist"
         solution = [item for bin in solution for item in bin]
         solution = greedy(solution, bin_capacity)
-        if len(solution) < best_solution:
-            best_solution = len(solution)
-    return best_solution
+        # if len(solution) < best_solution:
+        #     best_solution = len(solution)
+    return len(solution)
 
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
     change[0] = False
@@ -200,7 +198,7 @@ def generate_results():
     instances_falkenauer = read_uniform_instances_falkenauer()
     #Ergebnis DataFrame erstellen
     df_results = pd.DataFrame(columns = ['Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD', 'Zeit HC (sec)', 'Zeit FFD (sec)'])
-    for i in range(0,10):
+    for i in range(0,len(instances_falkenauer)):
         item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances_falkenauer[i])
         # Hill Climbing
         tic = time.perf_counter()
@@ -216,7 +214,7 @@ def generate_results():
         print("Anzahl Bins HC", bins_hc)
         print("Anzahl Bins FFD", bins_firstfit)
         print("-------------")
-        df_results.loc[i] = [n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, elapsed_time_hc, elapsed_time_ffd]
+        df_results.loc[i] = [n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
 
     df_results = df_results.sort_values(by=['Anzahl Items'])
     print(df_results.head(20))
