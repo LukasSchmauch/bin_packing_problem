@@ -41,7 +41,7 @@ def generate_instance_falkenauer(instance_falkenauer):
 def hill_climbing(item_list, bin_capacity):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
-    #best_solution = 1000000
+    best_solution = 1000000
     for i in range(0,30):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
@@ -64,9 +64,9 @@ def hill_climbing(item_list, bin_capacity):
         # wichtig: Greedy benoetigt "flache Itemlist"
         solution = [item for bin in solution for item in bin]
         solution = greedy(solution, bin_capacity)
-        # if len(solution) < best_solution:
-        #     best_solution = len(solution)
-    return len(solution)
+        if len(solution) < best_solution:
+            best_solution = len(solution)
+    return best_solution
 
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
     change[0] = False
@@ -218,7 +218,7 @@ def generate_results():
 
     df_results = df_results.sort_values(by=['Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_30Iter_savebest.csv',index=False, encoding='utf-8')
 
 
 
