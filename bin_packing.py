@@ -41,7 +41,7 @@ def generate_instance_falkenauer(instance_falkenauer):
 def hill_climbing(item_list, bin_capacity):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
-    best_solution = 1000000
+    best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
     for i in range(0,30):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
