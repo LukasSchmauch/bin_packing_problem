@@ -5,24 +5,26 @@ import math
 from pathlib import Path
 from collections import namedtuple
 import pandas as pd
+import time
 
 
 
 Item = namedtuple('Item', 'name capacity')
 
-def generate_instances(index_document):
+def read_uniform_instances_falkenauer():
     documents_path = Path("Falkenauer/uniform")
     instances_falkenauer = []
     for document in documents_path.iterdir():
         with open(document) as f:
             content = f.readlines()
         instances_falkenauer.append([x.strip() for x in content])
+    return instances_falkenauer
 
+def generate_instance_falkenauer(instance_falkenauer):
     item_list = []
     bin_capacity = 0
-    n_instances = 0
-    mean_lb = []
-    for i, item_capacity in enumerate(instances_falkenauer[index_document]):
+    n_items = 0
+    for i, item_capacity in enumerate(instance_falkenauer):
         if i == 0:
             n_items = int(item_capacity)
         elif i == 1:
@@ -194,22 +196,50 @@ def fullness(bin):
     else:
         return sum(item.capacity for item in bin)
 
-
-def main():
-    # Ergebnis DataFrame erstellen
-    df_results = pd.DataFrame(columns = ['Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD'])
-    for i in range(0,5):
-        item_list, n_items, bin_capacity, lower_bound  = generate_instances(i)
+def generate_results():
+    instances_falkenauer = read_uniform_instances_falkenauer()
+    #Ergebnis DataFrame erstellen
+    df_results = pd.DataFrame(columns = ['Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD', 'Zeit HC (sec)', 'Zeit FFD (sec)'])
+    for i in range(0,10):
+        item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances_falkenauer[i])
+        # Hill Climbing
+        tic = time.perf_counter()
         bins_hc = hill_climbing(item_list, bin_capacity)
+        toc = time.perf_counter()
+        elapsed_time_hc = toc - tic
+        # First Fit Descending
+        tic = time.perf_counter()
         bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
+        toc = time.perf_counter()
+        elapsed_time_ffd = toc - tic
+
         print("Anzahl Bins HC", bins_hc)
         print("Anzahl Bins FFD", bins_firstfit)
         print("-------------")
-        df_results.loc[i] = [n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound]
+        df_results.loc[i] = [n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, elapsed_time_hc, elapsed_time_ffd]
 
     df_results = df_results.sort_values(by=['Anzahl Items'])
     print(df_results.head(20))
     df_results.to_csv('results.csv',index=False, encoding='utf-8')
+
+
+
+def main():
+
+    # dauert lange, falls nur auf einer Instanz testen, auskommentieren
+    generate_results()
+
+    # eine Instanz loesen: Kommentare loeschen und Index angeben
+    # instances_falkenauer = read_uniform_instances_falkenauer()
+    # index = 0 # ist Index einer Instanz
+    # item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances_falkenauer[index])
+    # bins_hc = hill_climbing(item_list, bin_capacity)
+    # bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
+    # print("Anzahl Bins HC", bins_hc)
+    # print("Anzahl Bins FFD", bins_firstfit)
+    # print("-------------")
+
+    
 
     return 0
 
