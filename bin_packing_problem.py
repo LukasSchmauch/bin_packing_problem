@@ -1,11 +1,8 @@
-# ToDo
+# Hinweise/ Fragen
 # - Eingaberepraesentation
 # - Parameter verschiedener Instanzen
 # - verschiedene Instanzen simulieren
-# - Greedy Algorithmus (first fit) fuer verschiedene Instanzen implementieren
-# - Warum lookup Hashtabelle?
 # - LB minimale Bin Anzahl eigentlich easy? auch freien Platz minimieren?
-# - wie sollen Instanzen generiert werden
 # - spielt Reihenfolge in Bin eine Rolle? Wegen HT?
 # - Was wird Greedy uebergeben? Bei uns Dictionary, woraus G ermittelt wird, bin_capacity aber auch noetig fuer feasibility test
 
@@ -14,10 +11,6 @@
 # Kapazitaet ueberschritten ? neuer Bucket
 # Resultat: Abhaengig von Reihenfolge der Items, minimal LB
 
-# arbitratry permutaiton
-# Loesungsrepraesentation
-
-#from collections import ChainMap
 import random
 from pathlib import Path
 
@@ -142,14 +135,10 @@ def bpp_improvement_procedure(solution, permutations, bin_capacity, changed):
 
     for g in range(0,len(solution)): # iteriere über alle Gruppen (der Teilmenge pi) / Liste (g ist Index)
         pair_list = generate_pairs(solution[g]) # generiere alle moeglichen Itempaare im aktuellen Bin
-        moved = False
-        for pair in pair_list: # iteriere ueber alle moeglichen Paare im aktuellen Bin
-            # pair ist ein Tupel of dict der Form: ({'a':10},{'b':20})
+        
             for h in range(0,len(permutations)): # Iteriere ueber Gruppen der Permutationen (List of Dict)
-                if moved:break
                 permutation_pair_list = generate_pairs(permutations[h]) # erzeuge alle Paare aktueller Gruppe in Permutation
                 for permutation_pair in permutation_pair_list: # Iteriere ueber Paare der aktuellen Gruppe in Permuation
-                    if moved:break
                     delta = size(permutation_pair[0]) + size(permutation_pair[1]) - size(pair[0]) - size(pair[1])
                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                         # Move items i and j into group h in p and move items k into group g in pi
@@ -157,9 +146,7 @@ def bpp_improvement_procedure(solution, permutations, bin_capacity, changed):
                         print("move1()")
                         print(pair_list)
                         move1(pair, permutation_pair, solution[g], permutations[h])
-                        moved = True
                         changed[0] = True
-                        break
             
                         # nach move aendert sich solution und dementsprechen muesste die pair list neu generiert werden
 

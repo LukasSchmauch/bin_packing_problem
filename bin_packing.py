@@ -1,6 +1,7 @@
 # Frage: An welche Stelle wird welches Item getauscht?
 # Hinweis: Durch Serie von Moves wird p emptified ist nicht moeglich
 import random
+import math
 from pathlib import Path
 from collections import namedtuple
 
@@ -17,17 +18,29 @@ def generate_instances():
 
     item_list = []
     bin_capacity = 0
-    for i, item_capacity in enumerate(instances_falkenauer[7]):
-        if i == 1:
+    n_instances = 0
+    mean_lb = []
+    for i, item_capacity in enumerate(instances_falkenauer[60]):
+        if i == 0:
+            n_instances = int(item_capacity)
+        elif i == 1:
             bin_capacity = int(item_capacity) 
         elif i > 1:
             item_list.append(Item(i-1,int(item_capacity)))
+    print(n_instances)
+    print(bin_capacity)
+    lower_bound = math.ceil(sum(item.capacity for item in item_list)/ bin_capacity)
+    print(lower_bound)
+
+
     return item_list, bin_capacity
+
 
 def hill_climbing(item_list, bin_capacity):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
-    for i in range(0,10):
+    best_solution = 1000000
+    for i in range(0,30):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -36,23 +49,22 @@ def hill_climbing(item_list, bin_capacity):
                 if random.uniform(0,1) <= probability:
                     permutation.append(solution[i])
                     solution.pop(i)
-        
         # (2) Improvement procedure
         change = [True]
         while change[0]: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
-
         # (3a) fuege die permutationsgruppen der bisherigen Loesung hinzu
         for bin in permutation:
             solution.append(bin)
-        # (3b) Shuffle die Bins/Gruppen 
+        # (3b) Shuffle die Bins/Gruppen nach Heuristik/ Random
         shuffle(solution)
         # (3c) Rufe Greedy-Algorithmus mit permutierter Loesung aus (3b) auf
         # wichtig: Greedy benoetigt "flache Itemlist"
         solution = [item for bin in solution for item in bin]
         solution = greedy(solution, bin_capacity)
-
-    return solution
+        if len(solution) < best_solution:
+            best_solution = len(solution)
+    return best_solution
 
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
     change[0] = False
@@ -82,8 +94,8 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                             if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                                 move2(i,j,permutation[h], k, solution[g])
                                 change[0] = True
-                                k -= 1
-                                j -= 1
+                                # k -= 1
+                                # j -= 1
                             k += 1
                 j += 1
             i += 1
@@ -97,14 +109,13 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                         move3(i, permutation[h], k, solution[g])
                         change[0] = True
-
     return solution, permutation
 
 def size(item):
     return item.capacity
 
 def move(i,j, bin_p, k, l, bin):
-    # items behalten
+    # items zwischenspeichern
     item_i = bin[i]
     item_j = bin[j]
     # Value wird kopiert (keine Referenz!)
@@ -128,9 +139,6 @@ def move3(i, bin_p, k, bin):
     bin[i] = bin_p[k]
     bin_p[k] = item_i
 
-
-
-
 def first_fit_descending(item_list, bin_capacity):
     item_list = sorted(item_list, reverse = True, key = lambda i: i.capacity)
     return greedy(item_list, bin_capacity)
@@ -153,11 +161,23 @@ def greedy(item_list, bin_capacity):
 def shuffle(solution):
     rnd_int = random.randint(1,13)
     if rnd_int <= 5:
-        solution.reverse()
+        solution = largest_first(solution)
     elif rnd_int <= 10:
         solution.reverse()
     else:
         random.shuffle(solution)
+
+def largest_first(solution):
+  sorted_dict = {}
+  for i, bin in enumerate(solution):
+    sorted_dict[i] = fullness(bin)
+  sorted_dict = {k: v for k, v in sorted(sorted_dict.items(), reverse=True, key=lambda item: item[1])}
+  shuffled_solution = [0] * len(solution)
+  i = 0
+  for index, capacity in sorted_dict.items():
+    shuffled_solution[i] = solution[index]
+    i = i +1 
+  return shuffled_solution
 
 
 def is_feasible(item_capacity, bin_capacity, current_bin):
@@ -179,16 +199,10 @@ def print_solution(solution, name):
 
 def main():
     item_list, bin_capacity = generate_instances()
-    sol_vec = []
-    for i in range(0,100):
-        solution = hill_climbing(item_list, bin_capacity)
-        sol_vec.append(len(solution))
-    
-    mean = (sum(sol_vec)/len(sol_vec))
-    print(mean)
-
-    print(len(first_fit_descending(item_list, bin_capacity)))
-
+    bins_hc = hill_climbing(item_list, bin_capacity)
+    bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
+    print(bins_hc)
+    print(bins_firstfit)
 
     return 0
 
