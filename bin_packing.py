@@ -9,8 +9,8 @@ import time
 
 Item = namedtuple('Item', 'name capacity')
 
-def read_uniform_instances_falkenauer():
-    documents_path = Path("Falkenauer/uniform")
+def read_instances_falkenauer(path):
+    documents_path = Path(path)
     instances_falkenauer = []
     for document in documents_path.iterdir():
         with open(document) as f:
@@ -33,12 +33,11 @@ def generate_instance_falkenauer(instance_falkenauer):
     print("Bin Kapazitaet", bin_capacity)
     lower_bound = math.ceil(sum(item.capacity for item in item_list)/ bin_capacity)
     print("Lower Bound", lower_bound)
-
-
+    
     return item_list, n_items, bin_capacity, lower_bound 
 
 
-def hill_climbing(item_list, bin_capacity):
+def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
@@ -66,6 +65,8 @@ def hill_climbing(item_list, bin_capacity):
         solution = greedy(solution, bin_capacity)
         if len(solution) < best_solution:
             best_solution = len(solution)
+        if best_solution == lower_bound:
+            return best_solution
     return best_solution
 
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
@@ -195,14 +196,27 @@ def fullness(bin):
         return sum(item.capacity for item in bin)
 
 def generate_results():
-    instances_falkenauer = read_uniform_instances_falkenauer()
+    
+    #instances_falkenauer.append(read_triplet_instances_falkenauer)
     #Ergebnis DataFrame erstellen
-    df_results = pd.DataFrame(columns = ['Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD', 'Zeit HC (sec)', 'Zeit FFD (sec)'])
-    for i in range(0,len(instances_falkenauer)):
-        item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances_falkenauer[i])
+    df_results = pd.DataFrame(columns = ['Typ','Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD', 'Zeit HC (sec)', 'Zeit FFD (sec)'])
+    
+    instances_falkenauer_uniform = read_instances_falkenauer("Falkenauer/uniform")
+    generate_results_of_type(instances_falkenauer_uniform, df_results, "uniform")
+    
+    instances_falkenauer_triplet = read_instances_falkenauer("Falkenauer/triplet")
+    generate_results_of_type(instances_falkenauer_triplet, df_results, "triplet")
+
+    df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
+    print(df_results.head(20))
+    df_results.to_csv('results_30Iter_Unif_Trip.csv',index=False, encoding='utf-8')
+
+def generate_results_of_type(instances, df_results, typ):
+    for i in range(0,len(instances)):
+        item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances[i])
         # Hill Climbing
         tic = time.perf_counter()
-        bins_hc = hill_climbing(item_list, bin_capacity)
+        bins_hc = hill_climbing(item_list, bin_capacity, lower_bound)
         toc = time.perf_counter()
         elapsed_time_hc = toc - tic
         # First Fit Descending
@@ -214,11 +228,7 @@ def generate_results():
         print("Anzahl Bins HC", bins_hc)
         print("Anzahl Bins FFD", bins_firstfit)
         print("-------------")
-        df_results.loc[i] = [n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
-
-    df_results = df_results.sort_values(by=['Anzahl Items'])
-    print(df_results.head(20))
-    df_results.to_csv('results_30Iter_savebest.csv',index=False, encoding='utf-8')
+        df_results.loc[i] = [typ, n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
 
 
 
@@ -236,6 +246,7 @@ def main():
     # print("Anzahl Bins HC", bins_hc)
     # print("Anzahl Bins FFD", bins_firstfit)
     # print("-------------")
+
 
     
 
