@@ -9,20 +9,20 @@ import time
 
 Item = namedtuple('Item', 'name capacity')
 
-def read_instances_falkenauer(path):
+def read_instances(path):
     documents_path = Path(path)
-    instances_falkenauer = []
+    instances = []
     for document in documents_path.iterdir():
         with open(document) as f:
             content = f.readlines()
-        instances_falkenauer.append([x.strip() for x in content])
-    return instances_falkenauer
+        instances.append([x.strip() for x in content])
+    return instances
 
-def generate_instance_falkenauer(instance_falkenauer):
+def generate_instance(instances):
     item_list = []
     bin_capacity = 0
     n_items = 0
-    for i, item_capacity in enumerate(instance_falkenauer):
+    for i, item_capacity in enumerate(instances):
         if i == 0:
             n_items = int(item_capacity)
         elif i == 1:
@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,1):
+    for i in range(0,50):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -97,8 +97,8 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                             if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                                 move2(i,j,permutation[h], k, solution[g])
                                 change[0] = True
-                                # k -= 1
-                                # j -= 1
+                                k -= 1
+                                j -= 1
                             k += 1
                 j += 1
             i += 1
@@ -201,20 +201,28 @@ def generate_results():
     #Ergebnis DataFrame erstellen
     df_results = pd.DataFrame(columns = ['Typ','Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD', 'Zeit HC (sec)', 'Zeit FFD (sec)'])
     
-    instances_falkenauer_uniform = read_instances_falkenauer("Falkenauer/uniform")
-    generate_results_of_type(instances_falkenauer_uniform, df_results, "uniform")
+    #instances_scholl1 = read_instances("Instanzen/Scholl/Scholl_1")
+    #generate_results_of_instances(instances_scholl1, df_results, "scholl_1")
+
+    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    instances_falkenauer_triplet = read_instances_falkenauer("Falkenauer/triplet")
-    generate_results_of_type(instances_falkenauer_triplet, df_results, "triplet")
+    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_30Iter_Unif_Trip.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_unif.csv',index=False, encoding='utf-8')
+    df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
+    df_mean = df_grouped.mean()
+    #df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
+    print(df_mean.head())
+    df_mean.to_csv('mean_results.csv',index=False, encoding='utf-8')
 
-def generate_results_of_type(instances, df_results, typ):
+def generate_results_of_instances(instances, df_results, typ):
     num_cols = df_results.shape[0]
     for i in range(0,len(instances)):
-        item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances[i])
+        item_list, n_items, bin_capacity, lower_bound  = generate_instance(instances[i])
         # Hill Climbing
         tic = time.perf_counter()
         bins_hc = hill_climbing(item_list, bin_capacity, lower_bound)
@@ -229,27 +237,12 @@ def generate_results_of_type(instances, df_results, typ):
         print("Anzahl Bins HC", bins_hc)
         print("Anzahl Bins FFD", bins_firstfit)
         print("-------------")
-        df_results.loc[num_cols + i] = [typ, n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
-
+        df_results.loc[num_cols + i] = [typ, n_items, bin_capacity/1.0, lower_bound/1.0, bins_hc/1.0, bins_firstfit/1.0, (bins_hc - lower_bound)/1.0, (bins_firstfit-lower_bound)/1.0, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
 
 
 def main():
 
-    # dauert lange, falls nur auf einer Instanz testen, auskommentieren
-    generate_results()
-
-    # eine Instanz loesen: Kommentare loeschen und Index angeben
-    # instances_falkenauer = read_uniform_instances_falkenauer()
-    # index = 0 # ist Index einer Instanz
-    # item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances_falkenauer[index])
-    # bins_hc = hill_climbing(item_list, bin_capacity)
-    # bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
-    # print("Anzahl Bins HC", bins_hc)
-    # print("Anzahl Bins FFD", bins_firstfit)
-    # print("-------------")
-
-
-    
+    generate_results()    
 
     return 0
 
