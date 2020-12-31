@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,30):
+    for i in range(0,1):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -212,6 +212,7 @@ def generate_results():
     df_results.to_csv('results_30Iter_Unif_Trip.csv',index=False, encoding='utf-8')
 
 def generate_results_of_type(instances, df_results, typ):
+    num_cols = df_results.shape[0]
     for i in range(0,len(instances)):
         item_list, n_items, bin_capacity, lower_bound  = generate_instance_falkenauer(instances[i])
         # Hill Climbing
@@ -228,7 +229,7 @@ def generate_results_of_type(instances, df_results, typ):
         print("Anzahl Bins HC", bins_hc)
         print("Anzahl Bins FFD", bins_firstfit)
         print("-------------")
-        df_results.loc[i] = [typ, n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
+        df_results.loc[num_cols + i] = [typ, n_items, bin_capacity, lower_bound, bins_hc, bins_firstfit, bins_hc - lower_bound, bins_firstfit-lower_bound, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
 
 
 
