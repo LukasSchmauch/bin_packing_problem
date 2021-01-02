@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,50):
+    for i in range(0,1000):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -207,17 +207,17 @@ def generate_results():
     instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
     generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_unif.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_unif_1000.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     #df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
     print(df_mean.head())
-    df_mean.to_csv('mean_results.csv',index=False, encoding='utf-8')
+    df_mean.to_csv('mean_results_1000.csv',index=False, encoding='utf-8')
 
 def generate_results_of_instances(instances, df_results, typ):
     num_cols = df_results.shape[0]
