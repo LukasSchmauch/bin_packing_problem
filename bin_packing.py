@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,500):
+    for i in range(0,300):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -101,7 +101,7 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                     for h in range(0,len(permutation)):
                         for k in range(0,len(permutation[h])):
                             for l in range(0,len(permutation[h])):
-                                if k != l and l > k:
+                                if l > k:
                                     delta = size(permutation[h][k]) + size(permutation[h][l]) - size(solution[g][i])- size(solution[g][j])
                                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                                         move(i,j, permutation[h], k, l, solution[g])
@@ -234,18 +234,18 @@ def generate_results():
     #Ergebnis DataFrame erstellen
     df_results = pd.DataFrame(columns = ['Typ','Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD', 'Zeit HC (sec)', 'Zeit FFD (sec)'])
     
-    #instances_scholl1 = read_instances("Instanzen/Scholl/Scholl_1")
-    #generate_results_of_instances(instances_scholl1, df_results, "scholl_1")
+    instances_scholl1 = read_instances("Instanzen/Scholl/Scholl_1")
+    generate_results_of_instances(instances_scholl1, df_results, "scholl_1")
 
-    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_triplet_500iters_mit_move21.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_test.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
