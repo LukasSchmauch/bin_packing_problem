@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,300):
+    for i in range(0,50):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -55,7 +55,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
         change = [True]
         while change[0]: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
-            #test_feasibility(permutation,bin_capacity)
+            test_feasibility(permutation,bin_capacity)
             test_feasibility(solution,bin_capacity)
 
         # (3a) fuege die permutationsgruppen der bisherigen Loesung hinzu
@@ -81,9 +81,6 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
         assert len(solution) <= old_solution_length, "Warung: Greedy produziert schlechtere Loesung als Eingabeloesung"
         #####  
         
-        
-        # if len(solution) < best_solution:
-        #     best_solution = len(solution)
         if best_solution == lower_bound:
             return best_solution
     return len(solution)
@@ -95,6 +92,7 @@ def test_feasibility(solution, bin_capacity):
 
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
     change[0] = False
+    #iteriere ueber alle bins in pi
     for g in range(0,len(solution)):
         # 2:2 Swap
         for i in range(0,len(solution[g])):
@@ -110,32 +108,43 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                                         change[0] = True
                                         test_feasibility(permutation, bin_capacity)
         # 2:1 Swap
-        # i = 0
-        # j = 0
-        # K = 0
-        # while i < len(solution[g]):
-        #     while j < len(solution[g]):
-        #         if i != j and j > i:
-        #             for h in range(0,len(permutation)):
-        #                 while k < len(permutation[h]):
-        #                     delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j])
-        #                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
-        #                         move2(i,j,permutation[h], k, solution[g])
-        #                         change[0] = True
-        #                         k -= 1
-        #                         j -= 1
-        #                     k += 1
-        #         j += 1
-        #     i += 1
+        i = 0
+        j = 0
+        # iteriere ueber alle items im aktuellen bin
+        while i < len(solution[g]):
+        # iteriere ueber alle Tauschpartner im aktuellen Bin 
+            while j < len(solution[g]):
+                 if j > i: # Uebpruefe moeglichen move() nur fuer gueltige Paare
+                    # fuer jedes Paar aus aktuellem bin in pi iteriere ueber alle Bins in p
+                    for h in range(0,len(permutation)):
+                        # iteriere fuer jedes paar ueber alle items im aktuellen Bin in p
+                        k = 0 # starte beim ersten item
+                        while k < len(permutation[h]):
+                            delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j]) # erhoeht das Item aus p die Auslastung in pi beim Tausch gegen das Paar?
+                            if delta > 0 and fullness(solution[g]) + delta <= bin_capacity: # passt die zusaetzliche Kapazitaet noch in den Bin
+                                move2(i,j,permutation[h], k, solution[g])
+                                change[0] = True
+                                test_feasibility(permutation, bin_capacity)
+                                k -= 1 # wenn move von Item k stattgefunden hat, ersetzt ein Item aus pi den Platz von k. Setze Index zurueck um fuer dieses Item zu ueberpruefen, ob Ruecktausch gegen andere Items sinnvoll
+                                j -= 1 # setze j zurueck, da Anzahl Items im Bin, um 1 schrumpft. Damit wird sichergestellt, dass naechstes Item nicht uebersprungen wird
+                                # Index von i bleibt unveraendert, da der Platz nun von Item k eingenommen, fuer Item k werden nun Paare gebildet
+                            k += 1 # gehe zum naechsten Item im aktuellen bin in p
+                 j += 1 # gehe zum naechsten Item im aktuellen bin in pi
+            i += 1 # Bilde fuer naechstes Item alle Paare
         # #1:1 Swap
         i = 0
         k = 0
+        # fuer alle items im aktuellen bin in pi
         for i in range(0,len(solution[g])):
+            # fuer alle bins in p
             for h in range(0,len(permutation)):
+                # fuer alle items im aktuellen bin in p
                 for k in range(0,len(permutation[h])):
                     delta = size(permutation[h][k]) - size(solution[g][i])
                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
+                        # tausche item i aus pi mit item k aus p 
                         move3(i, permutation[h], k, solution[g])
+                        test_feasibility(permutation, bin_capacity)
                         change[0] = True
     return solution, permutation
 
@@ -153,14 +162,13 @@ def move(i,j, bin_p, k, l, bin):
     bin_p[l] = item_j
 
 def move2(i,j, bin_p, k, bin):
-    # items behalten
+    # items aus pi behalten/ zwischenspeichern
     item_i = bin[i]
     item_j = bin[j]
-    item_k = bin_p[k]
-    bin[i] = item_k
-    bin.pop(j)
-    bin_p.append(item_i)
-    bin_p.append(item_j)
+    bin[i] = bin_p[k] # item k aus p ersetzt das Item i in pi
+    bin_p[k] = item_i # item i aus pi ersetzt das Item k in p
+    bin.pop(j) # item j aus bin in pi wird entfernt
+    bin_p.append(item_j) #item j wird am Ende vom bin in pi eingefuegt
 
 def move3(i, bin_p, k, bin):
     item_i = bin[i]
@@ -229,41 +237,41 @@ def generate_results():
     #instances_scholl1 = read_instances("Instanzen/Scholl/Scholl_1")
     #generate_results_of_instances(instances_scholl1, df_results, "scholl_1")
 
-    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
     instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
     generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_triplet_1000.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_triplet_50iters_mit_move21.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
     print(df_mean.head())
     #df_mean.to_csv('mean_results_unif_triplet_100.csv',index=False, encoding='utf-8')
 
+# diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
 def generate_results_of_instances(instances, df_results, typ):
     num_cols = df_results.shape[0]
     for i in range(0,len(instances)):
         item_list, n_items, bin_capacity, lower_bound  = generate_instance(instances[i])
-        if n_items == 501:
-            # Hill Climbing
-            tic = time.perf_counter()
-            bins_hc = hill_climbing(item_list, bin_capacity, lower_bound)
-            toc = time.perf_counter()
-            elapsed_time_hc = toc - tic
-            # First Fit Descending
-            tic = time.perf_counter()
-            bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
-            toc = time.perf_counter()
-            elapsed_time_ffd = toc - tic
+        # Hill Climbing
+        tic = time.perf_counter() # Starte Zeitmessung
+        bins_hc = hill_climbing(item_list, bin_capacity, lower_bound)
+        toc = time.perf_counter() # Beende Zeitmessung
+        elapsed_time_hc = toc - tic
+        # First Fit Descending
+        tic = time.perf_counter()
+        bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
+        toc = time.perf_counter()
+        elapsed_time_ffd = toc - tic
 
-            print("Anzahl Bins HC", bins_hc)
-            print("Anzahl Bins FFD", bins_firstfit)
-            print("-------------")
-            df_results.loc[num_cols + i] = [typ, n_items, bin_capacity/1.0, lower_bound/1.0, bins_hc/1.0, bins_firstfit/1.0, (bins_hc - lower_bound)/1.0, (bins_firstfit-lower_bound)/1.0, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
+        print("Anzahl Bins HC", bins_hc)
+        print("Anzahl Bins FFD", bins_firstfit)
+        print("-------------")
+        df_results.loc[num_cols + i] = [typ, n_items, bin_capacity/1.0, lower_bound/1.0, bins_hc/1.0, bins_firstfit/1.0, (bins_hc - lower_bound)/1.0, (bins_firstfit-lower_bound)/1.0, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
 
 
 def main():
