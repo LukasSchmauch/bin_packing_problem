@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,100):
+    for i in range(0,300):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -229,40 +229,41 @@ def generate_results():
     #instances_scholl1 = read_instances("Instanzen/Scholl/Scholl_1")
     #generate_results_of_instances(instances_scholl1, df_results, "scholl_1")
 
-    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
     instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
     generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_unif_triplet_100.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_triplet_1000.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
     print(df_mean.head())
-    df_mean.to_csv('mean_results_unif_triplet_100.csv',index=False, encoding='utf-8')
+    #df_mean.to_csv('mean_results_unif_triplet_100.csv',index=False, encoding='utf-8')
 
 def generate_results_of_instances(instances, df_results, typ):
     num_cols = df_results.shape[0]
     for i in range(0,len(instances)):
         item_list, n_items, bin_capacity, lower_bound  = generate_instance(instances[i])
-        # Hill Climbing
-        tic = time.perf_counter()
-        bins_hc = hill_climbing(item_list, bin_capacity, lower_bound)
-        toc = time.perf_counter()
-        elapsed_time_hc = toc - tic
-        # First Fit Descending
-        tic = time.perf_counter()
-        bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
-        toc = time.perf_counter()
-        elapsed_time_ffd = toc - tic
+        if n_items == 501:
+            # Hill Climbing
+            tic = time.perf_counter()
+            bins_hc = hill_climbing(item_list, bin_capacity, lower_bound)
+            toc = time.perf_counter()
+            elapsed_time_hc = toc - tic
+            # First Fit Descending
+            tic = time.perf_counter()
+            bins_firstfit = len(first_fit_descending(item_list, bin_capacity))
+            toc = time.perf_counter()
+            elapsed_time_ffd = toc - tic
 
-        print("Anzahl Bins HC", bins_hc)
-        print("Anzahl Bins FFD", bins_firstfit)
-        print("-------------")
-        df_results.loc[num_cols + i] = [typ, n_items, bin_capacity/1.0, lower_bound/1.0, bins_hc/1.0, bins_firstfit/1.0, (bins_hc - lower_bound)/1.0, (bins_firstfit-lower_bound)/1.0, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
+            print("Anzahl Bins HC", bins_hc)
+            print("Anzahl Bins FFD", bins_firstfit)
+            print("-------------")
+            df_results.loc[num_cols + i] = [typ, n_items, bin_capacity/1.0, lower_bound/1.0, bins_hc/1.0, bins_firstfit/1.0, (bins_hc - lower_bound)/1.0, (bins_firstfit-lower_bound)/1.0, round(elapsed_time_hc,2), round(elapsed_time_ffd,2)]
 
 
 def main():
