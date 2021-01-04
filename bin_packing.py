@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,1000):
+    for i in range(0,100):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -50,24 +50,48 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
                 if random.uniform(0,1) <= probability:
                     permutation.append(solution[i])
                     solution.pop(i)
+                    test_feasibility(permutation,bin_capacity)
         # (2) Improvement procedure
         change = [True]
         while change[0]: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
+            #test_feasibility(permutation,bin_capacity)
+            test_feasibility(solution,bin_capacity)
+
         # (3a) fuege die permutationsgruppen der bisherigen Loesung hinzu
         for bin in permutation:
             solution.append(bin)
+
+        ##### Test
+        test_feasibility(solution,bin_capacity)
+        #####    
+
         # (3b) Shuffle die Bins/Gruppen nach Heuristik/ Random
         shuffle(solution)
         # (3c) Rufe Greedy-Algorithmus mit permutierter Loesung aus (3b) auf
+        old_solution_length = len(solution)
         # wichtig: Greedy benoetigt "flache Itemlist"
         solution = [item for bin in solution for item in bin]
+
         solution = greedy(solution, bin_capacity)
-        if len(solution) < best_solution:
-            best_solution = len(solution)
+
+        ##### Test
+        test_feasibility(solution,bin_capacity)
+        # Laut Paper liefert Greedy immer mindestens genau so gute Loesung wie eingebene Loesung: Hier Test
+        assert len(solution) <= old_solution_length, "Warung: Greedy produziert schlechtere Loesung als Eingabeloesung"
+        #####  
+        
+        
+        # if len(solution) < best_solution:
+        #     best_solution = len(solution)
         if best_solution == lower_bound:
             return best_solution
-    return best_solution
+    return len(solution)
+
+def test_feasibility(solution, bin_capacity):
+    for bin in solution:
+        assert fullness(bin) <= bin_capacity, print(bin)
+        
 
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
     change[0] = False
@@ -84,25 +108,26 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                                         move(i,j, permutation[h], k, l, solution[g])
                                         change[0] = True
+                                        test_feasibility(permutation, bin_capacity)
         # 2:1 Swap
-        i = 0
-        j = 0
-        K = 0
-        while i < len(solution[g]):
-            while j < len(solution[g]):
-                if i != j and j > i:
-                    for h in range(0,len(permutation)):
-                        while k < len(permutation[h]):
-                            delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j])
-                            if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
-                                move2(i,j,permutation[h], k, solution[g])
-                                change[0] = True
-                                k -= 1
-                                j -= 1
-                            k += 1
-                j += 1
-            i += 1
-        #1:1 Swap
+        # i = 0
+        # j = 0
+        # K = 0
+        # while i < len(solution[g]):
+        #     while j < len(solution[g]):
+        #         if i != j and j > i:
+        #             for h in range(0,len(permutation)):
+        #                 while k < len(permutation[h]):
+        #                     delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j])
+        #                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
+        #                         move2(i,j,permutation[h], k, solution[g])
+        #                         change[0] = True
+        #                         k -= 1
+        #                         j -= 1
+        #                     k += 1
+        #         j += 1
+        #     i += 1
+        # #1:1 Swap
         i = 0
         k = 0
         for i in range(0,len(solution[g])):
@@ -207,17 +232,17 @@ def generate_results():
     instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
     generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_unif_1000.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_unif_triplet_100.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
-    #df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
+    df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
     print(df_mean.head())
-    df_mean.to_csv('mean_results_1000.csv',index=False, encoding='utf-8')
+    df_mean.to_csv('mean_results_unif_triplet_100.csv',index=False, encoding='utf-8')
 
 def generate_results_of_instances(instances, df_results, typ):
     num_cols = df_results.shape[0]
