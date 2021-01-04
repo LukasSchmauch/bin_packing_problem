@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,50):
+    for i in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -50,20 +50,20 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
                 if random.uniform(0,1) <= probability:
                     permutation.append(solution[i])
                     solution.pop(i)
-                    test_feasibility(permutation,bin_capacity)
+                    #test_feasibility(permutation,bin_capacity)
         # (2) Improvement procedure
         change = [True]
         while change[0]: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
-            test_feasibility(permutation,bin_capacity)
-            test_feasibility(solution,bin_capacity)
+            #test_feasibility(permutation,bin_capacity)
+            #test_feasibility(solution,bin_capacity)
 
         # (3a) fuege die permutationsgruppen der bisherigen Loesung hinzu
         for bin in permutation:
             solution.append(bin)
 
         ##### Test
-        test_feasibility(solution,bin_capacity)
+        #test_feasibility(solution,bin_capacity)
         #####    
 
         # (3b) Shuffle die Bins/Gruppen nach Heuristik/ Random
@@ -76,9 +76,9 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
         solution = greedy(solution, bin_capacity)
 
         ##### Test
-        test_feasibility(solution,bin_capacity)
+        #test_feasibility(solution,bin_capacity)
         # Laut Paper liefert Greedy immer mindestens genau so gute Loesung wie eingebene Loesung: Hier Test
-        assert len(solution) <= old_solution_length, "Warung: Greedy produziert schlechtere Loesung als Eingabeloesung"
+        #assert len(solution) <= old_solution_length, "Warung: Greedy produziert schlechtere Loesung als Eingabeloesung"
         #####  
         
         if best_solution == lower_bound:
@@ -106,7 +106,7 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                                         move(i,j, permutation[h], k, l, solution[g])
                                         change[0] = True
-                                        test_feasibility(permutation, bin_capacity)
+                                        #test_feasibility(permutation, bin_capacity)
         # 2:1 Swap
         i = 0
         j = 0
@@ -124,7 +124,7 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                             if delta > 0 and fullness(solution[g]) + delta <= bin_capacity: # passt die zusaetzliche Kapazitaet noch in den Bin
                                 move2(i,j,permutation[h], k, solution[g])
                                 change[0] = True
-                                test_feasibility(permutation, bin_capacity)
+                                #test_feasibility(permutation, bin_capacity)
                                 k -= 1 # wenn move von Item k stattgefunden hat, ersetzt ein Item aus pi den Platz von k. Setze Index zurueck um fuer dieses Item zu ueberpruefen, ob Ruecktausch gegen andere Items sinnvoll
                                 j -= 1 # setze j zurueck, da Anzahl Items im Bin, um 1 schrumpft. Damit wird sichergestellt, dass naechstes Item nicht uebersprungen wird
                                 # Index von i bleibt unveraendert, da der Platz nun von Item k eingenommen, fuer Item k werden nun Paare gebildet
@@ -144,7 +144,7 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                         # tausche item i aus pi mit item k aus p 
                         move3(i, permutation[h], k, solution[g])
-                        test_feasibility(permutation, bin_capacity)
+                        #test_feasibility(permutation, bin_capacity)
                         change[0] = True
     return solution, permutation
 
@@ -245,7 +245,7 @@ def generate_results():
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_triplet_50iters_mit_move21.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_triplet_500iters_mit_move21.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
