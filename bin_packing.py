@@ -41,7 +41,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
     best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
-    for i in range(0,300):
+    for i in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         probability = 1/len(solution)
@@ -120,14 +120,15 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                         # iteriere fuer jedes paar ueber alle items im aktuellen Bin in p
                         k = 0 # starte beim ersten item
                         while k < len(permutation[h]):
-                            delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j]) # erhoeht das Item aus p die Auslastung in pi beim Tausch gegen das Paar?
-                            if delta > 0 and fullness(solution[g]) + delta <= bin_capacity: # passt die zusaetzliche Kapazitaet noch in den Bin
-                                move2(i,j,permutation[h], k, solution[g])
-                                change[0] = True
-                                #test_feasibility(permutation, bin_capacity)
-                                k -= 1 # wenn move von Item k stattgefunden hat, ersetzt ein Item aus pi den Platz von k. Setze Index zurueck um fuer dieses Item zu ueberpruefen, ob Ruecktausch gegen andere Items sinnvoll
-                                j -= 1 # setze j zurueck, da Anzahl Items im Bin, um 1 schrumpft. Damit wird sichergestellt, dass naechstes Item nicht uebersprungen wird
-                                # Index von i bleibt unveraendert, da der Platz nun von Item k eingenommen, fuer Item k werden nun Paare gebildet
+                            if j > i: # erneute Uebpruefung weil bei move Index j zurueckgesetzt wird                               
+                                delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j]) # erhoeht das Item aus p die Auslastung in pi beim Tausch gegen das Paar?
+                                if delta > 0 and fullness(solution[g]) + delta <= bin_capacity: # passt die zusaetzliche Kapazitaet noch in den Bin
+                                    move2(i,j,permutation[h], k, solution[g])
+                                    change[0] = True
+                                    #test_feasibility(permutation, bin_capacity)
+                                    k -= 1 # wenn move von Item k stattgefunden hat, ersetzt ein Item aus pi den Platz von k. Setze Index zurueck um fuer dieses Item zu ueberpruefen, ob Ruecktausch gegen andere Items sinnvoll
+                                    j -= 1 # setze j zurueck, da Anzahl Items im Bin, um 1 schrumpft. Damit wird sichergestellt, dass naechstes Item nicht uebersprungen wird
+                                    # Index von i bleibt unveraendert, da der Platz nun von Item k eingenommen, fuer Item k werden nun Paare gebildet
                             k += 1 # gehe zum naechsten Item im aktuellen bin in p
                  j += 1 # gehe zum naechsten Item im aktuellen bin in pi
             i += 1 # Bilde fuer naechstes Item alle Paare
@@ -234,18 +235,18 @@ def generate_results():
     #Ergebnis DataFrame erstellen
     df_results = pd.DataFrame(columns = ['Typ','Anzahl Items','Bin-Kapazitaet','LB','Hill Climbing','First Fit Descending','Abs. LB HC', 'Abs. LB FFD', 'Zeit HC (sec)', 'Zeit FFD (sec)'])
     
-    instances_scholl1 = read_instances("Instanzen/Scholl/Scholl_1")
-    generate_results_of_instances(instances_scholl1, df_results, "scholl_1")
+    #instances_scholl1 = read_instances("Instanzen/Scholl/Scholl_1")
+    #generate_results_of_instances(instances_scholl1, df_results, "scholl_1")
 
-    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_test.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_500_unif_trip.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
