@@ -7,8 +7,9 @@ from collections import namedtuple
 import pandas as pd
 import time
 
-Item = namedtuple('Item', 'name capacity')
+Item = namedtuple('Item', 'name capacity') # ermoeglicht Zugriff ueber Item.name und Item.capacity
 
+# Einlesen der Textdokumente 
 def read_instances(path):
     documents_path = Path(path)
     instances = []
@@ -18,6 +19,7 @@ def read_instances(path):
         instances.append([x.strip() for x in content])
     return instances
 
+# Generieren der Instanz aus Textdokument
 def generate_instance(instances):
     item_list = []
     bin_capacity = 0
@@ -36,22 +38,19 @@ def generate_instance(instances):
     
     return item_list, n_items, bin_capacity, lower_bound 
 
-
+# Das Verbesserungsverfahren
 def hill_climbing(item_list, bin_capacity, lower_bound):
+    
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
-    best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
+
+    # Anzahl der Iterationen ist je nach gewuenschter Loesungsguete und vorhandener Rechenzeit festzulegen
     for iters in range(0,30):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         solution, permutation = random_permutation(solution, permutation)
-        # probability = 1/len(solution)
-        # while len(permutation) == 0:
-        #     for i, bin in enumerate(solution):
-        #         if random.uniform(0,1) <= probability:
-        #             permutation.append(solution[i])
-        #             solution.pop(i)
-                    #test_feasibility(permutation,bin_capacity)
+        #solution, permutation = permutation_by_heuristic(solution,permutation)
+
         # (2) Improvement procedure
         change = [True]
         while change[0]: 
@@ -81,9 +80,8 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
         # Laut Paper liefert Greedy immer mindestens genau so gute Loesung wie eingebene Loesung: Hier Test
         #assert len(solution) <= old_solution_length, "Warung: Greedy produziert schlechtere Loesung als Eingabeloesung"
         #####  
-        
-        if best_solution == lower_bound:
-            return best_solution
+        if len(solution) == lower_bound:
+            return lower_bound
     return len(solution)
 
 def random_permutation(solution, permutation):
@@ -95,8 +93,9 @@ def random_permutation(solution, permutation):
                 solution.pop(i)
     return solution, permutation
 
+# waehle den ersten Bin mit der geringsten Anzahl an Items
 def permutation_by_heuristic(solution, permutation):
-    min_num_items = 1000000
+    min_num_items = 10000000
     min_index = 0
     for index, bin in enumerate(solution):
         num_items = len(bin)
@@ -111,7 +110,6 @@ def test_feasibility(solution, bin_capacity):
     for bin in solution:
         assert fullness(bin) <= bin_capacity, print(bin)
         
-
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
     change[0] = False
     #iteriere ueber alle bins in pi
@@ -268,7 +266,7 @@ def generate_results():
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_30_beide.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_30_random.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']

@@ -41,16 +41,10 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
 
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
-    best_solution = len(solution) # Loesung im Worst Case = FFD Loesung
     for iters in range(0,1000):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
-        probability = 1/len(solution)
-        while len(permutation) == 0:
-            for i, bin in enumerate(solution):
-                if random.uniform(0,1) <= probability:
-                    permutation.append(solution[i])
-                    solution.pop(i)
+        solution, permutation = random_permutation(solution, permutation)
 
         # (2) Improvement procedure
         change = [True]
@@ -69,16 +63,20 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         solution = [item for bin in solution for item in bin]
 
         solution = greedy(solution, bin_capacity)
-
-        # Ende einer Iteration
-        #df_results = pd.DataFrame(columns = ['Typ','Anzahl Items','Bin-Kapazitaet','LB','Bins beyond LB', 'Iteration'])
         
         num_cols = df_results.shape[0]
         df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound, len(solution) - lower_bound, iters + 1]
 
-        # if best_solution == lower_bound:
-        #     return best_solution
     return len(solution)
+
+def random_permutation(solution, permutation):
+    probability = 1/len(solution)
+    while len(permutation) == 0:
+        for i, bin in enumerate(solution):
+            if random.uniform(0,1) <= probability:
+                permutation.append(solution[i])
+                solution.pop(i)
+    return solution, permutation
 
 def test_feasibility(solution, bin_capacity):
     for bin in solution:
