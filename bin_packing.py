@@ -45,7 +45,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound):
     solution = first_fit_descending(item_list, bin_capacity)
 
     # Anzahl der Iterationen ist je nach gewuenschter Loesungsguete und vorhandener Rechenzeit festzulegen
-    for iters in range(0,30):
+    for iters in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         solution, permutation = random_permutation(solution, permutation)
@@ -266,7 +266,7 @@ def generate_results():
 
     df_results = df_results.sort_values(by=['Typ','Anzahl Items'])
     print(df_results.head(20))
-    df_results.to_csv('results_30_random.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_500_neu.csv',index=False, encoding='utf-8')
     df_grouped = df_results.groupby(['Typ', 'Anzahl Items'])
     df_mean = df_grouped.mean()
     df_grouped.columns = ['Bin-Kapazitaet', ' Mean LB', 'Mean Hill Climbing', 'Mean First Fit Descending','Mean Abs. LB HC', 'Mean Abs. LB FFD', 'Mean Zeit HC (sec)', 'Mean Zeit FFD (sec)']
