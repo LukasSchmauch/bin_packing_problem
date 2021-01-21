@@ -259,11 +259,11 @@ def generate_results():
     instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
     generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    # instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_neu.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_tu_1sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
