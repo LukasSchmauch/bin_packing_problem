@@ -57,7 +57,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
 
         # (2) Improvement procedure
         change = [True]
-        while change[0]: 
+        while change[0] and time.perf_counter() - tic <= 1: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
             #test_feasibility(permutation,bin_capacity)
             #test_feasibility(solution,bin_capacity)
@@ -80,9 +80,8 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         solution = greedy(solution, bin_capacity)
         # schreibe Zwischenergebnis in Ergebnis DataFrame
         num_cols = df_results.shape[0] # aktuelle Zeile
-        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound, len(solution) - lower_bound, iters, time.perf_counter()-tic]
-        #Spalten: ['Typ','Instanzindex','Anzahl_Items','Bin-Kapazitaet','LB','Bins_beyond_LB', 'Iteration','elapsed_time']
-
+        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound,1 if len(solution)==lower_bound else 0, iters, time.perf_counter()-tic]
+        df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
          
         if len(solution) == lower_bound:
             return lower_bound
@@ -256,7 +255,7 @@ def fullness(bin):
 def generate_results():
 
     #Ergebnis DataFrame erstellen
-    df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin-Kapazitaet','LB','Bins_beyond_LB', 'Iteration','elapsed_time'])
+    df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
 
     instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
     generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
