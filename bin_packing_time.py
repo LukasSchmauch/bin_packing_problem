@@ -47,7 +47,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
     solution = first_fit_descending(item_list, bin_capacity)
     iters = 0
     # Anzahl der Iterationen ist je nach gewuenschter Loesungsguete und vorhandener Rechenzeit festzulegen
-    while (time.perf_counter() - tic <= 1):
+    while (time.perf_counter() - tic <= 5):
         iters += 1
     #for iters in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
@@ -263,7 +263,7 @@ def generate_results():
     generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_tu_1sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_tu_5sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
