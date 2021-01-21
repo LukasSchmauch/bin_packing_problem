@@ -57,7 +57,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
 
         # (2) Improvement procedure
         change = [True]
-        while change[0] and time.perf_counter() - tic <= 1: 
+        while change[0] and time.perf_counter() - tic <= 5: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
             #test_feasibility(permutation,bin_capacity)
             #test_feasibility(solution,bin_capacity)
