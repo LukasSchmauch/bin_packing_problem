@@ -81,8 +81,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         # schreibe Zwischenergebnis in Ergebnis DataFrame
         num_cols = df_results.shape[0] # aktuelle Zeile
         df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound,1 if len(solution)==lower_bound else 0, iters, time.perf_counter()-tic]
-        df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
-         
+        #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
         if len(solution) == lower_bound:
             return lower_bound
     return len(solution)
@@ -264,7 +263,7 @@ def generate_results():
     #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_neu.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
