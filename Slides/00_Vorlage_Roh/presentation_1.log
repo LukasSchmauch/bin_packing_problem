@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  21 JAN 2021 17:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  25 JAN 2021 15:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -752,7 +752,20 @@ File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count326
 \l__pdf_internal_box=\box75
 )
-(./presentation_1.aux)
+(./presentation_1.aux
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
+)
 \openout1 = `presentation_1.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
@@ -936,34 +949,96 @@ Package caption Info: End \AtBeginDocument code.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./presentation_1.toc) [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 143
+LaTeX Font Info:    Trying to load font information for U+msa on input line 142
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 143
+LaTeX Font Info:    Trying to load font information for U+msb on input line 142
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 143.
+ut line 142.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-<img/lb_unif.png, id=84, 745.78625pt x 509.905pt>
-File: img/lb_unif.png Graphic file (type png)
-<use img/lb_unif.png>
-Package pdftex.def Info: img/lb_unif.png  used on input line 143.
-(pdftex.def)             Requested size: 223.7376pt x 152.97267pt.
+<img/dist.png, id=84, 628.3475pt x 456.70625pt>
+File: img/dist.png Graphic file (type png)
+<use img/dist.png>
+Package pdftex.def Info: img/dist.png  used on input line 142.
+(pdftex.def)             Requested size: 188.50569pt x 137.01292pt.
 
 [3
 
- <./img/lb_unif.png>] [4
+ <./img/dist.png>]
+<img/dist2.png, id=117, 628.3475pt x 456.70625pt>
+File: img/dist2.png Graphic file (type png)
+<use img/dist2.png>
+Package pdftex.def Info: img/dist2.png  used on input line 164.
+(pdftex.def)             Requested size: 188.50569pt x 137.01292pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.164 \end{frame}
+                  [4
+
+ <./img/dist2.png>]
+<img/lb_unif.png, id=145, 749.80125pt x 516.93124pt>
+File: img/lb_unif.png Graphic file (type png)
+<use img/lb_unif.png>
+Package pdftex.def Info: img/lb_unif.png  used on input line 187.
+(pdftex.def)             Requested size: 224.94211pt x 155.08057pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.187 \end{frame}
+                  [5
+
+ <./img/lb_unif.png>]
+<img/uniform_time.png, id=173, 731.73375pt x 511.9125pt>
+File: img/uniform_time.png Graphic file (type png)
+<use img/uniform_time.png>
+Package pdftex.def Info: img/uniform_time.png  used on input line 203.
+(pdftex.def)             Requested size: 219.52182pt x 153.57494pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.203 \end{frame}
+                  [6
+
+ <./img/uniform_time.png>]
+File: img/lb_unif.png Graphic file (type png)
+<use img/lb_unif.png>
+Package pdftex.def Info: img/lb_unif.png  used on input line 230.
+(pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.230 \end{frame}
+                 
+<img/lb_unif_heuristic.png, id=199, 749.80125pt x 516.93124pt>
+File: img/lb_unif_heuristic.png Graphic file (type png)
+<use img/lb_unif_heuristic.png>
+Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 230.
+(pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.230 \end{frame}
+                  [7
+
+ <./img/lb_unif_heuristic.png>] [8
 
  </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write6
@@ -975,22 +1050,26 @@ Package pdftex.def Info: img/lb_unif.png  used on input line 143.
 \tf@snm=\write8
 \openout8 = `presentation_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 502.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 502.
  (./presentation_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 502.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 502.
 Package rerunfilecheck Info: File `presentation_1.out' has not changed.
 (rerunfilecheck)             Checksum: 8D3519B0CA1118928310F192151A5E6D;173.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 19891 strings out of 481239
- 377702 string characters out of 5920376
- 647495 words of memory out of 5000000
- 34658 multiletter control sequences out of 15000+600000
- 541206 words of font info for 56 fonts, out of 8000000 for 9000
+ 19936 strings out of 481239
+ 378424 string characters out of 5920376
+ 648530 words of memory out of 5000000
+ 34690 multiletter control sequences out of 15000+600000
+ 542854 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,14n,67p,781b,545s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 58i,14n,67p,781b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/
 share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/
@@ -998,11 +1077,12 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt8.pfb>
-Output written on presentation_1.pdf (4 pages, 100084 bytes).
+ype1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmtt8.pfb>
+Output written on presentation_1.pdf (8 pages, 205614 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 163 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
- 72 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 307 PDF objects out of 1000 (max. 8388607)
+ 266 compressed objects within 3 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 92 words of extra memory for PDF output out of 10000 (max. 10000000)
 
