@@ -47,17 +47,17 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
     solution = first_fit_descending(item_list, bin_capacity)
     iters = 0
     # Anzahl der Iterationen ist je nach gewuenschter Loesungsguete und vorhandener Rechenzeit festzulegen
-    while (time.perf_counter() - tic <= 500):
+    while (time.perf_counter() - tic <= 100):
         iters += 1
     #for iters in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
-        #solution, permutation = random_permutation(solution, permutation)
-        solution, permutation = permutation_by_heuristic(solution,permutation)
+        solution, permutation = random_permutation(solution, permutation)
+        #solution, permutation = permutation_by_heuristic(solution,permutation)
 
         # (2) Improvement procedure
         change = [True]
-        while change[0] and time.perf_counter() - tic <= 500: 
+        while change[0] and time.perf_counter() - tic <= 100: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
             #test_feasibility(permutation,bin_capacity)
             #test_feasibility(solution,bin_capacity)
@@ -267,7 +267,7 @@ def generate_results():
     #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_u_500sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_u_randomPermutation_100sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
