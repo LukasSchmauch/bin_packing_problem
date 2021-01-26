@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  25 JAN 2021 15:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  25 JAN 2021 15:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -765,6 +765,9 @@ LaTeX Warning: Label `fig:architecture' multiply defined.
 
 LaTeX Warning: Label `fig:architecture' multiply defined.
 
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
 )
 \openout1 = `presentation_1.aux'.
 
@@ -990,55 +993,68 @@ l.164 \end{frame}
                   [4
 
  <./img/dist2.png>]
-<img/lb_unif.png, id=145, 749.80125pt x 516.93124pt>
+<img/dist3.png, id=145, 628.3475pt x 456.70625pt>
+File: img/dist3.png Graphic file (type png)
+<use img/dist3.png>
+Package pdftex.def Info: img/dist3.png  used on input line 186.
+(pdftex.def)             Requested size: 188.50569pt x 137.01292pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.186 \end{frame}
+                  [5
+
+ <./img/dist3.png>]
+<img/lb_unif.png, id=172, 749.80125pt x 516.93124pt>
 File: img/lb_unif.png Graphic file (type png)
 <use img/lb_unif.png>
-Package pdftex.def Info: img/lb_unif.png  used on input line 187.
+Package pdftex.def Info: img/lb_unif.png  used on input line 209.
 (pdftex.def)             Requested size: 224.94211pt x 155.08057pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.187 \end{frame}
-                  [5
+l.209 \end{frame}
+                  [6
 
  <./img/lb_unif.png>]
-<img/uniform_time.png, id=173, 731.73375pt x 511.9125pt>
+<img/uniform_time.png, id=200, 731.73375pt x 511.9125pt>
 File: img/uniform_time.png Graphic file (type png)
 <use img/uniform_time.png>
-Package pdftex.def Info: img/uniform_time.png  used on input line 203.
+Package pdftex.def Info: img/uniform_time.png  used on input line 225.
 (pdftex.def)             Requested size: 219.52182pt x 153.57494pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.203 \end{frame}
-                  [6
+l.225 \end{frame}
+                  [7
 
  <./img/uniform_time.png>]
 File: img/lb_unif.png Graphic file (type png)
 <use img/lb_unif.png>
-Package pdftex.def Info: img/lb_unif.png  used on input line 230.
+Package pdftex.def Info: img/lb_unif.png  used on input line 252.
 (pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.230 \end{frame}
+l.252 \end{frame}
                  
-<img/lb_unif_heuristic.png, id=199, 749.80125pt x 516.93124pt>
+<img/lb_unif_heuristic.png, id=227, 749.80125pt x 516.93124pt>
 File: img/lb_unif_heuristic.png Graphic file (type png)
 <use img/lb_unif_heuristic.png>
-Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 230.
+Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 252.
 (pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.230 \end{frame}
-                  [7
+l.252 \end{frame}
+                  [8
 
- <./img/lb_unif_heuristic.png>] [8
+ <./img/lb_unif_heuristic.png>] [9
 
  </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write6
@@ -1050,11 +1066,11 @@ l.230 \end{frame}
 \tf@snm=\write8
 \openout8 = `presentation_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 502.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 502.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 524.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 524.
  (./presentation_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 502.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 502.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 524.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 524.
 Package rerunfilecheck Info: File `presentation_1.out' has not changed.
 (rerunfilecheck)             Checksum: 8D3519B0CA1118928310F192151A5E6D;173.
 
@@ -1063,10 +1079,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19936 strings out of 481239
- 378424 string characters out of 5920376
+ 19946 strings out of 481239
+ 378550 string characters out of 5920376
  648530 words of memory out of 5000000
- 34690 multiletter control sequences out of 15000+600000
+ 34697 multiletter control sequences out of 15000+600000
  542854 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,67p,781b,736s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1079,10 +1095,10 @@ dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmtt8.pfb>
-Output written on presentation_1.pdf (8 pages, 205614 bytes).
+Output written on presentation_1.pdf (9 pages, 235624 bytes).
 PDF statistics:
- 307 PDF objects out of 1000 (max. 8388607)
- 266 compressed objects within 3 object streams
- 26 named destinations out of 1000 (max. 500000)
- 92 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 334 PDF objects out of 1000 (max. 8388607)
+ 290 compressed objects within 3 object streams
+ 28 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -8,7 +8,7 @@ import pandas as pd
 import time
 
 Item = namedtuple('Item', 'name capacity') # ermoeglicht Zugriff ueber Item.name und Item.capacity
-
+random.seed(123)
 # Einlesen der Textdokumente 
 def read_instances(path):
     documents_path = Path(path)
@@ -34,6 +34,7 @@ def generate_instance(instances):
     print("Anzahl Items", n_items)
     print("Bin Kapazitaet", bin_capacity)
     lower_bound = math.ceil(sum(item.capacity for item in item_list)/ bin_capacity)
+    #lower_bound = n_items / 3
     print("Lower Bound", lower_bound)
     
     return item_list, n_items, bin_capacity, lower_bound 
@@ -228,6 +229,8 @@ def shuffle(solution):
         solution = largest_first(solution)
     elif rnd_int <= 10:
         solution.reverse()
+    # elif rnd_int <= 15:
+    #     solution = sort_by_average_capacity(solution)
     else:
         random.shuffle(solution)
 
@@ -274,14 +277,14 @@ def generate_results():
     #Ergebnis DataFrame erstellen
     df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
 
-    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_t_shuffleAverage_100sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_u_singleaverageseed_100sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
