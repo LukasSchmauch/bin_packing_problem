@@ -72,8 +72,8 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         #####    
 
         # (3b) Shuffle die Bins/Gruppen nach Heuristik/ Random
-        #shuffle(solution)
-        sort_by_average_capacity(solution)
+        shuffle(solution)
+        #sort_by_average_capacity(solution)
         # (3c) Rufe Greedy-Algorithmus mit permutierter Loesung aus (3b) auf
         old_solution_length = len(solution)
         # wichtig: Greedy benoetigt "flache Itemlist"
@@ -284,7 +284,7 @@ def generate_results():
     #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_u_singleaverageseed_100sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_u_seed_100sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
