@@ -100,7 +100,7 @@ Seminar Modern Heuristics \\
 Dr. Rico Walter
 }
 
-\author{Lukas Schmauch, Sebsatian Wolf}
+\author{Lukas Schmauch, Sebastian Wolf}
 \date{Februar 2021} % Date, can be changed to a custom date
 
 \begin{document}
@@ -121,20 +121,21 @@ Dr. Rico Walter
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{Übersicht der Ergebnisse}
+
 \begin{table}
 \begin{tabular}{l c c c c c r}
 \toprule
 \textbf{Typ} & \textbf{Inst.} & \textbf{Items} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{Mittlere Zeit}\\
 \midrule
-Unif  & 20   & 120 & 49.1  & 0.7 \\
-Unif  & 20   & 250  & 101.6  & 1.5 \\
-Unif  & 20   & 500  & 201.2  & 2.7 \\
-Unif  & 20   & 1000  & 400.6  & 4.85 \\
-Trip  & 20   & 60   & 20  & 3.2 \\
-Trip  & 20   & 120  & 40  & 5.8 \\
-Trip  & 20   & 249  & 83  & 12.1 \\
-Trip  & 20   & 510  & 167  & 23.05 \\
-Hard  & 10   & 200  & 56.2  & 3.4 \\
+Unif  & 20   & 120 & 49.1  & 0.7 & 0.05 & 6.24 \\
+Unif  & 20   & 250  & 101.6  & 1.5 & 0.25 & 27.19 \\
+Unif  & 20   & 500  & 201.2  & 2.7 & 0.15 & 25.73\\
+Unif  & 20   & 1000  & 400.6  & 4.85 & 0.25 & 42.91\\ \midrule
+Trip  & 20   & 60   & 20  & 3.2 & 1 & 100 \\
+Trip  & 20   & 120  & 40  & 5.8 & 1 & 100 \\
+Trip  & 20   & 249  & 83  & 12.1 & 1 & 100 \\
+Trip  & 20   & 510  & 167  & 23.05 & 1.15 & 100 \\\midrule
+Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\
 \bottomrule
 \end{tabular}
 %\caption{Ergebnisse}
@@ -143,6 +144,38 @@ Hard  & 10   & 200  & 56.2  & 3.4 \\
 
 
 %----------------------------------------------------------------------------------------
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{Übersicht der Ergebnisse}
+\begin{footnotesize}
+\begin{itemize}
+\item Typ Hard 3 Instanzen mit LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
+\item 7 Instanzen mit LB = $\left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$ + 1
+\end{itemize}
+\end{footnotesize}
+\begin{table}
+\begin{tabular}{l c c c c c r}
+\toprule
+\textbf{Typ} & \textbf{Inst.} & \textbf{Items} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{Mittlere Zeit}\\
+\midrule
+Unif  & 20   & 120 & 49.1  & 0.7 & 0.05 & 6.24 \\
+Unif  & 20   & 250  & 101.6  & 1.5 & 0.25 & 27.19 \\
+Unif  & 20   & 500  & 201.2  & 2.7 & 0.15 & 25.73\\
+Unif  & 20   & 1000  & 400.6  & 4.85 & 0.25 & 42.91\\ \midrule
+Trip  & 20   & 60   & 20  & 3.2 & 1 & 100 \\
+Trip  & 20   & 120  & 40  & 5.8 & 1 & 100 \\
+Trip  & 20   & 249  & 83  & 12.1 & 1 & 100 \\
+Trip  & 20   & 510  & 167  & 23.05 & 1.15 & 100 \\\midrule
+Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\
+\bottomrule
+\end{tabular}
+%\caption{Ergebnisse}
+\end{table}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+
 \begin{frame}
 
 \frametitle{Optimalitätsanalyse Instanzgruppe Uniform}
@@ -158,6 +191,22 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \includegraphics[scale=0.3]{img/lb_unif.png}
 \end{center}
 \caption{Anzahl gefundener LBs}
+\label{fig:architecture}
+\end{figure}
+
+
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+
+\frametitle{Worst Case Abweichung Instanzgruppe Uniform}
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.3]{img/wc_unif.png}
+\end{center}
+\caption{WC Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 

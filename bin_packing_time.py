@@ -33,8 +33,8 @@ def generate_instance(instances):
             item_list.append(Item(i-1,int(item_capacity)))
     print("Anzahl Items", n_items)
     print("Bin Kapazitaet", bin_capacity)
-    #lower_bound = math.ceil(sum(item.capacity for item in item_list)/ bin_capacity)
-    lower_bound = n_items / 3
+    lower_bound = math.ceil(sum(item.capacity for item in item_list)/ bin_capacity)
+    #lower_bound = n_items / 3
     print("Lower Bound", lower_bound)
     
     return item_list, n_items, bin_capacity, lower_bound 
@@ -48,17 +48,17 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
     solution = first_fit_descending(item_list, bin_capacity)
     iters = 0
     # Anzahl der Iterationen ist je nach gewuenschter Loesungsguete und vorhandener Rechenzeit festzulegen
-    while (time.perf_counter() - tic <= 250):
+    while (time.perf_counter() - tic <= 100):
         iters += 1
     #for iters in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
-        solution, permutation = random_permutation(solution, permutation)
-        #solution, permutation = permutation_by_heuristic(solution,permutation)
+        #solution, permutation = random_permutation(solution, permutation)
+        solution, permutation = permutation_by_heuristic(solution,permutation)
 
         # (2) Improvement procedure
         change = [True]
-        while change[0] and time.perf_counter() - tic <= 250: 
+        while change[0] and time.perf_counter() - tic <= 100: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
             #test_feasibility(permutation,bin_capacity)
             #test_feasibility(solution,bin_capacity)
@@ -224,13 +224,13 @@ def greedy(item_list, bin_capacity):
     return groups
 
 def shuffle(solution):
-    rnd_int = random.randint(1,18)
+    rnd_int = random.randint(1,13)
     if rnd_int <= 5:
         solution = largest_first(solution)
     elif rnd_int <= 10:
         solution.reverse()
-    elif rnd_int <= 15:
-        solution = sort_by_average_capacity(solution)
+    #elif rnd_int <= 15:
+    #    solution = sort_by_average_capacity(solution)
     else:
         random.shuffle(solution)
 
@@ -280,14 +280,14 @@ def generate_results():
     #instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
     #generate_results_of_instances(instances_hard, df_results, "hard")
     
-    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_triplet_avginshuffleseed_250sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_unif_PBYHSEED123_100sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
