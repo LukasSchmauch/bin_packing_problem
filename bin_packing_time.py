@@ -53,8 +53,8 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
     #for iters in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
-        #solution, permutation = random_permutation(solution, permutation)
-        solution, permutation = permutation_by_heuristic(solution,permutation)
+        solution, permutation = random_permutation(solution, permutation)
+        #solution, permutation = permutation_by_heuristic(solution,permutation)
 
         # (2) Improvement procedure
         change = [True]
@@ -72,8 +72,8 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         #####    
 
         # (3b) Shuffle die Bins/Gruppen nach Heuristik/ Random
-        shuffle(solution)
-        #sort_by_average_capacity(solution)
+        #shuffle(solution)
+        sort_by_average_capacity(solution)
         # (3c) Rufe Greedy-Algorithmus mit permutierter Loesung aus (3b) auf
         old_solution_length = len(solution)
         # wichtig: Greedy benoetigt "flache Itemlist"
@@ -280,14 +280,14 @@ def generate_results():
     #instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
     #generate_results_of_instances(instances_hard, df_results, "hard")
     
-    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_unif_PBYHSEED123_100sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_trip_NurAvgSEED123_100sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame

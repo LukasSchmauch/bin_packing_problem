@@ -77,6 +77,10 @@
 \usepackage{multirow}
 \usepackage[utf8]{inputenc}
 \usepackage{subfig}
+\usepackage{algorithm} 
+\usepackage{algpseudocode} 
+\usepackage{listings}
+
 %\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
 %\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
 
@@ -112,6 +116,7 @@ Dr. Rico Walter
 \frametitle{Übersicht} 
 \tableofcontents
 \section{Was ist das Bin Packing Problem?} 
+\section{Hill Climbing Ansatz} 
 \section{Computational Studies}
 \section{Zusammenfassung} 
 \end{frame}
@@ -120,8 +125,238 @@ Dr. Rico Walter
 %	PRESENTATION SLIDES
 %%%------------------------------------------------
 \begin{frame}
-\frametitle{Übersicht der Ergebnisse}
+\frametitle{Bin Packing Problem - Kurzübersicht}
+\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{Grundidee Hill Climbing Ansatz}
 
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/bins.png}
+\end{center}
+\label{fig:architecture}
+\end{figure}
+\end{frame}
+
+%%%------------------------------------------------
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{Ablauf Hill Climbing Verfahren}
+\begin{footnotesize}
+\begin{enumerate}
+\item Eröffnungsverfahren (First Fit Descending)
+\item Zufällige Auswahl von Bins 
+\item Ausführung des Verbesserungsverfahrens
+\item Füge Gruppen wieder zusammen
+\item Shuffle der Gruppen
+\item Greedy Algorithmus
+\item Wiederhole Schritt 2-6 bis Abbruchkriterium erreicht
+\end{enumerate}
+\end{footnotesize}
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/ablauf.png}
+\end{center}
+\caption{Greedy Algorithmus}
+\label{fig:architecture}
+\end{figure}
+\end{frame}
+
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{1. Eröffnungsverfahren - First Fit Descending}
+\begin{itemize}
+\item Sortierung nach absteigender Itemkapazität
+\end{itemize}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/greedy.png}
+\end{center}
+\caption{Greedy Algorithmus}
+
+\begin{footnotesize}
+\begin{itemize}
+\item Bild mit resultierender Lösung
+\end{itemize}
+\end{footnotesize}
+
+
+\end{figure}
+
+\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{2. Zufällige Auswahl von Bins}
+
+
+\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{3. Ausführung des Verbesserungsverfahrens}
+
+
+\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{4. Zusammenfügen der Gruppen}
+
+
+\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{5. Shuffle der Gruppen}
+
+
+\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{6. Greedy Algorithmus}
+
+
+\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{Ablauf Hill Climbing Verfahren}
+\begin{footnotesize}
+\begin{enumerate}
+\item Eröffnungsverfahren (First Fit Descending)
+\item Zufällige Auswahl von Bins 
+\item Ausführung des Verbesserungsverfahrens
+\item Füge Gruppen wieder zusammen
+\item Shuffle der Gruppen
+\item Greedy Algorithmus
+\item \textbf{Wiederhole Schritt 2-6 bis Abbruchkriterium erreicht}
+\end{enumerate}
+\end{footnotesize}
+\end{frame}
+%%%------------------------------------------------
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{3. Verbesserungsverfahren im Detail}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/improvement.png}
+\end{center}
+\caption{Verbesserungsverfahren Pseudocode}
+\label{fig:architecture}
+\end{figure}
+
+\end{frame}
+%%%------------------------------------------------
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{2:2 Move}
+\begin{footnotesize}
+\begin{itemize}
+\item $\delta = s[k]+s[l]-s[i]-s[j]$
+\item $\delta = 4 + 3 - 2 - 1 = 4$
+\item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
+\item $if(4 > 0 \ and \ 10+4 \leq 20)$
+\end{itemize}
+\end{footnotesize}
+
+
+\end{frame}
+%%%------------------------------------------------
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{2:1 Move}
+\begin{footnotesize}
+\begin{itemize}
+\item $\delta = s[k]-s[i]-s[j]$
+\item $\delta = 4 - 2 - 1 = 1$
+\item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
+\item $if(1 > 0 \ and \ 10+1 \leq 20)$
+\end{itemize}
+\end{footnotesize}
+\end{frame}
+%%%------------------------------------------------
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{1:1 Move}
+\begin{footnotesize}
+\begin{itemize}
+\item $\delta = s[k]-s[i]$
+\item $\delta = 4 - 2 = 2$
+\item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
+\item $if(2 > 0 \ and \ 10+2 \leq 20)$
+\end{itemize}
+\end{footnotesize}
+\end{frame}
+%%%------------------------------------------------
+%%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Verbesserungsverfahren}
+%\begin{figure}[!htbp]
+%\begin{center}
+%\includegraphics[scale=0.25]{img/improve1.png}
+%\end{center}
+%\caption{Verbesserungsverfahren Pseudocode}
+%\label{fig:architecture}
+%\end{figure}
+%\end{frame}
+%%%%------------------------------------------------
+%\begin{frame}
+%\frametitle{2:2 Move}
+%
+%\end{frame}
+%%%------------------------------------------------
+\begin{frame}
+\frametitle{Computational Studies - Genutzte Instanzen}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/instance.png}
+\end{center}
+\caption{Instanzen Triplet}
+\label{fig:architecture}
+\end{figure}
+\end{frame}
+%%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Verbesserungsverfahren}
+%\begin{figure}[!htbp]
+%\begin{center}
+%\includegraphics[scale=0.25]{img/improve2.png}
+%\end{center}
+%\caption{Verbesserungsverfahren Pseudocode}
+%\label{fig:architecture}
+%\end{figure}
+%\end{frame}
+%%%%------------------------------------------------
+%\begin{frame}
+%\frametitle{2:1 Move}
+%
+%\end{frame}
+%%%%------------------------------------------------
+%%%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Verbesserungsverfahren}
+%\begin{figure}[!htbp]
+%\begin{center}
+%\includegraphics[scale=0.25]{img/improvement.png}
+%\end{center}
+%\caption{Verbesserungsverfahren Pseudocode}
+%\label{fig:architecture}
+%\end{figure}
+%
+%\end{frame}
+%%%%------------------------------------------------
+%\begin{frame}
+%\frametitle{1:1 Move}
+%
+%\end{frame}
+%%%------------------------------------------------
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Übersicht der Ergebnisse}
+\begin{footnotesize}
+\begin{itemize}
+\item LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
+\item 159 von 160 (Uniform und Triplet): $LB = z^{*}$
+\end{itemize}
+\end{footnotesize}
 \begin{table}
 \begin{tabular}{l c c c c c r}
 \toprule
@@ -144,12 +379,18 @@ Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\
 
 
 %----------------------------------------------------------------------------------------
+
+
+
+
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{Übersicht der Ergebnisse}
 \begin{footnotesize}
 \begin{itemize}
-\item Typ Hard 3 Instanzen mit LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
+\item LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
+\item 159 von 160 (Uniform und Triplet): $LB = z^{*}$
+\item Bei Typ Hard 3 von 10 Instanzen mit LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
 \item 7 Instanzen mit LB = $\left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$ + 1
 \end{itemize}
 \end{footnotesize}
@@ -191,7 +432,7 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \includegraphics[scale=0.3]{img/lb_unif.png}
 \end{center}
 \caption{Anzahl gefundener LBs}
-\label{fig:architecture}
+\label{fig:LBs}
 \end{figure}
 
 
@@ -207,7 +448,7 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \includegraphics[scale=0.3]{img/wc_unif.png}
 \end{center}
 \caption{WC Abweichung von LB}
-\label{fig:architecture}
+\label{fig:WC}
 \end{figure}
 
 
@@ -216,7 +457,7 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Lösungsgüte im Zeitverlauf Instanzgruppe Uniform}
+\frametitle{Lösungsgüte im Zeitverlauf Instanzgruppe Uniform, Hard }
 
 \begin{figure}[!htbp]
 \begin{center}
@@ -234,7 +475,7 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \frametitle{Optimalitätsanalyse Instanzgruppe Triplet}
 \begin{footnotesize}
 \begin{itemize}
-\item $LB = \frac{\#Items}{3} $
+\item $LB = L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil = \frac{\#Items}{3} $
 \item LB wird nie getroffen
 \end{itemize}
 
@@ -268,7 +509,7 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Vergleich mit Triplet und Uniform}
+\frametitle{Vergleich Triplet, Hard und Uniform}
 
 
 \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
@@ -284,7 +525,7 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \column{.5\textwidth} % Right column and width
 \begin{figure}[!htbp]
 \includegraphics[scale=0.2]{img/uniform_time.png}
-\caption{Uniform}
+\caption{Uniform und Hard}
 \label{fig:architecture}
 \end{figure}
 
@@ -307,15 +548,16 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.3]{img/dist.png}
+\includegraphics[scale=0.3]{img/dist1.png}
 \end{center}
-\caption{rel. Abweichung von LB nach 10 Sec.}
+\caption{rel. Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 
 
 
 \end{frame}
+%----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
@@ -331,13 +573,14 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{center}
 \includegraphics[scale=0.3]{img/dist2.png}
 \end{center}
-\caption{rel. Abweichung von LB nach 10 Sec.}
+\caption{rel. Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 
 
 
 \end{frame}
+%----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
@@ -353,7 +596,31 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{center}
 \includegraphics[scale=0.3]{img/dist3.png}
 \end{center}
-\caption{rel. Abweichung von LB nach 10 Sec.}
+\caption{rel. Abweichung von LB}
+\label{fig:architecture}
+\end{figure}
+
+
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+
+\frametitle{Verteilungsfunktion - Verfahrensänderung (Uniform)}
+
+\begin{footnotesize}
+\begin{equation}
+mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
+\end{equation}
+\end{footnotesize}
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.3]{img/dist1.png}
+\end{center}
+\caption{rel. Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 
@@ -364,7 +631,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Verteilungsfunktion}
+\frametitle{Verteilungsfunktion - andere Permutationswahl}
 
 \begin{footnotesize}
 \begin{equation}
@@ -376,7 +643,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{center}
 \includegraphics[scale=0.3]{img/dist4.png}
 \end{center}
-\caption{rel. Abweichung von LB nach 10 Sec.}
+\caption{rel. Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 
@@ -387,7 +654,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Verteilungsfunktion}
+\frametitle{Verteilungsfunktion - Shuffle (mittlere Itemkapazität)}
 
 \begin{footnotesize}
 \begin{equation}
@@ -399,7 +666,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{center}
 \includegraphics[scale=0.3]{img/dist5.png}
 \end{center}
-\caption{rel. Abweichung von LB nach 10 Sec.}
+\caption{rel. Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 
@@ -407,9 +674,10 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 \end{frame}
 %----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Verteilungsfunktion}
+\frametitle{Verteilungsfunktion - Shuffle (inkl. mittlere Itemkapazität)}
 
 \begin{footnotesize}
 \begin{equation}
@@ -421,13 +689,15 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{center}
 \includegraphics[scale=0.3]{img/dist6.png}
 \end{center}
-\caption{rel. Abweichung von LB nach 10 Sec.}
+\caption{rel. Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 
 
 
 \end{frame}
+%----------------------------------------------------------------------------------------
+
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
@@ -454,6 +724,106 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 
 \end{columns}
+\end{frame}
+%----------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\begin{frame}
+
+\frametitle{Verteilungsfunktion - Verfahrensänderung (Triplet)}
+
+\begin{footnotesize}
+\begin{equation}
+mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
+\end{equation}
+\end{footnotesize}
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.3]{img/dist_trip0.png}
+\end{center}
+\caption{rel. Abweichung von LB}
+\label{fig:architecture}
+\end{figure}
+
+
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%\begin{frame}
+%
+%\frametitle{Verteilungsfunktion - Shuffle (mittlere Itemkapazität)}
+%
+%\begin{footnotesize}
+%\begin{equation}
+%mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
+%\end{equation}
+%\end{footnotesize}
+%
+%\begin{figure}[!htbp]
+%\begin{center}
+%\includegraphics[scale=0.3]{img/dist7.png}
+%\end{center}
+%\caption{rel. Abweichung von LB}
+%\label{fig:architecture}
+%\end{figure}
+%
+%
+%
+%\end{frame}
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\begin{frame}
+
+\frametitle{Verteilungsfunktion - Shuffle (inkl. mittlere Itemkapazität)}
+
+\begin{footnotesize}
+\begin{equation}
+mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
+\end{equation}
+\end{footnotesize}
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.3]{img/dist_trip2.png}
+\end{center}
+\caption{rel. Abweichung von LB}
+\label{fig:architecture}
+\end{figure}
+
+
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Triplet: Vergleich mit Shuffle (inkl. mittlere Itemkapazität)}
+
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.5\textwidth} % Left column and width
+\begin{figure}[!htbp]
+\includegraphics[scale=0.2]{img/wc_trip.png}
+\caption{Standardverfahren}
+\label{fig:architecture}
+\end{figure}
+
+
+\column{.5\textwidth} % Right column and width
+\begin{figure}[!htbp]
+\includegraphics[scale=0.2]{img/shuffleWC.png}
+\caption{mittlere Itemkapazität}
+\label{fig:architecture}
+\end{figure}
+
+
+\end{columns}
+\end{frame}
+%----------------------------------------------------------------
+\begin{frame}
+\frametitle{Zusammenfassung und Ausblick}
 \end{frame}
 %%----------------------------------------------------------------------------------------
 %\begin{frame}
