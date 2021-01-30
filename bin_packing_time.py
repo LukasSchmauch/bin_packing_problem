@@ -48,7 +48,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
     solution = first_fit_descending(item_list, bin_capacity)
     iters = 0
     # Anzahl der Iterationen ist je nach gewuenschter Loesungsguete und vorhandener Rechenzeit festzulegen
-    while (time.perf_counter() - tic <= 100):
+    while (time.perf_counter() - tic <= 200):
         iters += 1
     #for iters in range(0,500):
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
@@ -58,7 +58,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
 
         # (2) Improvement procedure
         change = [True]
-        while change[0] and time.perf_counter() - tic <= 100: 
+        while change[0] and time.perf_counter() - tic <= 200: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
             #test_feasibility(permutation,bin_capacity)
             #test_feasibility(solution,bin_capacity)
@@ -72,8 +72,8 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         #####    
 
         # (3b) Shuffle die Bins/Gruppen nach Heuristik/ Random
-        #shuffle(solution)
-        sort_by_average_capacity(solution)
+        shuffle(solution)
+        #sort_by_average_capacity(solution)
         # (3c) Rufe Greedy-Algorithmus mit permutierter Loesung aus (3b) auf
         old_solution_length = len(solution)
         # wichtig: Greedy benoetigt "flache Itemlist"
@@ -287,7 +287,7 @@ def generate_results():
     generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_trip_NurAvgSEED123_100sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_trip_StandardSEED123_200sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame

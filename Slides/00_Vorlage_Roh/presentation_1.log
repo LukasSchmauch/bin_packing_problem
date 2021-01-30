@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  27 JAN 2021 21:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  28 JAN 2021 16:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -878,6 +878,15 @@ LaTeX Warning: Label `fig:architecture' multiply defined.
 
 LaTeX Warning: Label `fig:architecture' multiply defined.
 
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
 )
 \openout1 = `presentation_1.aux'.
 
@@ -1142,278 +1151,317 @@ l.246 \end{frame}
 
  <./img/improvement.png>] [14
 
-] [15
-
-] [16
-
 ]
-<img/instance.png, id=461, 757.83125pt x 347.2975pt>
-File: img/instance.png Graphic file (type png)
-<use img/instance.png>
-Package pdftex.def Info: img/instance.png  used on input line 315.
-(pdftex.def)             Requested size: 189.45735pt x 86.82416pt.
+<img/2 zu 1 Move.png, id=410, 725.71124pt x 355.3275pt>
+File: img/2 zu 1 Move.png Graphic file (type png)
+<use img/2 zu 1 Move.png>
+Package pdftex.def Info: img/2 zu 1 Move.png  used on input line 315.
+(pdftex.def)             Requested size: 159.65697pt x 78.17229pt.
+
+Overfull \hbox (6.01204pt too wide) in paragraph at lines 315--315
+ [] 
+ []
+
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.315 \end{frame}
+                 
+<img/2 zu 1 Move fertig.png, id=411, 723.30225pt x 352.9185pt>
+File: img/2 zu 1 Move fertig.png Graphic file (type png)
+<use img/2 zu 1 Move fertig.png>
+Package pdftex.def Info: img/2 zu 1 Move fertig.png  used on input line 315.
+(pdftex.def)             Requested size: 159.12698pt x 77.6423pt.
+
+Overfull \hbox (5.48206pt too wide) in paragraph at lines 315--315
+ [] 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.315 \end{frame}
+                  [15
+
+ <./img/2 zu 1 Move.PNG> <./img/2 zu 1 Move fertig.PNG>]
+[16
+
+]
+<img/instance.png, id=465, 757.83125pt x 347.2975pt>
+File: img/instance.png Graphic file (type png)
+<use img/instance.png>
+Package pdftex.def Info: img/instance.png  used on input line 356.
+(pdftex.def)             Requested size: 189.45735pt x 86.82416pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.356 \end{frame}
                   [17
 
  <./img/instance.png>]
-Overfull \hbox (16.57993pt too wide) in paragraph at lines 378--378
+Overfull \hbox (16.57993pt too wide) in paragraph at lines 422--422
  [] 
+ []
+
+
+Overfull \vbox (3.76112pt too high) detected at line 422
  []
 
 [18
 
 ]
-Overfull \hbox (16.57993pt too wide) in paragraph at lines 415--415
- [] 
- []
-
-
-Overfull \vbox (1.56134pt too high) detected at line 415
- []
-
-[19
-
-]
-<img/lb_unif.png, id=542, 749.80125pt x 516.93124pt>
+<img/lb_unif.png, id=520, 749.80125pt x 516.93124pt>
 File: img/lb_unif.png Graphic file (type png)
 <use img/lb_unif.png>
-Package pdftex.def Info: img/lb_unif.png  used on input line 440.
+Package pdftex.def Info: img/lb_unif.png  used on input line 450.
 (pdftex.def)             Requested size: 224.94211pt x 155.08057pt.
- [20
+ [19
 
  <./img/lb_unif.png>]
-<img/wc_unif.png, id=571, 721.69624pt x 509.905pt>
+<img/wc_unif.png, id=549, 721.69624pt x 509.905pt>
 File: img/wc_unif.png Graphic file (type png)
 <use img/wc_unif.png>
-Package pdftex.def Info: img/wc_unif.png  used on input line 456.
+Package pdftex.def Info: img/wc_unif.png  used on input line 466.
 (pdftex.def)             Requested size: 216.51054pt x 152.97267pt.
- [21
+ [20
 
  <./img/wc_unif.png>]
-<img/uniform_time.png, id=599, 731.73375pt x 511.9125pt>
+<img/uniform_time.png, id=578, 731.73375pt x 511.9125pt>
 File: img/uniform_time.png Graphic file (type png)
 <use img/uniform_time.png>
-Package pdftex.def Info: img/uniform_time.png  used on input line 470.
+Package pdftex.def Info: img/uniform_time.png  used on input line 480.
 (pdftex.def)             Requested size: 219.52182pt x 153.57494pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.470 \end{frame}
-                  [22
+l.480 \end{frame}
+                  [21
 
  <./img/uniform_time.png>]
-<img/wc_trip.png, id=626, 731.73375pt x 509.905pt>
+<img/wc_trip.png, id=605, 731.73375pt x 509.905pt>
 File: img/wc_trip.png Graphic file (type png)
 <use img/wc_trip.png>
-Package pdftex.def Info: img/wc_trip.png  used on input line 495.
+Package pdftex.def Info: img/wc_trip.png  used on input line 505.
 (pdftex.def)             Requested size: 219.52182pt x 152.97267pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.495 \end{frame}
-                  [23
+l.505 \end{frame}
+                  [22
 
  <./img/wc_trip.png>]
-<img/triplet_time.png, id=653, 738.76pt x 511.9125pt>
+<img/triplet_time.png, id=632, 738.76pt x 511.9125pt>
 File: img/triplet_time.png Graphic file (type png)
 <use img/triplet_time.png>
-Package pdftex.def Info: img/triplet_time.png  used on input line 509.
+Package pdftex.def Info: img/triplet_time.png  used on input line 519.
 (pdftex.def)             Requested size: 221.6297pt x 153.57494pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.509 \end{frame}
-                  [24
+l.519 \end{frame}
+                  [23
 
  <./img/triplet_time.png>]
 File: img/triplet_time.png Graphic file (type png)
 <use img/triplet_time.png>
-Package pdftex.def Info: img/triplet_time.png  used on input line 534.
+Package pdftex.def Info: img/triplet_time.png  used on input line 544.
 (pdftex.def)             Requested size: 147.74937pt x 102.38068pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.534 \end{frame}
+l.544 \end{frame}
                  
 File: img/uniform_time.png Graphic file (type png)
 <use img/uniform_time.png>
-Package pdftex.def Info: img/uniform_time.png  used on input line 534.
+Package pdftex.def Info: img/uniform_time.png  used on input line 544.
 (pdftex.def)             Requested size: 146.34415pt x 102.38068pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.534 \end{frame}
-                  [25
+l.544 \end{frame}
+                  [24
 
 ]
-<img/dist1.png, id=707, 641.39626pt x 456.70625pt>
+<img/dist1.png, id=684, 641.39626pt x 456.70625pt>
 File: img/dist1.png Graphic file (type png)
 <use img/dist1.png>
-Package pdftex.def Info: img/dist1.png  used on input line 559.
+Package pdftex.def Info: img/dist1.png  used on input line 569.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.559 \end{frame}
-                  [26
+l.569 \end{frame}
+                  [25
 
  <./img/dist1.png>]
-<img/dist2.png, id=734, 641.39626pt x 456.70625pt>
+<img/dist2.png, id=713, 641.39626pt x 456.70625pt>
 File: img/dist2.png Graphic file (type png)
 <use img/dist2.png>
-Package pdftex.def Info: img/dist2.png  used on input line 582.
+Package pdftex.def Info: img/dist2.png  used on input line 592.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.582 \end{frame}
-                  [27
+l.592 \end{frame}
+                  [26
 
  <./img/dist2.png>]
-<img/dist3.png, id=761, 641.39626pt x 456.70625pt>
+<img/dist3.png, id=740, 641.39626pt x 456.70625pt>
 File: img/dist3.png Graphic file (type png)
 <use img/dist3.png>
-Package pdftex.def Info: img/dist3.png  used on input line 605.
+Package pdftex.def Info: img/dist3.png  used on input line 615.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.605 \end{frame}
-                  [28
+l.615 \end{frame}
+                  [27
 
  <./img/dist3.png>]
 File: img/dist1.png Graphic file (type png)
 <use img/dist1.png>
-Package pdftex.def Info: img/dist1.png  used on input line 629.
+Package pdftex.def Info: img/dist1.png  used on input line 639.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.629 \end{frame}
-                  [29
+l.639 \end{frame}
+                  [28
 
 ]
-<img/dist4.png, id=814, 641.39626pt x 456.70625pt>
+<img/dist4.png, id=792, 641.39626pt x 456.70625pt>
 File: img/dist4.png Graphic file (type png)
 <use img/dist4.png>
-Package pdftex.def Info: img/dist4.png  used on input line 652.
+Package pdftex.def Info: img/dist4.png  used on input line 662.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.652 \end{frame}
-                  [30
+l.662 \end{frame}
+                  [29
 
  <./img/dist4.png>]
-<img/dist5.png, id=841, 641.39626pt x 456.70625pt>
+<img/dist5.png, id=820, 641.39626pt x 456.70625pt>
 File: img/dist5.png Graphic file (type png)
 <use img/dist5.png>
-Package pdftex.def Info: img/dist5.png  used on input line 675.
+Package pdftex.def Info: img/dist5.png  used on input line 685.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.675 \end{frame}
-                  [31
+l.685 \end{frame}
+                  [30
 
  <./img/dist5.png>]
-<img/dist6.png, id=869, 641.39626pt x 456.70625pt>
+<img/dist6.png, id=847, 641.39626pt x 456.70625pt>
 File: img/dist6.png Graphic file (type png)
 <use img/dist6.png>
-Package pdftex.def Info: img/dist6.png  used on input line 698.
+Package pdftex.def Info: img/dist6.png  used on input line 708.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.698 \end{frame}
-                  [32
+l.708 \end{frame}
+                  [31
 
  <./img/dist6.png>]
 File: img/lb_unif.png Graphic file (type png)
 <use img/lb_unif.png>
-Package pdftex.def Info: img/lb_unif.png  used on input line 727.
+Package pdftex.def Info: img/lb_unif.png  used on input line 737.
 (pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.727 \end{frame}
+l.737 \end{frame}
                  
-<img/lb_unif_heuristic.png, id=896, 749.80125pt x 516.93124pt>
+<img/lb_unif_heuristic.png, id=875, 749.80125pt x 516.93124pt>
 File: img/lb_unif_heuristic.png Graphic file (type png)
 <use img/lb_unif_heuristic.png>
-Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 727.
+Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 737.
 (pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.727 \end{frame}
-                  [33
+l.737 \end{frame}
+                  [32
 
  <./img/lb_unif_heuristic.png>]
-<img/dist_trip0.png, id=924, 641.39626pt x 456.70625pt>
+<img/dist_trip0.png, id=902, 641.39626pt x 456.70625pt>
 File: img/dist_trip0.png Graphic file (type png)
 <use img/dist_trip0.png>
-Package pdftex.def Info: img/dist_trip0.png  used on input line 750.
+Package pdftex.def Info: img/dist_trip0.png  used on input line 760.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.750 \end{frame}
-                  [34
+l.760 \end{frame}
+                  [33
 
  <./img/dist_trip0.png>]
-<img/dist_trip2.png, id=951, 641.39626pt x 456.70625pt>
+<img/dist_trip2.png, id=930, 641.39626pt x 456.70625pt>
 File: img/dist_trip2.png Graphic file (type png)
 <use img/dist_trip2.png>
-Package pdftex.def Info: img/dist_trip2.png  used on input line 796.
+Package pdftex.def Info: img/dist_trip2.png  used on input line 806.
 (pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.796 \end{frame}
-                  [35
+l.806 \end{frame}
+                  [34
 
  <./img/dist_trip2.png>]
+<img/dist_trip3.png, id=957, 641.39626pt x 456.70625pt>
+File: img/dist_trip3.png Graphic file (type png)
+<use img/dist_trip3.png>
+Package pdftex.def Info: img/dist_trip3.png  used on input line 829.
+(pdftex.def)             Requested size: 192.42035pt x 137.01292pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.829 \end{frame}
+                  [35
+
+ <./img/dist_trip3.png>]
 File: img/wc_trip.png Graphic file (type png)
 <use img/wc_trip.png>
-Package pdftex.def Info: img/wc_trip.png  used on input line 823.
+Package pdftex.def Info: img/wc_trip.png  used on input line 856.
 (pdftex.def)             Requested size: 146.34415pt x 101.97919pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.823 \end{frame}
+l.856 \end{frame}
                  
-<img/shuffleWC.png, id=978, 731.73375pt x 509.905pt>
+<img/shuffleWC.png, id=984, 731.73375pt x 509.905pt>
 File: img/shuffleWC.png Graphic file (type png)
 <use img/shuffleWC.png>
-Package pdftex.def Info: img/shuffleWC.png  used on input line 823.
+Package pdftex.def Info: img/shuffleWC.png  used on input line 856.
 (pdftex.def)             Requested size: 146.34415pt x 101.97919pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.823 \end{frame}
+l.856 \end{frame}
                   [36
 
  <./img/shuffleWC.png>] [37
@@ -1430,11 +1478,11 @@ l.823 \end{frame}
 \tf@snm=\write8
 \openout8 = `presentation_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1099.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1099.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1132.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1132.
  (./presentation_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1099.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1099.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1132.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1132.
 
 Package rerunfilecheck Info: File `presentation_1.out' has not changed.
 (rerunfilecheck)             Checksum: 444C5715AF807963A337C5BEAAE87914;228.
@@ -1444,10 +1492,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 22139 strings out of 481239
- 410062 string characters out of 5920376
- 686306 words of memory out of 5000000
- 36784 multiletter control sequences out of 15000+600000
+ 22157 strings out of 481239
+ 410489 string characters out of 5920376
+ 683307 words of memory out of 5000000
+ 36799 multiletter control sequences out of 15000+600000
  543442 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,14n,67p,781b,737s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1464,10 +1512,10 @@ public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 ts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msa
 m10.pfb>
-Output written on presentation_1.pdf (38 pages, 958534 bytes).
+Output written on presentation_1.pdf (38 pages, 1035181 bytes).
 PDF statistics:
- 1138 PDF objects out of 1200 (max. 8388607)
+ 1144 PDF objects out of 1200 (max. 8388607)
  1025 compressed objects within 11 object streams
  89 named destinations out of 1000 (max. 500000)
- 175 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 

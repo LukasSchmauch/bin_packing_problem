@@ -261,16 +261,57 @@ Dr. Rico Walter
 \end{frame}
 %%%------------------------------------------------
 %%%------------------------------------------------
+%\begin{frame}
+%\frametitle{2:1 Move}
+%\begin{footnotesize}
+%\begin{itemize}
+%\item $\delta = s[k]-s[i]-s[j]$
+%\item $\delta = 45 - 20 - 20 = 5$
+%\item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
+%\item $if(5 > 0 \ and \ 85+5 \leq 91)$
+%\end{itemize}
+%\end{footnotesize}
+%\begin{figure}[!htbp]
+%\begin{center}
+%\includegraphics[scale=0.22]{img/2 zu 1 Move.png}
+%\end{center}
+%\label{fig:architecture}
+%\end{figure}
+%\begin{figure}[!htbp]
+%\begin{center}
+%\includegraphics[scale=0.22]{img/2 zu 1 Move fertig.png}
+%\end{center}
+%\label{fig:architecture}
+%\end{figure}
+%\end{frame}
+%%%------------------------------------------------
+%%%------------------------------------------------
 \begin{frame}
 \frametitle{2:1 Move}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.5\textwidth}
 \begin{footnotesize}
 \begin{itemize}
 \item $\delta = s[k]-s[i]-s[j]$
-\item $\delta = 4 - 2 - 1 = 1$
+\item $\delta = 45 - 20 - 20 = 5$
 \item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
-\item $if(1 > 0 \ and \ 10+1 \leq 20)$
+\item $if(5 > 0 \ and \ 85+5 \leq 91)$
 \end{itemize}
 \end{footnotesize}
+\column{.5\textwidth}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.22]{img/2 zu 1 Move.png}
+\end{center}
+\label{fig:architecture}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.22]{img/2 zu 1 Move fertig.png}
+\end{center}
+\label{fig:architecture}
+\end{figure}
+\end{columns}
 \end{frame}
 %%%------------------------------------------------
 %%%------------------------------------------------
@@ -353,8 +394,10 @@ Dr. Rico Walter
 \frametitle{Übersicht der Ergebnisse}
 \begin{footnotesize}
 \begin{itemize}
-\item LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
-\item 159 von 160 (Uniform und Triplet): $LB = z^{*}$
+\item $LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
+\item Uniform: $LB = z^{*}$ bei 79 von 80 Instanzen (eine Instanz mit $z^{*} = LB + 1$)
+\item Triplet: $LB = z^{*}$ für alle Instanzen 
+\item Hard: $LB = z^{*}$ bei 3 von 10 Instanzen (Bei 7 von 10 $z^{*} = LB + 1$) 
 \end{itemize}
 \end{footnotesize}
 \begin{table}
@@ -366,11 +409,12 @@ Unif  & 20   & 120 & 49.1  & 0.7 & 0.05 & 6.24 \\
 Unif  & 20   & 250  & 101.6  & 1.5 & 0.25 & 27.19 \\
 Unif  & 20   & 500  & 201.2  & 2.7 & 0.15 & 25.73\\
 Unif  & 20   & 1000  & 400.6  & 4.85 & 0.25 & 42.91\\ \midrule
+Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\\midrule
 Trip  & 20   & 60   & 20  & 3.2 & 1 & 100 \\
 Trip  & 20   & 120  & 40  & 5.8 & 1 & 100 \\
 Trip  & 20   & 249  & 83  & 12.1 & 1 & 100 \\
-Trip  & 20   & 510  & 167  & 23.05 & 1.15 & 100 \\\midrule
-Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\
+Trip  & 20   & 510  & 167  & 23.05 & 1.15 & 100 \\
+
 \bottomrule
 \end{tabular}
 %\caption{Ergebnisse}
@@ -383,46 +427,12 @@ Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\
 
 
 
-%%%------------------------------------------------
-\begin{frame}
-\frametitle{Übersicht der Ergebnisse}
-\begin{footnotesize}
-\begin{itemize}
-\item LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
-\item 159 von 160 (Uniform und Triplet): $LB = z^{*}$
-\item Bei Typ Hard 3 von 10 Instanzen mit LB = $L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
-\item 7 Instanzen mit LB = $\left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$ + 1
-\end{itemize}
-\end{footnotesize}
-\begin{table}
-\begin{tabular}{l c c c c c r}
-\toprule
-\textbf{Typ} & \textbf{Inst.} & \textbf{Items} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{Mittlere Zeit}\\
-\midrule
-Unif  & 20   & 120 & 49.1  & 0.7 & 0.05 & 6.24 \\
-Unif  & 20   & 250  & 101.6  & 1.5 & 0.25 & 27.19 \\
-Unif  & 20   & 500  & 201.2  & 2.7 & 0.15 & 25.73\\
-Unif  & 20   & 1000  & 400.6  & 4.85 & 0.25 & 42.91\\ \midrule
-Trip  & 20   & 60   & 20  & 3.2 & 1 & 100 \\
-Trip  & 20   & 120  & 40  & 5.8 & 1 & 100 \\
-Trip  & 20   & 249  & 83  & 12.1 & 1 & 100 \\
-Trip  & 20   & 510  & 167  & 23.05 & 1.15 & 100 \\\midrule
-Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\
-\bottomrule
-\end{tabular}
-%\caption{Ergebnisse}
-\end{table}
-\end{frame}
-
-
-%----------------------------------------------------------------------------------------
-
 \begin{frame}
 
-\frametitle{Optimalitätsanalyse Instanzgruppe Uniform}
+\frametitle{Optimalitätsanalyse Instanzgruppe Uniform und Hard}
 \begin{footnotesize}
 \begin{equation}
-L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
+LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \end{equation}
 \end{footnotesize}
 
@@ -431,7 +441,7 @@ L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \begin{center}
 \includegraphics[scale=0.3]{img/lb_unif.png}
 \end{center}
-\caption{Anzahl gefundener LBs}
+\caption{Anzahl getroffener LBs}
 \label{fig:LBs}
 \end{figure}
 
@@ -775,7 +785,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Verteilungsfunktion - Shuffle (inkl. mittlere Itemkapazität)}
+\frametitle{Verteilungsfunktion - Shuffle (mittlere Itemkapazität)}
 
 \begin{footnotesize}
 \begin{equation}
@@ -786,6 +796,29 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{figure}[!htbp]
 \begin{center}
 \includegraphics[scale=0.3]{img/dist_trip2.png}
+\end{center}
+\caption{rel. Abweichung von LB}
+\label{fig:architecture}
+\end{figure}
+
+
+
+\end{frame}
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\begin{frame}
+
+\frametitle{Verteilungsfunktion - Shuffle (inkl. mittlere Itemkapazität)}
+
+\begin{footnotesize}
+\begin{equation}
+mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
+\end{equation}
+\end{footnotesize}
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.3]{img/dist_trip3.png}
 \end{center}
 \caption{rel. Abweichung von LB}
 \label{fig:architecture}
