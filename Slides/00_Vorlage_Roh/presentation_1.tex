@@ -70,6 +70,8 @@
 %\usecolortheme{whale}
 %\usecolortheme{wolverine}
 
+\useoutertheme{infolines}
+
 \usepackage[official]{eurosym}
 \usepackage{svg}
 \usepackage{amsmath}
@@ -395,30 +397,33 @@ Dr. Rico Walter
 \begin{footnotesize}
 \begin{itemize}
 \item $LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
-\item Uniform: $LB = z^{*}$ bei 79 von 80 Instanzen (eine Instanz mit $z^{*} = LB + 1$)
-\item Triplet: $LB = z^{*}$ für alle Instanzen 
-\item Hard: $LB = z^{*}$ bei 3 von 10 Instanzen (Bei 7 von 10 $z^{*} = LB + 1$) 
+\item \textbf{Uniform}: $LB = z^{*}$ bei \textbf{79 von 80 Instanzen} (eine Instanz mit $z^{*} = LB + 1$)
+\item \textbf{Hard}: $LB = z^{*}$ bei \textbf{3 von 10 Instanzen} (Bei 7 von 10 $z^{*} = LB + 1$) 
+\item \textbf{Triplet}: $LB = z^{*}$ für \textbf{alle Instanzen} 
 \end{itemize}
 \end{footnotesize}
+\begin{footnotesize}
+
 \begin{table}
-\begin{tabular}{l c c c c c r}
+\begin{tabular}{l c c c c c c c}
 \toprule
-\textbf{Typ} & \textbf{Inst.} & \textbf{Items} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{Mittlere Zeit}\\
+\textbf{Typ} & \textbf{Inst.} & \textbf{\#Items} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{Mittlere Zeit}\\
 \midrule
-Unif  & 20   & 120 & 49.1  & 0.7 & 0.05 & 6.24 \\
-Unif  & 20   & 250  & 101.6  & 1.5 & 0.25 & 27.19 \\
-Unif  & 20   & 500  & 201.2  & 2.7 & 0.15 & 25.73\\
-Unif  & 20   & 1000  & 400.6  & 4.85 & 0.25 & 42.91\\ \midrule
-Hard  & 10   & 200  & 55.5  & 3.4 & 0.8 &  81.04 \\\midrule
-Trip  & 20   & 60   & 20  & 3.2 & 1 & 100 \\
-Trip  & 20   & 120  & 40  & 5.8 & 1 & 100 \\
-Trip  & 20   & 249  & 83  & 12.1 & 1 & 100 \\
-Trip  & 20   & 510  & 167  & 23.05 & 1.15 & 100 \\
+Unif  & 20   & 120 & 49.1  & 0.7 & 0.05 & 0.1 & 6.24 \\
+Unif  & 20   & 250  & 101.6  & 1.5 & 0.25 & 0.25 & 27.19 \\
+Unif  & 20   & 500  & 201.2  & 2.7 & 0.15 & 0.15 &  25.73\\
+Unif  & 20   & 1000  & 400.6  & 4.85 & 0.25 & 0.2 & 42.91\\ \midrule
+Hard  & 10   & 200  & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & 81.04 \\\midrule
+Trip  & 20   & 60   & 20  & 3.2 & 1 & 0.85 & 100 \\
+Trip  & 20   & 120  & 40  & 5.8 & 1 &1& 100 \\
+Trip  & 20   & 249  & 83  & 12.1 & 1 &1& 100 \\
+Trip  & 20   & 510  & 167  & 23.05 & 1.1 &1& 100 \\
 
 \bottomrule
 \end{tabular}
 %\caption{Ergebnisse}
 \end{table}
+\end{footnotesize}
 \end{frame}
 
 
@@ -429,7 +434,7 @@ Trip  & 20   & 510  & 167  & 23.05 & 1.15 & 100 \\
 
 \begin{frame}
 
-\frametitle{Optimalitätsanalyse Instanzgruppe Uniform und Hard}
+\frametitle{Optimalitätsanalyse Instanzgruppe Uniform \& Hard}
 \begin{footnotesize}
 \begin{equation}
 LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
@@ -439,7 +444,7 @@ LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.3]{img/lb_unif.png}
+\includegraphics[scale=0.3]{img/lb_unif_hard.png}
 \end{center}
 \caption{Anzahl getroffener LBs}
 \label{fig:LBs}
@@ -451,13 +456,17 @@ LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Worst Case Abweichung Instanzgruppe Uniform}
-
+\frametitle{Worst Case Analyse Instanzgruppe Uniform \& Hard}
+\begin{footnotesize}
+\begin{equation}
+LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
+\end{equation}
+\end{footnotesize}
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.3]{img/wc_unif.png}
+\includegraphics[scale=0.3]{img/wc_unif_hard.png}
 \end{center}
-\caption{WC Abweichung von LB}
+\caption{Worst Case Abweichung von LB}
 \label{fig:WC}
 \end{figure}
 
@@ -467,11 +476,11 @@ LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
-\frametitle{Lösungsgüte im Zeitverlauf Instanzgruppe Uniform, Hard }
+\frametitle{Lösungsgüte im Zeitverlauf Instanzgruppe Uniform \& Hard }
 
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.3]{img/uniform_time.png}
+\includegraphics[scale=0.35]{img/uniform_time.png}
 \end{center}
 \caption{Mittlere Abweichung von LB pro Zeiteinheit}
 \label{fig:architecture}
@@ -485,7 +494,7 @@ LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \frametitle{Optimalitätsanalyse Instanzgruppe Triplet}
 \begin{footnotesize}
 \begin{itemize}
-\item $LB = L_1 = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil = \frac{\#Items}{3} $
+\item $LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil = \frac{\#Items}{3} $
 \item LB wird nie getroffen
 \end{itemize}
 
@@ -496,7 +505,7 @@ LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \begin{center}
 \includegraphics[scale=0.3]{img/wc_trip.png}
 \end{center}
-\caption{Anzahl gefundener LBs}
+\caption{Worst Case Abweichung von LB}
 \label{fig:architecture}
 \end{figure}
 
@@ -519,23 +528,23 @@ LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Vergleich Triplet, Hard und Uniform}
+\frametitle{Vergleich Uniform, Hard und Triplet}
 
 
 \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 
 \column{.5\textwidth} % Left column and width
 \begin{figure}[!htbp]
-\includegraphics[scale=0.2]{img/triplet_time.png}
-\caption{Triplet}
+\includegraphics[scale=0.2]{img/unif_hard_time_vergleich.png}
+\caption{Uniform und Hard}
 \label{fig:architecture}
 \end{figure}
 
 
 \column{.5\textwidth} % Right column and width
 \begin{figure}[!htbp]
-\includegraphics[scale=0.2]{img/uniform_time.png}
-\caption{Uniform und Hard}
+\includegraphics[scale=0.2]{img/triplet_time.png}
+\caption{Triplet}
 \label{fig:architecture}
 \end{figure}
 
@@ -709,33 +718,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 %----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
-%----------------------------------------------------------------------------------------
 
-\begin{frame}
-\frametitle{Vergleich mit anderer Permutationswahl}
-
-
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.5\textwidth} % Left column and width
-\begin{figure}[!htbp]
-\includegraphics[scale=0.2]{img/lb_unif.png}
-\caption{Random Permutation}
-\label{fig:architecture}
-\end{figure}
-
-
-\column{.5\textwidth} % Right column and width
-\begin{figure}[!htbp]
-\includegraphics[scale=0.2]{img/lb_unif_heuristic.png}
-\caption{Minimale Itemzahl}
-\label{fig:architecture}
-\end{figure}
-
-
-\end{columns}
-\end{frame}
-%----------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 \begin{frame}
 
@@ -749,7 +732,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.3]{img/dist_trip0.png}
+\includegraphics[scale=0.3]{img/dist7.png}
 \end{center}
 \caption{rel. Abweichung von LB}
 \label{fig:architecture}
@@ -795,7 +778,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.3]{img/dist_trip2.png}
+\includegraphics[scale=0.3]{img/dist8.png}
 \end{center}
 \caption{rel. Abweichung von LB}
 \label{fig:architecture}
@@ -818,7 +801,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.3]{img/dist_trip3.png}
+\includegraphics[scale=0.3]{img/dist9.png}
 \end{center}
 \caption{rel. Abweichung von LB}
 \label{fig:architecture}
@@ -828,10 +811,22 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 \end{frame}
 %----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------
+\begin{frame}
+\frametitle{Zusammenfassung und Ausblick}
+\begin{footnotesize}
+\begin{itemize}
+\item Weitere Untersuchungen des Shuffle-Operators
+\item Weglassen von Moves
+\end{itemize}
+\end{footnotesize}
+\end{frame}
+%----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
 \begin{frame}
-\frametitle{Triplet: Vergleich mit Shuffle (inkl. mittlere Itemkapazität)}
+\frametitle{Triplet: Vergleich mit Shuffle (mittlere Itemkapazität)}
 
 
 \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
@@ -854,10 +849,33 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 
 \end{columns}
 \end{frame}
-%----------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
 \begin{frame}
-\frametitle{Zusammenfassung und Ausblick}
+\frametitle{Uniform: Vergleich mit anderer Permutationswahl}
+
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.5\textwidth} % Left column and width
+\begin{figure}[!htbp]
+\includegraphics[scale=0.2]{img/lb_unif.png}
+\caption{Random Permutation}
+\label{fig:architecture}
+\end{figure}
+
+
+\column{.5\textwidth} % Right column and width
+\begin{figure}[!htbp]
+\includegraphics[scale=0.2]{img/lb_unif_heuristic.png}
+\caption{Minimale Itemzahl}
+\label{fig:architecture}
+\end{figure}
+
+
+\end{columns}
 \end{frame}
+%----------------------------------------------------------------
 %%----------------------------------------------------------------------------------------
 %\begin{frame}
 %\frametitle{Warum CNNs statt klassischer Neuronaler Netze?}
