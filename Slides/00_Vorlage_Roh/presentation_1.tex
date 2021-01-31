@@ -82,6 +82,7 @@
 \usepackage{algorithm} 
 \usepackage{algpseudocode} 
 \usepackage{listings}
+\usepackage{outlines}
 
 %\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
 %\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
@@ -100,7 +101,7 @@
 
 
  % Your name
-\institute[FSU] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+\institute[FSU-Jena] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 { 
 Seminar Modern Heuristics \\
 Dr. Rico Walter
@@ -128,19 +129,40 @@ Dr. Rico Walter
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{Bin Packing Problem - Kurzübersicht}
+\begin{footnotesize}
+\begin{itemize}
+\item Alle Items müssen verpackt werden
+\item[] $\cup U_i = \alpha \ (for \ i = 1,...,G)$
+\item[]
+\item Bins enthalten nie das gleiche Item
+\item[] $U_i \cap U_j = \emptyset \ (for \ 1 \leq i\neq j \leq G )$
+\item[]
+\item Es existieren keine leeren Bins
+\item[] $U_i\neq \emptyset \ (for \ i=1,...,G)$
+\item[]
+\end{itemize}
+\end{footnotesize}
 \end{frame}
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{Grundidee Hill Climbing Ansatz}
-
+\begin{footnotesize}
+\begin{itemize}
+\item Verbesserungsverfahren mit First-Fit Ansatz
+\end{itemize}
+\end{footnotesize}
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.25]{img/bins.png}
+\includegraphics[scale=0.25]{img/HC_idee.png}
 \end{center}
-\label{fig:architecture}
 \end{figure}
-\end{frame}
 
+\begin{footnotesize}
+\begin{itemize}
+\item Quelle: Lewis, R. (2009): A general-purpose hill-climbing method for order independent minimum grouping problems
+\end{itemize}
+\end{footnotesize}
+\end{frame}
 %%%------------------------------------------------
 %%%------------------------------------------------
 \begin{frame}
@@ -156,14 +178,6 @@ Dr. Rico Walter
 \item Wiederhole Schritt 2-6 bis Abbruchkriterium erreicht
 \end{enumerate}
 \end{footnotesize}
-
-\begin{figure}[!htbp]
-\begin{center}
-\includegraphics[scale=0.25]{img/ablauf.png}
-\end{center}
-\caption{Greedy Algorithmus}
-\label{fig:architecture}
-\end{figure}
 \end{frame}
 
 %%%------------------------------------------------
@@ -171,50 +185,114 @@ Dr. Rico Walter
 \frametitle{1. Eröffnungsverfahren - First Fit Descending}
 \begin{itemize}
 \item Sortierung nach absteigender Itemkapazität
+\item Anwendung des Greedy Algorithmus
 \end{itemize}
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.25]{img/greedy.png}
+\includegraphics[scale=0.25]{img/FFD_items.png}
 \end{center}
-\caption{Greedy Algorithmus}
-
-\begin{footnotesize}
-\begin{itemize}
-\item Bild mit resultierender Lösung
-\end{itemize}
-\end{footnotesize}
-
-
 \end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.25]{img/Greedy.png}
+\end{center}
+\end{figure}
+
+
+
 
 \end{frame}
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{2. Zufällige Auswahl von Bins}
-
+\begin{footnotesize}
+\begin{itemize}
+\item \textbf{Standardverfahren:} Auswahl eines Bins mit Wahrscheinlichkeit $p=\frac{1}{\# Gruppen}$
+\end{itemize}
+\end{footnotesize}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/HC_1.png}
+\end{center}
+\end{figure}
+\begin{footnotesize}
+\begin{itemize}
+\item \textbf{Modifikation:} Bin mit minimaler Itemzahl
+\end{itemize}
+\end{footnotesize}
 
 \end{frame}
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{3. Ausführung des Verbesserungsverfahrens}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/HC_1.5.png}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.35]{img/HC_2.png}
+\end{center}
+\end{figure}
 
 
 \end{frame}
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{4. Zusammenfügen der Gruppen}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/HC_4.png}
+\end{center}
+\end{figure}
 
 
 \end{frame}
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{5. Shuffle der Gruppen}
-
+\begin{footnotesize}
+\begin{itemize}
+\item \textbf{Standardverfahren:} 5:5:3 (\textbf{Largest First}, Reverse, Random)
+\end{itemize}
+\end{footnotesize}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.25]{img/HC_5.png}
+\end{center}
+\end{figure}
+\begin{footnotesize}
+\begin{itemize}
+\item \textbf{Modifikation 1:} mittlere Itemkapazität (absteigend)
+\item \textbf{Modifikation 2:} inkl. mittlere Itemkapazität (absteigend)
+\item[] 5:5:5:3 (Largest First, Reverse, mittlere Itemkapazität, Random) 
+\end{itemize}
+\end{footnotesize}
 
 \end{frame}
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{6. Greedy Algorithmus}
+\begin{footnotesize}
+\begin{itemize}
+\item Ausgangslösung: $\vert U \vert = 5$ 
+\item Lösung nach Greedy: $\vert U' \vert = 4$ 
+\item \textbf{Theorem 1:} $\vert U'\vert \leq \vert U \vert$
+\end{itemize}
+\end{footnotesize}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.21]{img/HC_5.png}
+\end{center}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.21]{img/HC_6.png}
+\end{center}
+\end{figure}
 
 
 \end{frame}
@@ -250,14 +328,31 @@ Dr. Rico Walter
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{2:2 Move}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.5\textwidth}
 \begin{footnotesize}
 \begin{itemize}
 \item $\delta = s[k]+s[l]-s[i]-s[j]$
-\item $\delta = 4 + 3 - 2 - 1 = 4$
+\item $\delta = 50 + 25 - 50 - 20 = 5$
 \item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
-\item $if(4 > 0 \ and \ 10+4 \leq 20)$
+\item $if(5 > 0 \ and \ 95+5 \leq 100)$
 \end{itemize}
 \end{footnotesize}
+\column{.5\textwidth}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.22]{img/Zwei_zwei_Move_1.png}
+\end{center}
+\label{fig:architecture}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.22]{img/Zwei_zwei_Move_2.png}
+\end{center}
+\label{fig:architecture}
+\end{figure}
+\end{columns}
+
 
 
 \end{frame}
@@ -295,21 +390,21 @@ Dr. Rico Walter
 \begin{footnotesize}
 \begin{itemize}
 \item $\delta = s[k]-s[i]-s[j]$
-\item $\delta = 45 - 20 - 20 = 5$
+\item $\delta = 50 - 20 - 20 = 10$
 \item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
-\item $if(5 > 0 \ and \ 85+5 \leq 91)$
+\item $if(10 > 0 \ and \ 85+10 \leq 85)$
 \end{itemize}
 \end{footnotesize}
 \column{.5\textwidth}
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.22]{img/2 zu 1 Move.png}
+\includegraphics[scale=0.15]{img/Zwei_Eins_Move_1.png}
 \end{center}
 \label{fig:architecture}
 \end{figure}
 \begin{figure}[!htbp]
 \begin{center}
-\includegraphics[scale=0.22]{img/2 zu 1 Move fertig.png}
+\includegraphics[scale=0.15]{img/Zwei_Eins_Move_2.png}
 \end{center}
 \label{fig:architecture}
 \end{figure}
@@ -319,14 +414,30 @@ Dr. Rico Walter
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{1:1 Move}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+\column{.5\textwidth}
 \begin{footnotesize}
 \begin{itemize}
 \item $\delta = s[k]-s[i]$
-\item $\delta = 4 - 2 = 2$
+\item $\delta = 20 - 15 = 5$
 \item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
-\item $if(2 > 0 \ and \ 10+2 \leq 20)$
+\item $if(5 > 0 \ and \ 80 + 5 \leq 100)$
 \end{itemize}
 \end{footnotesize}
+\column{.5\textwidth}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.15]{img/1zu1_1.png}
+\end{center}
+\label{fig:architecture}
+\end{figure}
+\begin{figure}[!htbp]
+\begin{center}
+\includegraphics[scale=0.15]{img/1zu1_2.png}
+\end{center}
+\label{fig:architecture}
+\end{figure}
+\end{columns}
 \end{frame}
 %%%------------------------------------------------
 %%%------------------------------------------------
@@ -347,14 +458,36 @@ Dr. Rico Walter
 %\end{frame}
 %%%------------------------------------------------
 \begin{frame}
-\frametitle{Computational Studies - Genutzte Instanzen}
-\begin{figure}[!htbp]
-\begin{center}
-\includegraphics[scale=0.25]{img/instance.png}
-\end{center}
-\caption{Instanzen Triplet}
-\label{fig:architecture}
-\end{figure}
+\frametitle{Computational Studies - Set-up}
+
+\begin{table}
+\begin{footnotesize}
+\begin{tabular}{c c c c c c}
+\toprule
+\textbf{Typ} & \textbf{\#Instanzen} & \textbf{\#Items} & \textbf{Bin-Kapazität} & \textbf{Verteilung} & \textbf{Notation}\\
+\midrule
+Uniform  & 20   & 120 & 150 & 20-100 & (Unif,120,150) \\
+Uniform  & 20   & 250 & 150 & 20-100 & (Unif,120,150) \\
+Uniform  & 20   & 500 & 150 & 20-100 & (Unif,120,150) \\
+Uniform  & 20   & 1000 & 150 & 20-100 & (Unif,120,150) \\\midrule
+Hard  & 10   & 200 & 100000 & 20000-35000 & (Hard,120,150) \\\midrule
+Triplet  & 20   & 60 & 1000 & * & (Trip,60,1000) \\
+Triplet  & 20   & 120 & 1000 & * & (Trip,120,1000) \\
+Triplet  & 20   & 249 & 1000 & * & (Trip,249,1000) \\
+Triplet  & 20   & 501 & 1000 & * & (Trip,501,1000) \\
+\bottomrule
+\end{tabular}
+\end{footnotesize}
+%\caption{Ergebnisse}
+\end{table}
+\begin{footnotesize}
+\begin{itemize}
+\item * optimale Lösung hat 3 Items pro Bin
+\item Python 3.8.5
+\item Intel Core i7, 8GB RAM
+\end{itemize}
+\end{footnotesize}
+
 \end{frame}
 %%%------------------------------------------------
 %\begin{frame}
@@ -815,13 +948,51 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 %----------------------------------------------------------------
 \begin{frame}
 \frametitle{Zusammenfassung und Ausblick}
-\begin{footnotesize}
+\begin{itemize}
+\item HC-Ansatz zu Lösung des Bin Packing Problems
+\begin{itemize}
+\item Eröffnungsheuristik: FFD
+\item Verbesserunsgverfahren mit First Fit Ansatz
+\end{itemize}
+\item[] 
+\item Ausblick Computational Studies
 \begin{itemize}
 \item Weitere Untersuchungen des Shuffle-Operators
 \item Weglassen von Moves
 \end{itemize}
-\end{footnotesize}
+\end{itemize}
+
+
 \end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Vergleich der Ergebnisse mit weiteren Verfahren}
+\begin{table}
+\begin{footnotesize}
+
+\begin{tabular}{c c c c c c c c}
+\toprule
+\textbf{Typ} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{IG} & \textbf{HGGA} & \textbf{MT}\\
+\midrule
+(Unif,120,150) & 49.1  & 0.7 & 0.05 & 0.1 & 0.7 & 0 & 0.05 \\
+(Unif,250,150) & 101.6  & 1.5 & 0.25 & 0.25 & 1.45 & 0 & 0.55\\
+(Unif,500,150)  & 201.2  & 2.7 & 0.15 & 0.15 &  2.7 & 0 & 2.2\\
+(Unif,1000,150)   & 400.6  & 4.85 & 0.25 & 0.2 & 4.85 & 0 & 3.85\\ \midrule
+(Hard,200,100000)  & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & 2.3 & 0.1 & 1.5 \\\midrule
+(Trip,60,1000)     & 20 & 3.2 & 1 & 0.85 & 2.45 & 0.6 & 1.45 \\
+(Trip,120,1000)    & 40  & 5.8 & 1 &1 & 5.3 & 0.85 & 4.1\\
+(Trip,249,1000)     & 83  & 12.1 & 1 & 1 & 11.25 & 0 & 7.45 \\
+(Trip,501,1000)     & 167  & 23.05 & 1.1 & 1 & 22.4 & 0 & 14.85 \\
+\bottomrule
+\end{tabular}
+
+\end{footnotesize}
+%\caption{Ergebnisse}
+\end{table}
+
+
+\end{frame}
+%----------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 %----------------------------------------------------------------------------------------
 
@@ -1132,10 +1303,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{scriptsize}
 \begin{thebibliography}{1}
 \bibitem{1} Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron Courville, 2016
-\bibitem{2} Convolutional neural networks: an overview and application in radiology, Yamashita, 2018
-\bibitem{3} Script: Einführung in tiefe Lernverfahren - Faltungsnetzwerke,\\ Prof. Joachim Denzler
-\bibitem{4} \url{https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks\\-the-eli5-way-3bd2b1164a53}
-\bibitem{5} \url{https://aishack.in/tutorials/image-convolution-examples/}
+\bibitem{2} Convolutional neural networks: an overview and application in radiology, 
 \end{thebibliography}
 \end{scriptsize}
 

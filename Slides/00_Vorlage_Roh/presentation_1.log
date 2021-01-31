@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  31 JAN 2021 11:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  31 JAN 2021 20:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -790,6 +790,9 @@ File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
 Package: listings 2019/09/10 1.8c (Carsten Heinz)
 
+(/usr/share/texlive/texmf-dist/tex/latex/outlines/outlines.sty
+Package: outlines 2012/1/23 1.1 Ch. Pecheur
+)
 (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \heavyrulewidth=\dimen290
@@ -888,25 +891,28 @@ LaTeX Warning: Label `fig:architecture' multiply defined.
 
 LaTeX Warning: Label `fig:architecture' multiply defined.
 
+
+LaTeX Warning: Label `fig:architecture' multiply defined.
+
 )
 \openout1 = `presentation_1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 112.
-LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -966,7 +972,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box81
-Package hyperref Info: Link coloring OFF on input line 112.
+Package hyperref Info: Link coloring OFF on input line 113.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -979,66 +985,66 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count350
 )
-LaTeX Info: Redefining \ref on input line 112.
-LaTeX Info: Redefining \pageref on input line 112.
-LaTeX Info: Redefining \nameref on input line 112.
+LaTeX Info: Redefining \ref on input line 113.
+LaTeX Info: Redefining \pageref on input line 113.
+LaTeX Info: Redefining \nameref on input line 113.
 
 (./presentation_1.out) (./presentation_1.out)
 \@outlinefile=\write5
 \openout5 = `presentation_1.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 112.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 113.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 112.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 113.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 112.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 112.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 112.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 112.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 112.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 112.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 112.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 112.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 112.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 112.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 112.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 113.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 112.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 112.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 113.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 112.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 113.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 112.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 112.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 112.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 112.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 112.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 113.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 112.
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 112.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 113.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 113.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
 (Font)                  OT1/cmss/m/it --> OT1/mathkerncmss/m/sl on input line 1
-12.
+13.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/cmss/b/it --> OT1/mathkerncmss/m/sl on input line 1
-12.
+13.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/m/sl --> OT1/mathkerncmss/bx/sl on inp
-ut line 112.
+ut line 113.
 
 (/usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary
 -English.dict
@@ -1070,401 +1076,666 @@ Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count351
- (./presentation_1.nav) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./presentation_1.toc) [2
-
-] [3
-
-]
-<img/bins.png, id=118, 776.9025pt x 449.68pt>
-File: img/bins.png Graphic file (type png)
-<use img/bins.png>
-Package pdftex.def Info: img/bins.png  used on input line 142.
-(pdftex.def)             Requested size: 194.22514pt x 112.41972pt.
- [4
-
- <./img/bins.png>]
-<img/ablauf.png, id=149, 1211.52625pt x 419.5675pt>
-File: img/ablauf.png Graphic file (type png)
-<use img/ablauf.png>
-Package pdftex.def Info: img/ablauf.png  used on input line 167.
-(pdftex.def)             Requested size: 302.88081pt x 104.89162pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
-ure}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.167 \end{frame}
-                 
-Overfull \vbox (6.35173pt too high) detected at line 167
+ (./presentation_1.nav)
+Overfull \hbox (0.69032pt too wide) in paragraph at lines 113--113
+ [][]  \OT1/cmss/m/n/6 ([])  
  []
 
-[5
 
- <./img/ablauf.png>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 190
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./presentation_1.toc)
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[2
+
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 145
 .
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 190
+LaTeX Font Info:    Trying to load font information for U+msb on input line 145
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 190.
+ut line 145.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-<img/greedy.png, id=178, 799.98875pt x 533.995pt>
-File: img/greedy.png Graphic file (type png)
-<use img/greedy.png>
-Package pdftex.def Info: img/greedy.png  used on input line 190.
-(pdftex.def)             Requested size: 199.99669pt x 133.49841pt.
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[3
+
+]
+<img/HC_idee.png, id=124, 953.5625pt x 374.39874pt>
+File: img/HC_idee.png Graphic file (type png)
+<use img/HC_idee.png>
+Package pdftex.def Info: img/HC_idee.png  used on input line 165.
+(pdftex.def)             Requested size: 238.39005pt x 93.59946pt.
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[4
+
+ <./img/HC_idee.png>]
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[5
+
+]
+<img/FFD_items.png, id=180, 631.76025pt x 120.45pt>
+File: img/FFD_items.png Graphic file (type png)
+<use img/FFD_items.png>
+Package pdftex.def Info: img/FFD_items.png  used on input line 205.
+(pdftex.def)             Requested size: 157.93967pt x 30.11241pt.
+<img/Greedy.png, id=181, 354.32375pt x 325.215pt>
+File: img/Greedy.png Graphic file (type png)
+<use img/Greedy.png>
+Package pdftex.def Info: img/Greedy.png  used on input line 205.
+(pdftex.def)             Requested size: 88.58072pt x 81.30354pt.
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
 [6
 
- <./img/greedy.png>] [7
+ <./img/FFD_items.PNG> <./img/Greedy.png>]
+<img/HC_1.png, id=210, 552.0625pt x 433.62pt>
+File: img/HC_1.png Graphic file (type png)
+<use img/HC_1.png>
+Package pdftex.def Info: img/HC_1.png  used on input line 225.
+(pdftex.def)             Requested size: 138.01527pt x 108.40472pt.
 
-] [8
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
-] [9
+[7
 
-] [10
+ <./img/HC_1.png>]
+<img/HC_1.5.png, id=240, 580.1675pt x 391.4625pt>
+File: img/HC_1.5.png Graphic file (type png)
+<use img/HC_1.5.png>
+Package pdftex.def Info: img/HC_1.5.png  used on input line 242.
+(pdftex.def)             Requested size: 145.0415pt x 97.86537pt.
+<img/HC_2.png, id=241, 386.6445pt x 275.22826pt>
+File: img/HC_2.png Graphic file (type png)
+<use img/HC_2.png>
+Package pdftex.def Info: img/HC_2.png  used on input line 242.
+(pdftex.def)             Requested size: 135.32759pt x 96.33133pt.
 
-] [11
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
-] [12
+[8
+
+ <./img/HC_1.5.png> <./img/HC_2.PNG>]
+<img/HC_4.png, id=271, 548.0475pt x 388.45125pt>
+File: img/HC_4.png Graphic file (type png)
+<use img/HC_4.png>
+Package pdftex.def Info: img/HC_4.png  used on input line 253.
+(pdftex.def)             Requested size: 137.01154pt x 97.11256pt.
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[9
+
+ <./img/HC_4.png>]
+<img/HC_5.png, id=299, 528.97626pt x 391.4625pt>
+File: img/HC_5.png Graphic file (type png)
+<use img/HC_5.png>
+Package pdftex.def Info: img/HC_5.png  used on input line 275.
+(pdftex.def)             Requested size: 132.24373pt x 97.86537pt.
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[10
+
+ <./img/HC_5.png>]
+File: img/HC_5.png Graphic file (type png)
+<use img/HC_5.png>
+Package pdftex.def Info: img/HC_5.png  used on input line 298.
+(pdftex.def)             Requested size: 111.08829pt x 82.20955pt.
+<img/HC_6.png, id=327, 409.53pt x 331.2375pt>
+File: img/HC_6.png Graphic file (type png)
+<use img/HC_6.png>
+Package pdftex.def Info: img/HC_6.png  used on input line 298.
+(pdftex.def)             Requested size: 86.00383pt x 69.56192pt.
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[11
+
+ <./img/HC_6.png>]
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[12
 
 ]
-<img/improvement.png, id=367, 1165.35374pt x 700.6175pt>
+<img/improvement.png, id=383, 1165.35374pt x 700.6175pt>
 File: img/improvement.png Graphic file (type png)
 <use img/improvement.png>
-Package pdftex.def Info: img/improvement.png  used on input line 248.
+Package pdftex.def Info: img/improvement.png  used on input line 326.
 (pdftex.def)             Requested size: 291.33772pt x 175.15395pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
-ure}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.248 \end{frame}
-                  [13
 
- <./img/improvement.png>] [14
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
-]
-<img/2 zu 1 Move.png, id=425, 725.71124pt x 355.3275pt>
-File: img/2 zu 1 Move.png Graphic file (type png)
-<use img/2 zu 1 Move.png>
-Package pdftex.def Info: img/2 zu 1 Move.png  used on input line 317.
-(pdftex.def)             Requested size: 159.65697pt x 78.17229pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
-ure}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.317 \end{frame}
-                 
-<img/2 zu 1 Move fertig.png, id=426, 723.30225pt x 352.9185pt>
-File: img/2 zu 1 Move fertig.png Graphic file (type png)
-<use img/2 zu 1 Move fertig.png>
-Package pdftex.def Info: img/2 zu 1 Move fertig.png  used on input line 317.
-(pdftex.def)             Requested size: 159.12698pt x 77.6423pt.
-pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
-ure}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.317 \end{frame}
-                  [15
+[13
 
- <./img/2 zu 1 Move.PNG> <./img/2 zu 1 Move fertig.PNG>]
-[16
-
-]
-<img/instance.png, id=482, 757.83125pt x 347.2975pt>
-File: img/instance.png Graphic file (type png)
-<use img/instance.png>
-Package pdftex.def Info: img/instance.png  used on input line 358.
-(pdftex.def)             Requested size: 189.45735pt x 86.82416pt.
+ <./img/improvement.png>]
+<img/Zwei_zwei_Move_1.png, id=413, 702.2235pt x 328.22626pt>
+File: img/Zwei_zwei_Move_1.png Graphic file (type png)
+<use img/Zwei_zwei_Move_1.png>
+Package pdftex.def Info: img/Zwei_zwei_Move_1.png  used on input line 358.
+(pdftex.def)             Requested size: 154.48964pt x 72.20999pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.358 \end{frame}
-                  [17
+                 
+<img/Zwei_zwei_Move_2.png, id=414, 703.428pt x 327.624pt>
+File: img/Zwei_zwei_Move_2.png Graphic file (type png)
+<use img/Zwei_zwei_Move_2.png>
+Package pdftex.def Info: img/Zwei_zwei_Move_2.png  used on input line 358.
+(pdftex.def)             Requested size: 154.75464pt x 72.0775pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.358 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
- <./img/instance.png>] [18
+[14
+
+ <./img/Zwei_zwei_Move_1.PNG> <./img/Zwei_zwei_Move_2.PNG>]
+<img/Zwei_Eins_Move_1.png, id=443, 1026.83624pt x 463.7325pt>
+File: img/Zwei_Eins_Move_1.png Graphic file (type png)
+<use img/Zwei_Eins_Move_1.png>
+Package pdftex.def Info: img/Zwei_Eins_Move_1.png  used on input line 412.
+(pdftex.def)             Requested size: 154.01878pt x 69.55687pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.412 \end{frame}
+                 
+<img/Zwei_Eins_Move_2.png, id=444, 1018.80624pt x 466.74374pt>
+File: img/Zwei_Eins_Move_2.png Graphic file (type png)
+<use img/Zwei_Eins_Move_2.png>
+Package pdftex.def Info: img/Zwei_Eins_Move_2.png  used on input line 412.
+(pdftex.def)             Requested size: 152.81433pt x 70.00853pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.412 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[15
+
+ <./img/Zwei_Eins_Move_1.png> <./img/Zwei_Eins_Move_2.png>]
+<img/1zu1_1.png, id=473, 1026.83624pt x 464.73625pt>
+File: img/1zu1_1.png Graphic file (type png)
+<use img/1zu1_1.png>
+Package pdftex.def Info: img/1zu1_1.png  used on input line 441.
+(pdftex.def)             Requested size: 154.01878pt x 69.70743pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.441 \end{frame}
+                 
+<img/1zu1_2.png, id=474, 1005.7575pt x 459.7175pt>
+File: img/1zu1_2.png Graphic file (type png)
+<use img/1zu1_2.png>
+Package pdftex.def Info: img/1zu1_2.png  used on input line 441.
+(pdftex.def)             Requested size: 150.85712pt x 68.95464pt.
+pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
+ure}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.441 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[16
+
+ <./img/1zu1_1.png> <./img/1zu1_2.png>]
+Overfull \hbox (6.179pt too wide) in paragraph at lines 491--491
+ [] 
+ []
+
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[17
 
 ]
-<img/lb_unif_hard.png, id=539, 735.74875pt x 516.93124pt>
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[18
+
+]
+<img/lb_unif_hard.png, id=557, 735.74875pt x 516.93124pt>
 File: img/lb_unif_hard.png Graphic file (type png)
 <use img/lb_unif_hard.png>
-Package pdftex.def Info: img/lb_unif_hard.png  used on input line 455.
+Package pdftex.def Info: img/lb_unif_hard.png  used on input line 588.
 (pdftex.def)             Requested size: 220.72632pt x 155.08057pt.
 
-Overfull \vbox (6.89081pt too high) detected at line 455
+Overfull \vbox (6.89081pt too high) detected at line 588
+ []
+
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 [19
 
  <./img/lb_unif_hard.png>]
-<img/wc_unif_hard.png, id=569, 725.71124pt x 516.93124pt>
+<img/wc_unif_hard.png, id=587, 725.71124pt x 516.93124pt>
 File: img/wc_unif_hard.png Graphic file (type png)
 <use img/wc_unif_hard.png>
-Package pdftex.def Info: img/wc_unif_hard.png  used on input line 475.
+Package pdftex.def Info: img/wc_unif_hard.png  used on input line 608.
 (pdftex.def)             Requested size: 217.71504pt x 155.08057pt.
 
-Overfull \vbox (6.89081pt too high) detected at line 475
+Overfull \vbox (6.89081pt too high) detected at line 608
+ []
+
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
  []
 
 [20
 
  <./img/wc_unif_hard.png>]
-<img/uniform_time.png, id=599, 739.76375pt x 516.93124pt>
+<img/uniform_time.png, id=617, 739.76375pt x 516.93124pt>
 File: img/uniform_time.png Graphic file (type png)
 <use img/uniform_time.png>
-Package pdftex.def Info: img/uniform_time.png  used on input line 489.
+Package pdftex.def Info: img/uniform_time.png  used on input line 622.
 (pdftex.def)             Requested size: 258.92119pt x 180.92863pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.489 \end{frame}
-                  [21
+l.622 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[21
 
  <./img/uniform_time.png>]
-<img/wc_trip.png, id=627, 735.74875pt x 516.93124pt>
+<img/wc_trip.png, id=645, 735.74875pt x 516.93124pt>
 File: img/wc_trip.png Graphic file (type png)
 <use img/wc_trip.png>
-Package pdftex.def Info: img/wc_trip.png  used on input line 514.
+Package pdftex.def Info: img/wc_trip.png  used on input line 647.
 (pdftex.def)             Requested size: 220.72632pt x 155.08057pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.514 \end{frame}
-                  [22
+l.647 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[22
 
  <./img/wc_trip.png>]
-<img/triplet_time.png, id=655, 735.74875pt x 516.93124pt>
+<img/triplet_time.png, id=673, 735.74875pt x 516.93124pt>
 File: img/triplet_time.png Graphic file (type png)
 <use img/triplet_time.png>
-Package pdftex.def Info: img/triplet_time.png  used on input line 528.
+Package pdftex.def Info: img/triplet_time.png  used on input line 661.
 (pdftex.def)             Requested size: 220.72632pt x 155.08057pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.528 \end{frame}
-                  [23
+l.661 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[23
 
  <./img/triplet_time.png>]
-<img/unif_hard_time_vergleich.png, id=683, 735.74875pt x 516.93124pt>
+<img/unif_hard_time_vergleich.png, id=701, 735.74875pt x 516.93124pt>
 File: img/unif_hard_time_vergleich.png Graphic file (type png)
 <use img/unif_hard_time_vergleich.png>
-Package pdftex.def Info: img/unif_hard_time_vergleich.png  used on input line 5
-53.
+Package pdftex.def Info: img/unif_hard_time_vergleich.png  used on input line 6
+86.
 (pdftex.def)             Requested size: 147.14714pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.553 \end{frame}
+l.686 \end{frame}
                  
 File: img/triplet_time.png Graphic file (type png)
 <use img/triplet_time.png>
-Package pdftex.def Info: img/triplet_time.png  used on input line 553.
+Package pdftex.def Info: img/triplet_time.png  used on input line 686.
 (pdftex.def)             Requested size: 147.14714pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.553 \end{frame}
-                  [24
+l.686 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[24
 
  <./img/unif_hard_time_vergleich.png>]
-<img/dist1.png, id=712, 649.42625pt x 461.725pt>
+<img/dist1.png, id=730, 649.42625pt x 461.725pt>
 File: img/dist1.png Graphic file (type png)
 <use img/dist1.png>
-Package pdftex.def Info: img/dist1.png  used on input line 578.
+Package pdftex.def Info: img/dist1.png  used on input line 711.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.578 \end{frame}
-                  [25
+l.711 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[25
 
  <./img/dist1.png>]
-<img/dist2.png, id=741, 649.42625pt x 461.725pt>
+<img/dist2.png, id=759, 649.42625pt x 461.725pt>
 File: img/dist2.png Graphic file (type png)
 <use img/dist2.png>
-Package pdftex.def Info: img/dist2.png  used on input line 601.
+Package pdftex.def Info: img/dist2.png  used on input line 734.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.601 \end{frame}
-                  [26
+l.734 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[26
 
  <./img/dist2.png>]
-<img/dist3.png, id=769, 649.42625pt x 461.725pt>
+<img/dist3.png, id=787, 649.42625pt x 461.725pt>
 File: img/dist3.png Graphic file (type png)
 <use img/dist3.png>
-Package pdftex.def Info: img/dist3.png  used on input line 624.
+Package pdftex.def Info: img/dist3.png  used on input line 757.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.624 \end{frame}
-                  [27
+l.757 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[27
 
  <./img/dist3.png>]
 File: img/dist1.png Graphic file (type png)
 <use img/dist1.png>
-Package pdftex.def Info: img/dist1.png  used on input line 648.
+Package pdftex.def Info: img/dist1.png  used on input line 781.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.648 \end{frame}
-                  [28
+l.781 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[28
 
 ]
-<img/dist4.png, id=824, 649.42625pt x 461.725pt>
+<img/dist4.png, id=842, 649.42625pt x 461.725pt>
 File: img/dist4.png Graphic file (type png)
 <use img/dist4.png>
-Package pdftex.def Info: img/dist4.png  used on input line 671.
+Package pdftex.def Info: img/dist4.png  used on input line 804.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.671 \end{frame}
-                  [29
+l.804 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[29
 
  <./img/dist4.png>]
-<img/dist5.png, id=852, 649.42625pt x 461.725pt>
+<img/dist5.png, id=870, 649.42625pt x 461.725pt>
 File: img/dist5.png Graphic file (type png)
 <use img/dist5.png>
-Package pdftex.def Info: img/dist5.png  used on input line 694.
+Package pdftex.def Info: img/dist5.png  used on input line 827.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.694 \end{frame}
-                  [30
+l.827 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[30
 
  <./img/dist5.png>]
-<img/dist6.png, id=880, 649.42625pt x 461.725pt>
+<img/dist6.png, id=898, 649.42625pt x 461.725pt>
 File: img/dist6.png Graphic file (type png)
 <use img/dist6.png>
-Package pdftex.def Info: img/dist6.png  used on input line 717.
+Package pdftex.def Info: img/dist6.png  used on input line 850.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.717 \end{frame}
-                  [31
+l.850 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[31
 
  <./img/dist6.png>]
-<img/dist7.png, id=909, 649.42625pt x 461.725pt>
+<img/dist7.png, id=927, 649.42625pt x 461.725pt>
 File: img/dist7.png Graphic file (type png)
 <use img/dist7.png>
-Package pdftex.def Info: img/dist7.png  used on input line 743.
+Package pdftex.def Info: img/dist7.png  used on input line 876.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.743 \end{frame}
-                  [32
+l.876 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[32
 
  <./img/dist7.png>]
-<img/dist8.png, id=938, 649.42625pt x 461.725pt>
+<img/dist8.png, id=956, 649.42625pt x 461.725pt>
 File: img/dist8.png Graphic file (type png)
 <use img/dist8.png>
-Package pdftex.def Info: img/dist8.png  used on input line 789.
+Package pdftex.def Info: img/dist8.png  used on input line 922.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.789 \end{frame}
-                  [33
+l.922 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[33
 
  <./img/dist8.png>]
-<img/dist9.png, id=966, 649.42625pt x 461.725pt>
+<img/dist9.png, id=984, 649.42625pt x 461.725pt>
 File: img/dist9.png Graphic file (type png)
 <use img/dist9.png>
-Package pdftex.def Info: img/dist9.png  used on input line 812.
+Package pdftex.def Info: img/dist9.png  used on input line 945.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.812 \end{frame}
-                  [34
+l.945 \end{frame}
+                 
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
 
- <./img/dist9.png>] [35
+[34
+
+ <./img/dist9.png>]
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[35
+
+]
+Overfull \hbox (6.90143pt too wide) in paragraph at lines 994--994
+ [] 
+ []
+
+
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[36
 
 ]
 File: img/wc_trip.png Graphic file (type png)
 <use img/wc_trip.png>
-Package pdftex.def Info: img/wc_trip.png  used on input line 851.
+Package pdftex.def Info: img/wc_trip.png  used on input line 1022.
 (pdftex.def)             Requested size: 147.14714pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.851 \end{frame}
-                 
-<img/shuffleWC.png, id=1020, 735.74875pt x 516.93124pt>
+l.1022 \end{frame}
+                  
+<img/shuffleWC.png, id=1065, 735.74875pt x 516.93124pt>
 File: img/shuffleWC.png Graphic file (type png)
 <use img/shuffleWC.png>
-Package pdftex.def Info: img/shuffleWC.png  used on input line 851.
+Package pdftex.def Info: img/shuffleWC.png  used on input line 1022.
 (pdftex.def)             Requested size: 147.14714pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.851 \end{frame}
-                  [36
+l.1022 \end{frame}
+                  
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[37
 
  <./img/shuffleWC.png>]
-<img/lb_unif.png, id=1049, 749.80125pt x 516.93124pt>
+<img/lb_unif.png, id=1094, 749.80125pt x 516.93124pt>
 File: img/lb_unif.png Graphic file (type png)
 <use img/lb_unif.png>
-Package pdftex.def Info: img/lb_unif.png  used on input line 877.
+Package pdftex.def Info: img/lb_unif.png  used on input line 1048.
 (pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.877 \end{frame}
-                 
-<img/lb_unif_heuristic.png, id=1050, 749.80125pt x 516.93124pt>
+l.1048 \end{frame}
+                  
+<img/lb_unif_heuristic.png, id=1095, 749.80125pt x 516.93124pt>
 File: img/lb_unif_heuristic.png Graphic file (type png)
 <use img/lb_unif_heuristic.png>
-Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 877.
+Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 1048.
 (pdftex.def)             Requested size: 149.9576pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.877 \end{frame}
-                  [37
+l.1048 \end{frame}
+                  
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[38
 
  <./img/lb_unif.png> <./img/lb_unif_heuristic.png>]
-[38
+Overfull \hbox (0.69032pt too wide) has occurred while \output is active
+ [][]  \OT1/cmss/m/n/6 ([])  
+ []
+
+[39
 
  </usr/share/texlive/texmf-dist/tex/latex/beamer/beamericonarticle.pdf>]
 \tf@nav=\write6
@@ -1476,12 +1747,12 @@ l.877 \end{frame}
 \tf@snm=\write8
 \openout8 = `presentation_1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1150.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1150.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1318.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1318.
 
 (./presentation_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1150.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1150.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1318.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1318.
 
 Package rerunfilecheck Info: File `presentation_1.out' has not changed.
 (rerunfilecheck)             Checksum: 444C5715AF807963A337C5BEAAE87914;228.
@@ -1491,11 +1762,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 22245 strings out of 481239
- 413520 string characters out of 5920376
- 686027 words of memory out of 5000000
- 36882 multiletter control sequences out of 15000+600000
- 543148 words of font info for 63 fonts, out of 8000000 for 9000
+ 22365 strings out of 481239
+ 415909 string characters out of 5920376
+ 688383 words of memory out of 5000000
+ 36991 multiletter control sequences out of 15000+600000
+ 545129 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,15n,67p,781b,737s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb>
@@ -1508,13 +1779,12 @@ nts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mtt8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msa
-m10.pfb>
-Output written on presentation_1.pdf (38 pages, 1059901 bytes).
+ts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msam10.pfb>
+Output written on presentation_1.pdf (39 pages, 953635 bytes).
 PDF statistics:
- 1187 PDF objects out of 1200 (max. 8388607)
- 1063 compressed objects within 11 object streams
- 89 named destinations out of 1000 (max. 500000)
- 200 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1220 PDF objects out of 1440 (max. 8388607)
+ 1078 compressed objects within 11 object streams
+ 88 named destinations out of 1000 (max. 500000)
+ 245 words of extra memory for PDF output out of 10000 (max. 10000000)
 
