@@ -1,4 +1,4 @@
-\beamer@sectionintoc {1}{Was ist das Bin Packing Problem?}{2}{0}{1}
-\beamer@sectionintoc {2}{Hill Climbing Ansatz}{2}{0}{2}
-\beamer@sectionintoc {3}{Computational Studies}{2}{0}{3}
-\beamer@sectionintoc {4}{Zusammenfassung}{2}{0}{4}
+\beamer@sectionintoc {1}{Was ist das Bin Packing Problem?}{3}{0}{1}
+\beamer@sectionintoc {2}{Hill Climbing Ansatz}{4}{0}{2}
+\beamer@sectionintoc {3}{Computational Studies}{17}{0}{3}
+\beamer@sectionintoc {4}{Zusammenfassung}{35}{0}{4}

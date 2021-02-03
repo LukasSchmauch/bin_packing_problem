@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  3 FEB 2021 19:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.10.19)  3 FEB 2021 20:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1091,19 +1091,19 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 153
+LaTeX Font Info:    Trying to load font information for U+msa on input line 150
 .
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 153
+LaTeX Font Info:    Trying to load font information for U+msb on input line 150
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 153.
+ut line 150.
 
 (/usr/share/texlive/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
@@ -1116,16 +1116,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [3
 
 ]
-<img/HC_idee.png, id=124, 953.5625pt x 374.39874pt>
+<img/HC_idee.png, id=127, 953.5625pt x 374.39874pt>
 File: img/HC_idee.png Graphic file (type png)
 <use img/HC_idee.png>
-Package pdftex.def Info: img/HC_idee.png  used on input line 173.
+Package pdftex.def Info: img/HC_idee.png  used on input line 171.
 (pdftex.def)             Requested size: 238.39005pt x 93.59946pt.
 
 ! Misplaced alignment tab character &.
 \beamer@doifinframe ...nd bin packing. Computers &
                                                    Operations Research 36, 2...
-l.173 \end{frame}
+l.171 \end{frame}
                  
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -1149,15 +1149,15 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [5
 
 ]
-<img/FFD_items.png, id=180, 631.76025pt x 120.45pt>
+<img/FFD_items.png, id=186, 631.76025pt x 120.45pt>
 File: img/FFD_items.png Graphic file (type png)
 <use img/FFD_items.png>
-Package pdftex.def Info: img/FFD_items.png  used on input line 213.
+Package pdftex.def Info: img/FFD_items.png  used on input line 211.
 (pdftex.def)             Requested size: 157.93967pt x 30.11241pt.
-<img/Greedy.png, id=181, 354.32375pt x 325.215pt>
+<img/Greedy.png, id=187, 354.32375pt x 325.215pt>
 File: img/Greedy.png Graphic file (type png)
 <use img/Greedy.png>
-Package pdftex.def Info: img/Greedy.png  used on input line 213.
+Package pdftex.def Info: img/Greedy.png  used on input line 211.
 (pdftex.def)             Requested size: 88.58072pt x 81.30354pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1167,10 +1167,10 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [6
 
  <./img/FFD_items.PNG> <./img/Greedy.png>]
-<img/HC_1.png, id=210, 552.0625pt x 433.62pt>
+<img/HC_1.png, id=217, 552.0625pt x 433.62pt>
 File: img/HC_1.png Graphic file (type png)
 <use img/HC_1.png>
-Package pdftex.def Info: img/HC_1.png  used on input line 233.
+Package pdftex.def Info: img/HC_1.png  used on input line 231.
 (pdftex.def)             Requested size: 138.01527pt x 108.40472pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1180,15 +1180,15 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [7
 
  <./img/HC_1.png>]
-<img/HC_1.5.png, id=240, 580.1675pt x 391.4625pt>
+<img/HC_1.5.png, id=248, 580.1675pt x 391.4625pt>
 File: img/HC_1.5.png Graphic file (type png)
 <use img/HC_1.5.png>
-Package pdftex.def Info: img/HC_1.5.png  used on input line 250.
+Package pdftex.def Info: img/HC_1.5.png  used on input line 248.
 (pdftex.def)             Requested size: 145.0415pt x 97.86537pt.
-<img/HC_2.png, id=241, 386.6445pt x 275.22826pt>
+<img/HC_2.png, id=249, 386.6445pt x 275.22826pt>
 File: img/HC_2.png Graphic file (type png)
 <use img/HC_2.png>
-Package pdftex.def Info: img/HC_2.png  used on input line 250.
+Package pdftex.def Info: img/HC_2.png  used on input line 248.
 (pdftex.def)             Requested size: 135.32759pt x 96.33133pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1198,10 +1198,10 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [8
 
  <./img/HC_1.5.png> <./img/HC_2.PNG>]
-<img/HC_4.png, id=271, 548.0475pt x 388.45125pt>
+<img/HC_4.png, id=280, 548.0475pt x 388.45125pt>
 File: img/HC_4.png Graphic file (type png)
 <use img/HC_4.png>
-Package pdftex.def Info: img/HC_4.png  used on input line 261.
+Package pdftex.def Info: img/HC_4.png  used on input line 259.
 (pdftex.def)             Requested size: 137.01154pt x 97.11256pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1211,10 +1211,10 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [9
 
  <./img/HC_4.png>]
-<img/HC_5.png, id=299, 528.97626pt x 391.4625pt>
+<img/HC_5.png, id=309, 528.97626pt x 391.4625pt>
 File: img/HC_5.png Graphic file (type png)
 <use img/HC_5.png>
-Package pdftex.def Info: img/HC_5.png  used on input line 283.
+Package pdftex.def Info: img/HC_5.png  used on input line 281.
 (pdftex.def)             Requested size: 132.24373pt x 97.86537pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1226,12 +1226,12 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  <./img/HC_5.png>]
 File: img/HC_5.png Graphic file (type png)
 <use img/HC_5.png>
-Package pdftex.def Info: img/HC_5.png  used on input line 306.
+Package pdftex.def Info: img/HC_5.png  used on input line 304.
 (pdftex.def)             Requested size: 111.08829pt x 82.20955pt.
-<img/HC_6.png, id=327, 409.53pt x 331.2375pt>
+<img/HC_6.png, id=338, 409.53pt x 331.2375pt>
 File: img/HC_6.png Graphic file (type png)
 <use img/HC_6.png>
-Package pdftex.def Info: img/HC_6.png  used on input line 306.
+Package pdftex.def Info: img/HC_6.png  used on input line 304.
 (pdftex.def)             Requested size: 86.00383pt x 69.56192pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1248,7 +1248,7 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [12
 
 ]
-Overfull \vbox (3.80563pt too high) detected at line 379
+Overfull \vbox (3.80563pt too high) detected at line 377
  []
 
 
@@ -1259,15 +1259,15 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [13
 
 ]
-<img/Zwei_zwei_Move_1.png, id=412, 702.2235pt x 328.22626pt>
+<img/Zwei_zwei_Move_1.png, id=426, 702.2235pt x 328.22626pt>
 File: img/Zwei_zwei_Move_1.png Graphic file (type png)
 <use img/Zwei_zwei_Move_1.png>
-Package pdftex.def Info: img/Zwei_zwei_Move_1.png  used on input line 411.
+Package pdftex.def Info: img/Zwei_zwei_Move_1.png  used on input line 409.
 (pdftex.def)             Requested size: 154.48964pt x 72.20999pt.
-<img/Zwei_zwei_Move_2.png, id=413, 703.428pt x 327.624pt>
+<img/Zwei_zwei_Move_2.png, id=427, 703.428pt x 327.624pt>
 File: img/Zwei_zwei_Move_2.png Graphic file (type png)
 <use img/Zwei_zwei_Move_2.png>
-Package pdftex.def Info: img/Zwei_zwei_Move_2.png  used on input line 411.
+Package pdftex.def Info: img/Zwei_zwei_Move_2.png  used on input line 409.
 (pdftex.def)             Requested size: 154.75464pt x 72.0775pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1281,29 +1281,29 @@ ure}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.411 \end{frame}
+l.409 \end{frame}
                   <./img/Zwei_zwei_Move_1.PNG> <./img/Zwei_zwei_Move_2.PNG>]
-<img/Zwei_Eins_Move_1.png, id=443, 1026.83624pt x 463.7325pt>
+<img/Zwei_Eins_Move_1.png, id=458, 1026.83624pt x 463.7325pt>
 File: img/Zwei_Eins_Move_1.png Graphic file (type png)
 <use img/Zwei_Eins_Move_1.png>
-Package pdftex.def Info: img/Zwei_Eins_Move_1.png  used on input line 465.
+Package pdftex.def Info: img/Zwei_Eins_Move_1.png  used on input line 463.
 (pdftex.def)             Requested size: 154.01878pt x 69.55687pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.465 \end{frame}
+l.463 \end{frame}
                  
-<img/Zwei_Eins_Move_2.png, id=444, 1018.80624pt x 466.74374pt>
+<img/Zwei_Eins_Move_2.png, id=459, 1018.80624pt x 466.74374pt>
 File: img/Zwei_Eins_Move_2.png Graphic file (type png)
 <use img/Zwei_Eins_Move_2.png>
-Package pdftex.def Info: img/Zwei_Eins_Move_2.png  used on input line 465.
+Package pdftex.def Info: img/Zwei_Eins_Move_2.png  used on input line 463.
 (pdftex.def)             Requested size: 152.81433pt x 70.00853pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.465 \end{frame}
+l.463 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1312,27 +1312,27 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [15
 
  <./img/Zwei_Eins_Move_1.png> <./img/Zwei_Eins_Move_2.png>]
-<img/1zu1_1.png, id=473, 1026.83624pt x 464.73625pt>
+<img/1zu1_1.png, id=489, 1026.83624pt x 464.73625pt>
 File: img/1zu1_1.png Graphic file (type png)
 <use img/1zu1_1.png>
-Package pdftex.def Info: img/1zu1_1.png  used on input line 494.
+Package pdftex.def Info: img/1zu1_1.png  used on input line 492.
 (pdftex.def)             Requested size: 154.01878pt x 69.70743pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.494 \end{frame}
+l.492 \end{frame}
                  
-<img/1zu1_2.png, id=474, 1005.7575pt x 459.7175pt>
+<img/1zu1_2.png, id=490, 1005.7575pt x 459.7175pt>
 File: img/1zu1_2.png Graphic file (type png)
 <use img/1zu1_2.png>
-Package pdftex.def Info: img/1zu1_2.png  used on input line 494.
+Package pdftex.def Info: img/1zu1_2.png  used on input line 492.
 (pdftex.def)             Requested size: 150.85712pt x 68.95464pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.494 \end{frame}
+l.492 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1341,7 +1341,7 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [16
 
  <./img/1zu1_1.png> <./img/1zu1_2.png>]
-Overfull \hbox (6.27629pt too wide) in paragraph at lines 545--545
+Overfull \hbox (6.27629pt too wide) in paragraph at lines 544--544
  [] 
  []
 
@@ -1360,10 +1360,10 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [18
 
 ]
-<img/lb_unif_hard.png, id=557, 735.74875pt x 516.93124pt>
+<img/lb_unif_hard.png, id=575, 735.74875pt x 516.93124pt>
 File: img/lb_unif_hard.png Graphic file (type png)
 <use img/lb_unif_hard.png>
-Package pdftex.def Info: img/lb_unif_hard.png  used on input line 643.
+Package pdftex.def Info: img/lb_unif_hard.png  used on input line 642.
 (pdftex.def)             Requested size: 220.72632pt x 155.08057pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1373,10 +1373,10 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [19
 
  <./img/lb_unif_hard.png>]
-<img/wc_unif_hard.png, id=587, 725.71124pt x 516.93124pt>
+<img/wc_unif_hard.png, id=607, 725.71124pt x 516.93124pt>
 File: img/wc_unif_hard.png Graphic file (type png)
 <use img/wc_unif_hard.png>
-Package pdftex.def Info: img/wc_unif_hard.png  used on input line 664.
+Package pdftex.def Info: img/wc_unif_hard.png  used on input line 663.
 (pdftex.def)             Requested size: 217.71504pt x 155.08057pt.
 
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
@@ -1386,16 +1386,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [20
 
  <./img/wc_unif_hard.png>]
-<img/uniform_time.png, id=617, 739.76375pt x 516.93124pt>
+<img/uniform_time.png, id=637, 739.76375pt x 516.93124pt>
 File: img/uniform_time.png Graphic file (type png)
 <use img/uniform_time.png>
-Package pdftex.def Info: img/uniform_time.png  used on input line 678.
+Package pdftex.def Info: img/uniform_time.png  used on input line 677.
 (pdftex.def)             Requested size: 258.92119pt x 180.92863pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.678 \end{frame}
+l.677 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1404,16 +1404,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [21
 
  <./img/uniform_time.png>]
-<img/wc_trip.png, id=645, 735.74875pt x 516.93124pt>
+<img/wc_trip.png, id=666, 735.74875pt x 516.93124pt>
 File: img/wc_trip.png Graphic file (type png)
 <use img/wc_trip.png>
-Package pdftex.def Info: img/wc_trip.png  used on input line 703.
+Package pdftex.def Info: img/wc_trip.png  used on input line 702.
 (pdftex.def)             Requested size: 220.72632pt x 155.08057pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.703 \end{frame}
+l.702 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1422,16 +1422,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [22
 
  <./img/wc_trip.png>]
-<img/triplet_time.png, id=673, 735.74875pt x 516.93124pt>
+<img/triplet_time.png, id=695, 735.74875pt x 516.93124pt>
 File: img/triplet_time.png Graphic file (type png)
 <use img/triplet_time.png>
-Package pdftex.def Info: img/triplet_time.png  used on input line 717.
+Package pdftex.def Info: img/triplet_time.png  used on input line 716.
 (pdftex.def)             Requested size: 220.72632pt x 155.08057pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.717 \end{frame}
+l.716 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1440,27 +1440,27 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [23
 
  <./img/triplet_time.png>]
-<img/unif_hard_time_vergleich.png, id=701, 735.74875pt x 516.93124pt>
+<img/unif_hard_time_vergleich.png, id=725, 735.74875pt x 516.93124pt>
 File: img/unif_hard_time_vergleich.png Graphic file (type png)
 <use img/unif_hard_time_vergleich.png>
 Package pdftex.def Info: img/unif_hard_time_vergleich.png  used on input line 7
-42.
+41.
 (pdftex.def)             Requested size: 147.14714pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.742 \end{frame}
+l.741 \end{frame}
                  
 File: img/triplet_time.png Graphic file (type png)
 <use img/triplet_time.png>
-Package pdftex.def Info: img/triplet_time.png  used on input line 742.
+Package pdftex.def Info: img/triplet_time.png  used on input line 741.
 (pdftex.def)             Requested size: 147.14714pt x 103.38441pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.742 \end{frame}
+l.741 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1469,16 +1469,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [24
 
  <./img/unif_hard_time_vergleich.png>]
-<img/dist1.png, id=730, 649.42625pt x 461.725pt>
+<img/dist1.png, id=754, 649.42625pt x 461.725pt>
 File: img/dist1.png Graphic file (type png)
 <use img/dist1.png>
-Package pdftex.def Info: img/dist1.png  used on input line 767.
+Package pdftex.def Info: img/dist1.png  used on input line 766.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.767 \end{frame}
+l.766 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1487,16 +1487,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [25
 
  <./img/dist1.png>]
-<img/dist2.png, id=759, 649.42625pt x 461.725pt>
+<img/dist2.png, id=784, 649.42625pt x 461.725pt>
 File: img/dist2.png Graphic file (type png)
 <use img/dist2.png>
-Package pdftex.def Info: img/dist2.png  used on input line 790.
+Package pdftex.def Info: img/dist2.png  used on input line 789.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.790 \end{frame}
+l.789 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1505,16 +1505,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [26
 
  <./img/dist2.png>]
-<img/dist3.png, id=787, 649.42625pt x 461.725pt>
+<img/dist3.png, id=813, 649.42625pt x 461.725pt>
 File: img/dist3.png Graphic file (type png)
 <use img/dist3.png>
-Package pdftex.def Info: img/dist3.png  used on input line 813.
+Package pdftex.def Info: img/dist3.png  used on input line 812.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.813 \end{frame}
+l.812 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1525,13 +1525,13 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  <./img/dist3.png>]
 File: img/dist1.png Graphic file (type png)
 <use img/dist1.png>
-Package pdftex.def Info: img/dist1.png  used on input line 837.
+Package pdftex.def Info: img/dist1.png  used on input line 836.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.837 \end{frame}
+l.836 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1540,16 +1540,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [28
 
 ]
-<img/dist4.png, id=842, 649.42625pt x 461.725pt>
+<img/dist4.png, id=870, 649.42625pt x 461.725pt>
 File: img/dist4.png Graphic file (type png)
 <use img/dist4.png>
-Package pdftex.def Info: img/dist4.png  used on input line 860.
+Package pdftex.def Info: img/dist4.png  used on input line 859.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.860 \end{frame}
+l.859 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1558,16 +1558,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [29
 
  <./img/dist4.png>]
-<img/dist5.png, id=870, 649.42625pt x 461.725pt>
+<img/dist5.png, id=899, 649.42625pt x 461.725pt>
 File: img/dist5.png Graphic file (type png)
 <use img/dist5.png>
-Package pdftex.def Info: img/dist5.png  used on input line 883.
+Package pdftex.def Info: img/dist5.png  used on input line 882.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.883 \end{frame}
+l.882 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1576,16 +1576,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [30
 
  <./img/dist5.png>]
-<img/dist6.png, id=898, 649.42625pt x 461.725pt>
+<img/dist6.png, id=928, 649.42625pt x 461.725pt>
 File: img/dist6.png Graphic file (type png)
 <use img/dist6.png>
-Package pdftex.def Info: img/dist6.png  used on input line 906.
+Package pdftex.def Info: img/dist6.png  used on input line 905.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.906 \end{frame}
+l.905 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1594,16 +1594,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [31
 
  <./img/dist6.png>]
-<img/dist7.png, id=927, 649.42625pt x 461.725pt>
+<img/dist7.png, id=959, 649.42625pt x 461.725pt>
 File: img/dist7.png Graphic file (type png)
 <use img/dist7.png>
-Package pdftex.def Info: img/dist7.png  used on input line 932.
+Package pdftex.def Info: img/dist7.png  used on input line 931.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.932 \end{frame}
+l.931 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1612,16 +1612,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [32
 
  <./img/dist7.png>]
-<img/dist8.png, id=956, 649.42625pt x 461.725pt>
+<img/dist8.png, id=988, 649.42625pt x 461.725pt>
 File: img/dist8.png Graphic file (type png)
 <use img/dist8.png>
-Package pdftex.def Info: img/dist8.png  used on input line 978.
+Package pdftex.def Info: img/dist8.png  used on input line 977.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.978 \end{frame}
+l.977 \end{frame}
                  
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1630,16 +1630,16 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [33
 
  <./img/dist8.png>]
-<img/dist9.png, id=984, 649.42625pt x 461.725pt>
+<img/dist9.png, id=1016, 649.42625pt x 461.725pt>
 File: img/dist9.png Graphic file (type png)
 <use img/dist9.png>
-Package pdftex.def Info: img/dist9.png  used on input line 1001.
+Package pdftex.def Info: img/dist9.png  used on input line 1000.
 (pdftex.def)             Requested size: 194.82938pt x 138.51857pt.
 pdfTeX warning (ext4): destination with the same identifier (name{fig:architect
 ure}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1001 \end{frame}
+l.1000 \end{frame}
                   
 Overfull \hbox (0.69032pt too wide) has occurred while \output is active
  [][]  \OT1/cmss/m/n/6 ([])  
@@ -1679,7 +1679,7 @@ ure}) has been already used, duplicate ignored
                    \relax 
 l.1117 \end{frame}
                   
-<img/shuffleWC.png, id=1092, 735.74875pt x 516.93124pt>
+<img/shuffleWC.png, id=1127, 735.74875pt x 516.93124pt>
 File: img/shuffleWC.png Graphic file (type png)
 <use img/shuffleWC.png>
 Package pdftex.def Info: img/shuffleWC.png  used on input line 1117.
@@ -1697,7 +1697,7 @@ Overfull \hbox (0.69032pt too wide) has occurred while \output is active
 [38
 
  <./img/shuffleWC.png>]
-<img/lb_unif.png, id=1120, 749.80125pt x 516.93124pt>
+<img/lb_unif.png, id=1157, 749.80125pt x 516.93124pt>
 File: img/lb_unif.png Graphic file (type png)
 <use img/lb_unif.png>
 Package pdftex.def Info: img/lb_unif.png  used on input line 1143.
@@ -1708,7 +1708,7 @@ ure}) has been already used, duplicate ignored
                    \relax 
 l.1143 \end{frame}
                   
-<img/lb_unif_heuristic.png, id=1121, 749.80125pt x 516.93124pt>
+<img/lb_unif_heuristic.png, id=1158, 749.80125pt x 516.93124pt>
 File: img/lb_unif_heuristic.png Graphic file (type png)
 <use img/lb_unif_heuristic.png>
 Package pdftex.def Info: img/lb_unif_heuristic.png  used on input line 1143.
@@ -1782,10 +1782,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 22147 strings out of 481239
- 412371 string characters out of 5920376
+ 22146 strings out of 481239
+ 412353 string characters out of 5920376
  684618 words of memory out of 5000000
- 36764 multiletter control sequences out of 15000+600000
+ 36763 multiletter control sequences out of 15000+600000
  545423 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,15n,67p,781b,928s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1803,10 +1803,10 @@ ts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 >
-Output written on presentation_1.pdf (40 pages, 846090 bytes).
+Output written on presentation_1.pdf (40 pages, 848725 bytes).
 PDF statistics:
- 1259 PDF objects out of 1440 (max. 8388607)
- 1115 compressed objects within 12 object streams
+ 1297 PDF objects out of 1440 (max. 8388607)
+ 1153 compressed objects within 12 object streams
  95 named destinations out of 1000 (max. 500000)
  240 words of extra memory for PDF output out of 10000 (max. 10000000)
 

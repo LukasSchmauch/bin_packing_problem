@@ -122,16 +122,13 @@ Dr. Rico Walter
 \begin{frame}
 \frametitle{Übersicht} 
 \tableofcontents
-\section{Was ist das Bin Packing Problem?} 
-\section{Hill Climbing Ansatz} 
-\section{Computational Studies}
-\section{Zusammenfassung} 
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 
 %%%------------------------------------------------
+\section{Was ist das Bin Packing Problem?} 
 \begin{frame}
 \frametitle{Bin Packing Problem - Kurzübersicht}
 \begin{footnotesize}
@@ -152,11 +149,12 @@ Dr. Rico Walter
 \end{footnotesize}
 \end{frame}
 %%%------------------------------------------------
+\section{Hill Climbing Ansatz} 
 \begin{frame}
 \frametitle{Grundidee Hill Climbing Ansatz}
 \begin{footnotesize}
 \begin{itemize}
-\item Verbesserungsverfahren mit First-Fit Ansatz
+\item Verbesserungsverfahren mit First Fit Ansatz
 \end{itemize}
 \end{footnotesize}
 \begin{figure}[!htbp]
@@ -510,6 +508,7 @@ Dr. Rico Walter
 %
 %\end{frame}
 %%%------------------------------------------------
+\section{Computational Studies}
 \begin{frame}
 \frametitle{Computational Studies - Set-up}
 
@@ -596,15 +595,15 @@ Triplet  & 20   & 501 & 1000 & * & (T,501,1000) \\
 \toprule
 \textbf{Typ} & \textbf{Inst.} &  \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{Mittlere Zeit}\\
 \midrule
-(U,120,150)  & 20    & 49.1  & 0.7 & 0.05 & 0.1 & 6.24 \\
-(U,250,150)  & 20     & 101.6  & 1.5 & 0.25 & 0.25 & 27.19 \\
-(U,500,150)  & 20     & 201.2  & 2.7 & 0.15 & 0.15 &  25.73\\
-(U,1000,150)  & 20     & 400.6  & 4.85 & 0.25 & 0.2 & 42.91\\ \midrule
-(H,200,100000)  & 10     & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & 81.04 \\\midrule
-(T,60,1000)  & 20      & 20  & 3.2 & 1 & 0.85 & 100 \\
-(T,120,1000)  & 20     & 40  & 5.8 & 1 &1& 100 \\
-(T,249,1000)  & 20     & 83  & 12.1 & 1 &1& 100 \\
-(T,501,1000)  & 20     & 167  & 23.05 & 1.1 &1& 100 \\
+(U,120,150)  & 20    & 49.1  & 0.7 & \textbf{0.05} & \textbf{0.1} & 6.24 \\
+(U,250,150)  & 20     & 101.6  & 1.5 & \textbf{0.25} & \textbf{0.25} & 27.19 \\
+(U,500,150)  & 20     & 201.2  & 2.7 & \textbf{0.15} & \textbf{0.15} &  25.73\\
+(U,1000,150)  & 20     & 400.6  & 4.85 & \textbf{0.25} & \textbf{0.2} & 42.91\\ \midrule
+(H,200,100000)  & 10     & 55.5/56.2  & 4.1/3.4 & \textbf{0.8} &\textbf{0} & 81.04 \\\midrule
+(T,60,1000)  & 20      & 20  & 3.2 & \textbf{1} &\textbf{0.85} & 100 \\
+(T,120,1000)  & 20     & 40  & 5.8 & \textbf{1} &\textbf{1} & 100 \\
+(T,249,1000)  & 20     & 83  & 12.1 & \textbf{1} &\textbf{1} & 100 \\
+(T,501,1000)  & 20     & 167  & 23.05 & \textbf{1.1} &\textbf{1} & 100 \\
 \bottomrule
 \end{tabular}
 %\caption{Ergebnisse}
@@ -1002,6 +1001,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 %----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------
+\section{Zusammenfassung} 
 \begin{frame}
 \frametitle{Zusammenfassung und Ausblick}
 \begin{itemize}
