@@ -79,10 +79,14 @@
 \usepackage{multirow}
 \usepackage[utf8]{inputenc}
 \usepackage{subfig}
-\usepackage{algorithm} 
-\usepackage{algpseudocode} 
 \usepackage{listings}
 \usepackage{outlines}
+\usepackage[noend]{algorithm,algorithmic}
+\usepackage{caption}
+\usepackage{setspace}
+\usepackage{threeparttable}
+
+
 
 %\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
 %\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
@@ -126,13 +130,17 @@ Dr. Rico Walter
 
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
+
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{Bin Packing Problem - Kurzübersicht}
 \begin{footnotesize}
 \begin{itemize}
+\item Geg. eine Menge $\varphi$ mit $n$ unterschiedlichen Items
+\item Ziel: Konstruiere die Menge $U=\{U_1,...,U_G\}$, wobei:
+\item[]
 \item Alle Items müssen verpackt werden
-\item[] $\cup U_i = \alpha \ (for \ i = 1,...,G)$
+\item[] $\cup U_i = \varphi \ (for \ i = 1,...,G)$
 \item[]
 \item Bins enthalten nie das gleiche Item
 \item[] $U_i \cap U_j = \emptyset \ (for \ 1 \leq i\neq j \leq G )$
@@ -157,11 +165,11 @@ Dr. Rico Walter
 \end{center}
 \end{figure}
 
-\begin{footnotesize}
+\begin{scriptsize}
 \begin{itemize}
-\item Quelle: Lewis, R. (2009): A general-purpose hill-climbing method for order independent minimum grouping problems
+\item Lewis, R. (2009): A general-purpose hill-climbing method for order independent minimum grouping problems: A case study in graph colouring and bin packing. Computers & Operations Research 36, 2295–2310.
 \end{itemize}
-\end{footnotesize}
+\end{scriptsize}
 \end{frame}
 %%%------------------------------------------------
 %%%------------------------------------------------
@@ -313,18 +321,63 @@ Dr. Rico Walter
 \end{frame}
 %%%------------------------------------------------
 %%%------------------------------------------------
+%\begin{frame}
+%\frametitle{3. Verbesserungsverfahren im Detail}
+%\begin{figure}[!htbp]
+%\begin{center}
+%\includegraphics[scale=0.25]{img/improvement.png}
+%\end{center}
+%\caption{Verbesserungsverfahren Pseudocode}
+%\label{fig:architecture}
+%\end{figure}
+%
+%\end{frame}
+
+
+%%%%------------------------------------------------
 \begin{frame}
 \frametitle{3. Verbesserungsverfahren im Detail}
-\begin{figure}[!htbp]
-\begin{center}
-\includegraphics[scale=0.25]{img/improvement.png}
-\end{center}
-\caption{Verbesserungsverfahren Pseudocode}
-\label{fig:architecture}
-\end{figure}
-
+\begin{algorithm}[H]
+\begin{algorithmic}[1]
+\begin{scriptsize}
+\STATE BPP-IMPROVEMENT-PROCEDURE$(\pi,\rho,C)$
+\FOR{($g=1$ to $G(\pi)$)}
+\FOR{\textbf{each} (pair of items $i,j$ in group $g$ in $\pi$)}
+\FOR{($h=1$ to $G(\rho)$)}
+\FOR{\textbf{each} (pair of items $k,l$ in group $h$ in $\rho$)}
+\STATE $\delta = s[k] + s[l] - s[i] - s[j]$
+\IF{($\delta > 0$ and $F(g)+ \delta \leq C)$}
+\STATE Move items $i$ and $j$ into group $h$ in $\rho$ and move items $k$ and $l$ into group $g$ in $\pi$
+\ENDIF
+\ENDFOR
+\ENDFOR
+\ENDFOR
+\FOR{\textbf{each} (pair of items $i,j$ in group $g$ in $\pi$)}
+\FOR{($h=1$ to $G(\rho)$)}
+\FOR{\textbf{each} (item $k$ in group $h$ in $\rho$)}
+\STATE $\delta = s[k] - s[i] - s[j]$
+\IF{($\delta > 0$ and $F(g)+ \delta \leq C)$}
+\STATE Move items $i$ and $j$ into group $h$ in $\rho$ and move items $k$ into group $g$ in $\pi$
+\ENDIF
+\ENDFOR
+\ENDFOR
+\ENDFOR
+\FOR{\textbf{each} (item $i$ in group $g$ in $\pi$)}
+\FOR{($h=1$ to $G(\rho)$)}
+\FOR{\textbf{each} (item $k$ in group $h$ in $\rho$)}
+\STATE $\delta = s[k] - s[i]$
+\IF{($\delta > 0$ and $F(g)+ \delta \leq C)$}
+\STATE Move items $i$  into group $h$ in $\rho$ and move item $k$ into group $g$ in $\pi$
+\ENDIF
+\ENDFOR
+\ENDFOR
+\ENDFOR
+\ENDFOR
+\end{scriptsize}
+\end{algorithmic}
+\end{algorithm}
 \end{frame}
-%%%------------------------------------------------
+
 %%%------------------------------------------------
 \begin{frame}
 \frametitle{2:2 Move}
@@ -392,7 +445,7 @@ Dr. Rico Walter
 \item $\delta = s[k]-s[i]-s[j]$
 \item $\delta = 50 - 20 - 20 = 10$
 \item $if(\delta > 0 \ and \ F(g)+\delta \leq C)$
-\item $if(10 > 0 \ and \ 85+10 \leq 85)$
+\item $if(10 > 0 \ and \ 85+10 \leq 100)$
 \end{itemize}
 \end{footnotesize}
 \column{.5\textwidth}
@@ -466,15 +519,15 @@ Dr. Rico Walter
 \toprule
 \textbf{Typ} & \textbf{\#Instanzen} & \textbf{\#Items} & \textbf{Bin-Kapazität} & \textbf{Verteilung} & \textbf{Notation}\\
 \midrule
-Uniform  & 20   & 120 & 150 & 20-100 & (Unif,120,150) \\
-Uniform  & 20   & 250 & 150 & 20-100 & (Unif,120,150) \\
-Uniform  & 20   & 500 & 150 & 20-100 & (Unif,120,150) \\
-Uniform  & 20   & 1000 & 150 & 20-100 & (Unif,120,150) \\\midrule
-Hard  & 10   & 200 & 100000 & 20000-35000 & (Hard,120,150) \\\midrule
-Triplet  & 20   & 60 & 1000 & * & (Trip,60,1000) \\
-Triplet  & 20   & 120 & 1000 & * & (Trip,120,1000) \\
-Triplet  & 20   & 249 & 1000 & * & (Trip,249,1000) \\
-Triplet  & 20   & 501 & 1000 & * & (Trip,501,1000) \\
+Uniform  & 20   & 120 & 150 & 20-100 & (U,120,150) \\
+Uniform  & 20   & 250 & 150 & 20-100 & (U,250,150) \\
+Uniform  & 20   & 500 & 150 & 20-100 & (U,500,150) \\
+Uniform  & 20   & 1000 & 150 & 20-100 & (U,1000,150) \\\midrule
+Hard  & 10   & 200 & 100000 & 20000-35000 & (H,200,100000) \\\midrule
+Triplet  & 20   & 60 & 1000 & * & (T,60,1000) \\
+Triplet  & 20   & 120 & 1000 & * & (T,120,1000) \\
+Triplet  & 20   & 249 & 1000 & * & (T,249,1000) \\
+Triplet  & 20   & 501 & 1000 & * & (T,501,1000) \\
 \bottomrule
 \end{tabular}
 \end{footnotesize}
@@ -482,9 +535,10 @@ Triplet  & 20   & 501 & 1000 & * & (Trip,501,1000) \\
 \end{table}
 \begin{footnotesize}
 \begin{itemize}
-\item * optimale Lösung hat 3 Items pro Bin
+\item * optimale Lösung hat 3 Items pro Bin (ein großes Item und zwei kleine Items)
 \item Python 3.8.5
-\item Intel Core i7, 8GB RAM
+\item Intel Core i7-7Y75, 8GB RAM
+\item SEED = 123
 \end{itemize}
 \end{footnotesize}
 
@@ -535,28 +589,28 @@ Triplet  & 20   & 501 & 1000 & * & (Trip,501,1000) \\
 \item \textbf{Triplet}: $LB = z^{*}$ für \textbf{alle Instanzen} 
 \end{itemize}
 \end{footnotesize}
-\begin{footnotesize}
 
+\begin{scriptsize}
 \begin{table}
 \begin{tabular}{l c c c c c c c}
 \toprule
-\textbf{Typ} & \textbf{Inst.} & \textbf{\#Items} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{Mittlere Zeit}\\
+\textbf{Typ} & \textbf{Inst.} &  \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{Mittlere Zeit}\\
 \midrule
-Unif  & 20   & 120 & 49.1  & 0.7 & 0.05 & 0.1 & 6.24 \\
-Unif  & 20   & 250  & 101.6  & 1.5 & 0.25 & 0.25 & 27.19 \\
-Unif  & 20   & 500  & 201.2  & 2.7 & 0.15 & 0.15 &  25.73\\
-Unif  & 20   & 1000  & 400.6  & 4.85 & 0.25 & 0.2 & 42.91\\ \midrule
-Hard  & 10   & 200  & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & 81.04 \\\midrule
-Trip  & 20   & 60   & 20  & 3.2 & 1 & 0.85 & 100 \\
-Trip  & 20   & 120  & 40  & 5.8 & 1 &1& 100 \\
-Trip  & 20   & 249  & 83  & 12.1 & 1 &1& 100 \\
-Trip  & 20   & 510  & 167  & 23.05 & 1.1 &1& 100 \\
-
+(U,120,150)  & 20    & 49.1  & 0.7 & 0.05 & 0.1 & 6.24 \\
+(U,250,150)  & 20     & 101.6  & 1.5 & 0.25 & 0.25 & 27.19 \\
+(U,500,150)  & 20     & 201.2  & 2.7 & 0.15 & 0.15 &  25.73\\
+(U,1000,150)  & 20     & 400.6  & 4.85 & 0.25 & 0.2 & 42.91\\ \midrule
+(H,200,100000)  & 10     & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & 81.04 \\\midrule
+(T,60,1000)  & 20      & 20  & 3.2 & 1 & 0.85 & 100 \\
+(T,120,1000)  & 20     & 40  & 5.8 & 1 &1& 100 \\
+(T,249,1000)  & 20     & 83  & 12.1 & 1 &1& 100 \\
+(T,501,1000)  & 20     & 167  & 23.05 & 1.1 &1& 100 \\
 \bottomrule
 \end{tabular}
 %\caption{Ergebnisse}
 \end{table}
-\end{footnotesize}
+\end{scriptsize}
+
 \end{frame}
 
 
@@ -569,9 +623,10 @@ Trip  & 20   & 510  & 167  & 23.05 & 1.1 &1& 100 \\
 
 \frametitle{Optimalitätsanalyse Instanzgruppe Uniform \& Hard}
 \begin{footnotesize}
-\begin{equation}
-LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
-\end{equation}
+\begin{itemize}
+\item Uniform \textbf{20 Instanzen} pro Gruppe und Hard \textbf{10 Instanzen}
+\item $LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
+\end{itemize}
 \end{footnotesize}
 
 
@@ -591,9 +646,10 @@ LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
 
 \frametitle{Worst Case Analyse Instanzgruppe Uniform \& Hard}
 \begin{footnotesize}
-\begin{equation}
-LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil
-\end{equation}
+\begin{itemize}
+\item Uniform \textbf{20 Instanzen} pro Gruppe und Hard \textbf{10 Instanzen}
+\item $LB = \left\lceil\sum_{j=1}^{n} \frac{w_j}{C}\right\rceil$
+\end{itemize}
 \end{footnotesize}
 \begin{figure}[!htbp]
 \begin{center}
@@ -949,7 +1005,7 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \begin{frame}
 \frametitle{Zusammenfassung und Ausblick}
 \begin{itemize}
-\item HC-Ansatz zu Lösung des Bin Packing Problems
+\item HC-Ansatz zur Lösung des Bin Packing Problems
 \begin{itemize}
 \item Eröffnungsheuristik: FFD
 \item Verbesserunsgverfahren mit First Fit Ansatz
@@ -967,29 +1023,68 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Vergleich der Ergebnisse mit weiteren Verfahren}
-\begin{table}
-\begin{footnotesize}
 
+\begin{scriptsize}
+\begin{table}
 \begin{tabular}{c c c c c c c c}
 \toprule
-\textbf{Typ} & \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{IG} & \textbf{HGGA} & \textbf{MT}\\
+\textbf{Typ} &   \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{IG$^1$} & \textbf{HGGA$^2$} & \textbf{MT$^3$}\\
 \midrule
-(Unif,120,150) & 49.1  & 0.7 & 0.05 & 0.1 & 0.7 & 0 & 0.05 \\
-(Unif,250,150) & 101.6  & 1.5 & 0.25 & 0.25 & 1.45 & 0 & 0.55\\
-(Unif,500,150)  & 201.2  & 2.7 & 0.15 & 0.15 &  2.7 & 0 & 2.2\\
-(Unif,1000,150)   & 400.6  & 4.85 & 0.25 & 0.2 & 4.85 & 0 & 3.85\\ \midrule
-(Hard,200,100000)  & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & 2.3 & 0.1 & 1.5 \\\midrule
-(Trip,60,1000)     & 20 & 3.2 & 1 & 0.85 & 2.45 & 0.6 & 1.45 \\
-(Trip,120,1000)    & 40  & 5.8 & 1 &1 & 5.3 & 0.85 & 4.1\\
-(Trip,249,1000)     & 83  & 12.1 & 1 & 1 & 11.25 & 0 & 7.45 \\
-(Trip,501,1000)     & 167  & 23.05 & 1.1 & 1 & 22.4 & 0 & 14.85 \\
+(U,120,150) & 49.1  & 0.7 & 0.05 & 0.1 & 0.7 & 0 & 0.05 \\
+(U,250,150) & 101.6  & 1.5 & 0.25 & 0.25 & 1.45 & 0 & 0.55\\
+(U,500,150)  & 201.2  & 2.7 & 0.15 & 0.15 &  2.7 & 0 & 2.2\\
+(U,1000,150)  & 400.6  & 4.85 & 0.25 & 0.2 & 4.85 & 0 & 3.85\\ \midrule
+(H,200,100000)  & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & 2.3 & 0.1 & 1.5 \\\midrule
+(T,60,1000)     & 20 & 3.2 & 1 & 0.85 & 2.45 & 0.6 & 1.45 \\
+(T,120,1000)    & 40  & 5.8 & 1 &1 & 5.3 & 0.85 & 4.1\\
+(T,249,1000)      & 83  & 12.1 & 1 & 1 & 11.25 & 0 & 7.45 \\
+(T,501,1000)      & 167  & 23.05 & 1.1 & 1 & 22.4 & 0 & 14.85 \\
 \bottomrule
 \end{tabular}
-
-\end{footnotesize}
 %\caption{Ergebnisse}
 \end{table}
+\end{scriptsize}
+\begin{scriptsize}
+\begin{itemize}
+\item[1] Culberson J, Luo F. (1996)
+\item[2] Falkenauer E. (1998)
+\item[3] Martello S, Toth P. (1990)
+\end{itemize}
+\end{scriptsize}
 
+
+\end{frame}
+%----------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Vergleich der Ergebnisse mit weiteren Verfahren}
+
+\begin{scriptsize}
+\begin{table}
+\begin{tabular}{c c c c c c c }
+\toprule
+\textbf{Typ} &   \textbf{Mittlere LB} & \textbf{FFD} & \textbf{HC} & \textbf{HC*}  & \textbf{HACO$^4$} & \textbf{BISON$^5$}\\
+\midrule
+(U,120,150) & 49.1  & 0.7 & 0.05 & 0.1 & 0 & -\\
+(U,250,150) & 101.6  & 1.5 & 0.25 & 0.25 & 0.1 & -\\
+(U,500,150)  & 201.2  & 2.7 & 0.15 & 0.15 &  0 & -\\
+(U,1000,150)  & 400.6  & 4.85 & 0.25 & 0.2 & 0 & -\\ \midrule
+(H,200,100000)  & 55.5/56.2  & 4.1/3.4 & 0.8 & 0 & - & 0.7 \\\midrule
+(T,60,1000)     & 20 & 3.2 & 1 & 0.85 & - & - \\
+(T,120,1000)    & 40  & 5.8 & 1 &1 & - & - \\
+(T,249,1000)      & 83  & 12.1 & 1 & 1 & - & -\\
+(T,501,1000)      & 167  & 23.05 & 1.1 & 1 & - & - \\
+\bottomrule
+\end{tabular}
+%\caption{Ergebnisse}
+\end{table}
+\end{scriptsize}
+\begin{scriptsize}
+\begin{itemize}
+\item[4] Levine J, Ducatelle F. (2003)
+\item[5] Scholl A, Klein R, Jurgens C. (1997)
+\end{itemize}
+\end{scriptsize}
 
 \end{frame}
 %----------------------------------------------------------------
@@ -1047,263 +1142,33 @@ mit \ r = \frac{Z_{HC}-LB}{LB} * 100\%
 \end{columns}
 \end{frame}
 %----------------------------------------------------------------
-%%----------------------------------------------------------------------------------------
-%\begin{frame}
-%\frametitle{Warum CNNs statt klassischer Neuronaler Netze?}
-%\begin{figure}[!htbp]
-%\begin{center}
-%\includegraphics[scale=0.3]{img/mlp.jpg}
-%\end{center}
-%\caption{Ausschnitt erste Schicht eines MLPs mit Bilddaten \cite{3}}
-%\label{fig:architecture}
-%\end{figure}
-%
-%
-%\begin{footnotesize}
-%\begin{itemize}
-%\item Annahme: Eingabe sei Grauwertbild mit \textbf{1 Megapixel} (1024x1024x1),\\ ein verborgener Layer mit \textbf{k Knoten}
-%\item Anzahl der \textbf{zu schätzenden Parameter} der ersten Schicht:  $1024 \cdot 1024 \cdot 1 \cdot k \approx k$ \textbf{Millionen Parameter (Overfitting!!!)}
-%\item \textbf{Herausforderung CNN:} drastische Reduktion der Parameter bei gleichzeitger Invarianz ggü. Verschiebungen
-%\end{itemize}
-%\end{footnotesize}
-%
-%
-%\end{frame}
-%%----------------------------------------------------------------------------------------
-%
-%%----------------------------------------------------------------------------------------
-%\begin{frame}
-%
-%\frametitle{Architektur eines CNNs}
-%\begin{footnotesize}
-%\begin{itemize}
-%\item \textbf{Detection Stage:} Convolutional Layer + ReLU, Pooling Layer
-%\item \textbf{Classification Stage:} Fully Connected Layer
-%\end{itemize}
-%\end{footnotesize}
-%\begin{figure}[!htbp]
-%\begin{center}
-%\includegraphics[scale=0.25]{img/architec2.jpeg}
-%\end{center}
-%\caption{Architektur eines Convolutional Neural Networks \cite{4}}
-%\label{fig:architecture}
-%\end{figure}
-%
-%
-%\end{frame}
-%%---------------------------------------
-%\begin{frame}
-%
-%\frametitle{Faltungsoperation (Convolution)}
-%
-%\begin{footnotesize}
-%\begin{itemize}
-%\item \textbf{Faltung} mit einer \textbf{3x3 Faltungsmatrix} als elementweise Multiplikation und Addition \textbf{(Skalarprodukt)}
-%\item Filter \textbf{gleitet schrittweise} über komplettes Eingabebild
-%\item Resultierender \textbf{Pixelwert nach Maskenoperation} im gelben Bereich: 
-%\begin{tiny}
-%$(1\cdot1+2\cdot0+1\cdot1+2\cdot0+0\cdot1+0\cdot0+1\cdot1+0\cdot0+2\cdot1 = 5)$
-%\end{tiny}
-%
-%\end{itemize}
-%\end{footnotesize}
-%
-%\begin{figure}[!htbp]
-%\begin{center}
-%\includegraphics[scale=0.4]{img/kernel1.jpg}
-%\end{center}
-%
-%\caption{Anwendung eines Filters bzw. Kernels auf den Input-Tensor und entstehende Feature Map \cite{2}} 
-%
-%
-%\label{fig:kernel}
-%\end{figure}
-%
-%
-%
-%\end{frame}
-%%---------------------------------------
-%\begin{frame}
-%
-%\frametitle{Einfache Kantenfilter}
-%\begin{figure}
-%\begin{center}
-%\includegraphics[scale=0.31]{img/edges.jpg}
-%\end{center}
-%\caption{Verschiedene Kernelgewichte, zur Extraktion der jeweiligen Kantenformen \cite{5}}
-%\label{fig:kernelWeights}
-%\end{figure}
-%
-%\begin{figure}
-%\begin{center}
-%\includegraphics[scale=0.2]{img/convHouseHorizontal.jpg}
-%\end{center}
-%\caption{Anwendung eines horizontalen Katendetektors \cite{5}}
-%\label{fig:houseH}
-%\end{figure}
-%\begin{scriptsize}
-%\begin{itemize}
-%\item \textbf{bekannte Filter:} Sobel-Operator, Laplace-Filter, Scharr-Operator, Prewitt-Operator, Roberts-Operator, Kirsch-Operator,...
-%\end{itemize}
-%\end{scriptsize}
-%
-%
-%
-%
-%
-%\end{frame}
-%%---------------------------------------
-%\begin{frame}
-%
-%\frametitle{Zusammenfassung}
-%\begin{scriptsize}
-%\begin{enumerate}
-%\item CNNs (Faltungsnetzwerke) sind spezielle Neuronale Netze mit \textbf{mindestens einer Faltungsoperation}, statt der generellen Matrizenmultiplikation.
-%\item Seit der Entwicklung \textbf{moderner Hardware (GPUs), sowie der Sammlung und Etikettierung riesieger Datenmengen} sind sie erstmals effizient trainierbar.
-%\item CNNs werden erfolgreich u.a. im Bereich \textbf{Bildklassifikation}, sowie der \textbf{Handschrift- und Spracherkennung} eingesetzt.
-%\item Convolutional und Pooling Layer dienen der \textbf{automatischen Extraktion von Merkmalen}.
-%\item Diese Komponenten können sich beliebig oft wiederholen (tiefe Netze), um \textbf{hierarchisch komplexere Merkmale} zu identifizieren.
-%\item \textbf{Filter gleiten schrittweise} über ein \textbf{Eingabebild}, um \textbf{Feature Maps} mit den hervorgehobenen Mustern zu berechnen.
-%\item Die \textbf{Gewichte eines Filters} werden in der Trainingsphase \textbf{automatisch gelernt (Backpropagation)} und müssen nicht händisch bestimmt werden.
-%\item Die Besonderheit von CNNs sind die \textbf{geteilten Gewichte (weight-sharing)} eines Filters über das Eingabebild, sowie die \textbf{Invarianz gegenüber Verschiebungen der Eingabe}. (Idee: Muster können sich überall im Bild befinden)
-%\item Die eigentliche \textbf{Klassifikation der extrahierten Merkmale} findet in den letzen Schichten \textbf{(Fully Conneted Layer)} statt.
-%\end{enumerate}
-%\end{scriptsize}
-%
-%
-%\end{frame}
-%---------------------------------------
 
 %---------------------------------------
 
 %---------------------------------------
-%\begin{frame}
-%\frametitle{Der Datensatz}
-%\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-%
-%\column{.3\textwidth} % Left column and width
-%\begin{footnotesize}
-%\begin{itemize}
-%\item 64854 Einträge
-%\item 50:50 Train/ Test 
-%\item 38 Merkmale
-%\item 20 numerisch
-%\item 18 kategorisch
-%\end{itemize}
-%\end{footnotesize}
-%
-%\column{.5\textwidth} % Right column and width
-%%\begin{figure}
-%%\begin{center}
-%%\includegraphics[width=1.0\textwidth]{pdf/distTrainTest.pdf}
-%%\end{center}
-%%%\caption{Verteilung Klassenlabel}
-%%\end{figure}
-%\end{columns}
-%\end{frame}
-%
-%%---------------------------------------
-%
-%\begin{frame}
-%
-%
-%\end{frame}
-%
-%%------------------------------------------------
-%%\begin{frame}
-%%\frametitle{Oversampling}
-%%\begin{center}
-%%\includegraphics[width=0.7\textwidth]{pdf/oversampled.pdf}
-%%\end{center}
-%%\end{frame}
-%%------------------------------------------------
-%%\begin{frame}
-%%\frametitle{Konfusionsmatrix nach Oversampling (Decision Tree)}
-%%\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-%%
-%%\column{.5\textwidth} % Left column and width
-%%\begin{tiny}
-%%\begin{itemize}
-%%\item  \textbf{erzielter Umsatz:} 11520.00 \euro{}
-%%\item \textbf{Umsatzsteigerung:}	34.76 \% 
-%%\item \textbf{Accuracy:} 75.23 \%
-%%\end{itemize}
-%%\end{tiny}
-%%
-%%\begin{figure}
-%%\begin{center}
-%%\includegraphics[width=.8\textwidth]{pdf/confusion2.pdf}
-%%\end{center}
-%%%\caption{Konfusionsmatrix nach Oversampling}
-%%\end{figure}
-%%
-%%
-%%\column{.5\textwidth} % Right column and width
-%%\begin{center}
-%%\includegraphics[width=.8\textwidth]{pdf/oversampled.pdf}
-%%\end{center}
-%%\end{columns}
-%%\end{frame}
-%
-%
-%%------------------------------------------------
-%
-%%\begin{frame}
-%%\frametitle{Konfusionsmatrix nach Oversampling (Decision Tree)}
-%%\begin{footnotesize}
-%%\begin{itemize}
-%%\item  \textbf{erzielter Umsatz:} 11520.00 \euro{}
-%%\item \textbf{Umsatzsteigerung:}	25.79 \% 
-%%\item \textbf{Accuracy:} 75.23 \%
-%%\end{itemize}
-%%\end{footnotesize}
-%%
-%%\begin{figure}
-%%\begin{center}
-%%\includegraphics[width=.5\textwidth]{pdf/confusion2.pdf}
-%%\end{center}
-%%%\caption{Konfusionsmatrix nach Oversampling}
-%%\end{figure}
-%%\end{frame}
-%%------------------------------------------------
-%%\begin{frame}
-%%\frametitle{Backward Feature Elimination und Zeitmessung}
-%%\begin{figure}
-%%\begin{center}
-%%\includegraphics[width=1.0\textwidth]{pdf/backwardSpark.pdf}
-%%\end{center}
-%%%\caption{Konfusionsmatrix Naiver Run}
-%%\end{figure}
-%%\end{frame}
-%%
-%%%------------------------------------------------
-%%\begin{frame}
-%%\frametitle{Zusammenfassung der Ergebnisse}
-%%\begin{table}
-%%\begin{tabular}{l c c}
-%%\toprule
-%%\textbf{Klassifikator} & \textbf{Umsatz} & \textbf{Steigerung}\\
-%%\midrule
-%%Ohne Optimierung & 8548.50 \euro{} & - \\
-%%Decision Tree Naiv & 8552.00 \euro{} & 0.04 \%\\
-%%Decision Tree Oversampling  & 11667.50 \euro{} & 36.49 \% \\
-%%Random Forest Oversampling  & 11709.50 \euro{} &  36.98 \% \\
-%%Optimaler Klassifikator  & 39388.50 \euro{} &  -\\
-%%\bottomrule
-%%\end{tabular}
-%%%\caption{Ergebnisse}
-%%\end{table}
-%%\end{frame}
-%
-%
+
+
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{Literaturverzeichnis}
 \begin{scriptsize}
 \begin{thebibliography}{1}
-\bibitem{1} Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron Courville, 2016
-\bibitem{2} Convolutional neural networks: an overview and application in radiology, 
+\bibitem{1} Lewis, R. (2009): A general-purpose hill-climbing method for order independent minimum grouping problems: A case study in graph colouring and bin packing. Computers & Operations Research 36, 2295–2310.
+\bibitem{2} Fleszar et al. (2011): Average-weight-controlled bin-oriented heuristics for the one-dimensional
+bin-packing problem. European Journal of Operations Research 210, 176-184.
+\bibitem{3} Culberson J, Luo F. (1996): Exploring the k-colorable landscape with iterated greedy.
+In: Johnson DS, Trick MA, editors. Cliques, coloring, and satisfiability:
+second DIMACS implementation challenge, vol. 26. Providence, RI: American
+Mathematical Society, 245–284.
+\bibitem{4} Falkenauer E. (1998): Genetic algorithms and grouping problems. New York: Wiley.
+\bibitem{5} Martello S, Toth P. (1990): Lower bounds and reduction procedures for the bin packing
+problem. Discrete Applied Mathematics 28, 59–70.
+\bibitem{6} Levine J, Ducatelle F. (2003): Ant colony optimisation and local search for bin packing
+and cutting stock problems. Journal of the Operational Research Society 55(12)(7), 705–16.
+\bibitem{7} Scholl A, Klein R, Jurgens C. (1997): Bison: a fast hybrid procedure for exactly solving
+the one-dimensional bin packing problem. Computers & Operations Research 25(7), 627–45.
+
 \end{thebibliography}
 \end{scriptsize}
 
