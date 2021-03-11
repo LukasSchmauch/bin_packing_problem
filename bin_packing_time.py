@@ -1,5 +1,3 @@
-# Frage: An welche Stelle wird welches Item getauscht?
-# Hinweis: "Durch Serie von Moves wird p emptified" (laut paper) - ist bei BPP nicht moeglich
 import random
 import math
 from pathlib import Path
