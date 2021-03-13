@@ -316,7 +316,7 @@ def generate_results():
     generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_trip_StandardFinalSEED123_200sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_triplet2_StandardFinalSEED123_200sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
