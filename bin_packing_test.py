@@ -8,9 +8,9 @@ import time
 Item = namedtuple('Item', 'name capacity') # ermoeglicht Zugriff ueber Item.name und Item.capacity
 random.seed(123)
 # constraint_checks = 0
-# num_move22 = 0
+num_move22 = 0
 # num_move21 = 0
-# num_move11 = 0
+num_move11 = 0
 
 # Einlesen der Textdokumente 
 def read_instances(path):
@@ -45,11 +45,12 @@ def generate_instance(instances):
 # Das Verbesserungsverfahren
 def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results, instance_index, time_given):
     tic = time.perf_counter() # Starte Zeitmessung
-    # global constraint_checks, num_move22, num_move21, num_move11
+    #global constraint_checks, num_move22, num_move21, num_move11
+    global num_move22, num_move11
     # constraint_checks = 0 
-    # num_move22 = 0
+    num_move22 = 0
     # num_move21 = 0
-    # num_move11 = 0
+    num_move11 = 0
 
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
@@ -93,7 +94,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         if len(solution) == lower_bound:
             hit = 1
         else: hit = 0
-        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic]
+        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic, num_move22, num_move11]
         #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
         if len(solution) == lower_bound:
             return lower_bound
@@ -128,6 +129,7 @@ def test_feasibility(solution, bin_capacity):
         assert fullness(bin) <= bin_capacity, print(bin)
         
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
+    global num_move22, num_move11
     #global num_move22, num_move21, num_move11
     change[0] = False
     #iteriere ueber alle bins in pi
@@ -144,7 +146,7 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                                         move(i,j, permutation[h], k, l, solution[g])
                                         change[0] = True
-                                        #num_move22 += 1
+                                        num_move22 += 1
                                         #test_feasibility(permutation, bin_capacity)
         # 2:1 Swap
         # i = 0
@@ -187,7 +189,7 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                         move3(i, permutation[h], k, solution[g])
                         #test_feasibility(permutation, bin_capacity)
                         change[0] = True
-                        #num_move11 += 1
+                        num_move11 += 1
     return solution, permutation
 
 def size(item):
@@ -305,7 +307,7 @@ def fullness(bin):
 def generate_results():
 
     #Ergebnis DataFrame erstellen
-    df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
+    df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time','num_move22','num_move11'])
 
     #instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
     #generate_results_of_instances(instances_hard, df_results, "hard")
@@ -317,7 +319,7 @@ def generate_results():
     #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_unif_StandardOhne2:1SEED123_100sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_unif_StandardOhne2:1AnzahlSEED123_100sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
