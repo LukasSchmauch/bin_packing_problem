@@ -8,9 +8,9 @@ import time
 Item = namedtuple('Item', 'name capacity') # ermoeglicht Zugriff ueber Item.name und Item.capacity
 random.seed(123)
 # constraint_checks = 0
-num_move22 = 0
+#num_move22 = 0
 # num_move21 = 0
-num_move11 = 0
+#num_move11 = 0
 
 # Einlesen der Textdokumente 
 def read_instances(path):
@@ -46,11 +46,11 @@ def generate_instance(instances):
 def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results, instance_index, time_given):
     tic = time.perf_counter() # Starte Zeitmessung
     #global constraint_checks, num_move22, num_move21, num_move11
-    global num_move22, num_move11
+    #global num_move22, num_move11
     # constraint_checks = 0 
-    num_move22 = 0
+    #num_move22 = 0
     # num_move21 = 0
-    num_move11 = 0
+    #num_move11 = 0
 
     # (0) Konstruktionsverfahren: first fit descending
     solution = first_fit_descending(item_list, bin_capacity)
@@ -94,7 +94,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         if len(solution) == lower_bound:
             hit = 1
         else: hit = 0
-        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic, num_move22, num_move11]
+        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic]
         #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
         if len(solution) == lower_bound:
             return lower_bound
@@ -129,7 +129,7 @@ def test_feasibility(solution, bin_capacity):
         assert fullness(bin) <= bin_capacity, print(bin)
         
 def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
-    global num_move22, num_move11
+    #global num_move22, num_move11
     #global num_move22, num_move21, num_move11
     change[0] = False
     #iteriere ueber alle bins in pi
@@ -146,37 +146,37 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                                     if delta > 0 and fullness(solution[g]) + delta <= bin_capacity:
                                         move(i,j, permutation[h], k, l, solution[g])
                                         change[0] = True
-                                        num_move22 += 1
+                                        #num_move22 += 1
                                         #test_feasibility(permutation, bin_capacity)
-        # 2:1 Swap
-        # i = 0
-        # j = 0
-        # # iteriere ueber alle items im aktuellen bin
-        # while i < len(solution[g]):
-        # # iteriere ueber alle Tauschpartner im aktuellen Bin 
-        #     while j < len(solution[g]):
-        #          if j > i: # Uebpruefe moeglichen move() nur fuer gueltige Paare
-        #             # fuer jedes Paar aus aktuellem bin in pi iteriere ueber alle Bins in p
-        #             for h in range(0,len(permutation)):
-        #                 # iteriere fuer jedes paar ueber alle items im aktuellen Bin in p
-        #                 k = 0 # starte beim ersten item
-        #                 while k < len(permutation[h]):
-        #                     if j > i: # erneute Uebpruefung weil bei move Index j zurueckgesetzt wird                               
-        #                         delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j]) # erhoeht das Item aus p die Auslastung in pi beim Tausch gegen das Paar?
-        #                         if delta > 0 and fullness(solution[g]) + delta <= bin_capacity: # passt die zusaetzliche Kapazitaet noch in den Bin
-        #                             move2(i,j,permutation[h], k, solution[g])
-        #                             change[0] = True
-        #                             #num_move21 += 1
-        #                             #test_feasibility(permutation, bin_capacity)
-        #                             k -= 1 # wenn move von Item k stattgefunden hat, ersetzt ein Item aus pi den Platz von k. Setze Index zurueck um fuer dieses Item zu ueberpruefen, ob Ruecktausch gegen andere Items sinnvoll
-        #                             j -= 1 # setze j zurueck, da Anzahl Items im Bin, um 1 schrumpft. Damit wird sichergestellt, dass naechstes Item nicht uebersprungen wird
-        #                             # Index von i bleibt unveraendert, da der Platz nun von Item k eingenommen, fuer Item k werden nun Paare gebildet
-        #                     k += 1 # gehe zum naechsten Item im aktuellen bin in p
-        #          j += 1 # gehe zum naechsten Item im aktuellen bin in pi
-        #     i += 1 # Bilde fuer naechstes Item alle Paare
-        # # #1:1 Swap
-        # i = 0
-        # k = 0
+        #2:1 Swap
+        i = 0
+        j = 0
+        # iteriere ueber alle items im aktuellen bin
+        while i < len(solution[g]):
+        # iteriere ueber alle Tauschpartner im aktuellen Bin 
+            while j < len(solution[g]):
+                 if j > i: # Uebpruefe moeglichen move() nur fuer gueltige Paare
+                    # fuer jedes Paar aus aktuellem bin in pi iteriere ueber alle Bins in p
+                    for h in range(0,len(permutation)):
+                        # iteriere fuer jedes paar ueber alle items im aktuellen Bin in p
+                        k = 0 # starte beim ersten item
+                        while k < len(permutation[h]):
+                            if j > i: # erneute Uebpruefung weil bei move Index j zurueckgesetzt wird                               
+                                delta = size(permutation[h][k]) - size(solution[g][i]) - size(solution[g][j]) # erhoeht das Item aus p die Auslastung in pi beim Tausch gegen das Paar?
+                                if delta > 0 and fullness(solution[g]) + delta <= bin_capacity: # passt die zusaetzliche Kapazitaet noch in den Bin
+                                    move2(i,j,permutation[h], k, solution[g])
+                                    change[0] = True
+                                    #num_move21 += 1
+                                    #test_feasibility(permutation, bin_capacity)
+                                    k -= 1 # wenn move von Item k stattgefunden hat, ersetzt ein Item aus pi den Platz von k. Setze Index zurueck um fuer dieses Item zu ueberpruefen, ob Ruecktausch gegen andere Items sinnvoll
+                                    j -= 1 # setze j zurueck, da Anzahl Items im Bin, um 1 schrumpft. Damit wird sichergestellt, dass naechstes Item nicht uebersprungen wird
+                                    # Index von i bleibt unveraendert, da der Platz nun von Item k eingenommen, fuer Item k werden nun Paare gebildet
+                            k += 1 # gehe zum naechsten Item im aktuellen bin in p
+                 j += 1 # gehe zum naechsten Item im aktuellen bin in pi
+            i += 1 # Bilde fuer naechstes Item alle Paare
+        # #1:1 Swap
+        i = 0
+        k = 0
         # fuer alle items im aktuellen bin in pi
         for i in range(0,len(solution[g])):
             # fuer alle bins in p
@@ -189,7 +189,7 @@ def bpp_improvement_procedure(solution, permutation, bin_capacity, change):
                         move3(i, permutation[h], k, solution[g])
                         #test_feasibility(permutation, bin_capacity)
                         change[0] = True
-                        num_move11 += 1
+                        #num_move11 += 1
     return solution, permutation
 
 def size(item):
@@ -307,19 +307,19 @@ def fullness(bin):
 def generate_results():
 
     #Ergebnis DataFrame erstellen
-    df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time','num_move22','num_move11'])
+    df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
 
-    #instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
-    #generate_results_of_instances(instances_hard, df_results, "hard")
+    instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
+    generate_results_of_instances(instances_hard, df_results, "hard")
     
-    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
     #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
     #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_unif_StandardOhne2:1AnzahlSEED123_100sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_hard_StandardSEED123_150sec.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
@@ -329,7 +329,7 @@ def generate_results_of_instances(instances, df_results, typ):
     for i in range(0,len(instances)):
         item_list, n_items, bin_capacity, lower_bound  = generate_instance(instances[i])
         # Hill Climbing
-        time_given = 101
+        time_given = 150
         bins_hc = hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results, instance_index, time_given)
         instance_index +=1
         print("Anzahl Bins HC", bins_hc)
