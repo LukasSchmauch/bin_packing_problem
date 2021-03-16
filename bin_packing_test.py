@@ -89,15 +89,15 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
 
         solution = greedy(solution, bin_capacity)
         # schreibe Zwischenergebnis in Ergebnis DataFrame
-        num_cols = df_results.shape[0] # aktuelle Zeile
-        hit = 0
-        if len(solution) == lower_bound:
-            hit = 1
-        else: hit = 0
-        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic]
-        #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
-        if len(solution) == lower_bound:
-            return lower_bound
+    num_cols = df_results.shape[0] # aktuelle Zeile
+    hit = 0
+    if len(solution) == lower_bound:
+        hit = 1
+    else: hit = 0
+    df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic]
+    #     #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
+    if len(solution) == lower_bound:
+        return lower_bound
     return len(solution)
 
 def random_permutation(solution, permutation):
@@ -312,14 +312,14 @@ def generate_results():
     instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
     generate_results_of_instances(instances_hard, df_results, "hard")
     
-    #instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
-    #generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
+    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    #instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_hard_StandardSEED123_150sec.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_FFD.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
