@@ -309,17 +309,17 @@ def generate_results():
     #Ergebnis DataFrame erstellen
     df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
 
-    instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
-    generate_results_of_instances(instances_hard, df_results, "hard")
+    # instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
+    # generate_results_of_instances(instances_hard, df_results, "hard")
     
     instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
     generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    # instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
+    # generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
-    df_results.to_csv('results_zeitmessung_FFD.csv',index=False, encoding='utf-8')
+    df_results.to_csv('results_zeitmessung_unif_StandardSEED123.csv',index=False, encoding='utf-8')
 
 
 # diese Methode ruft die HC Methode fuer die aktuelle Instanz auf und schreibt die Statistiken in ein DataFrame
