@@ -49,7 +49,7 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
     #global num_move22, num_move11
     # constraint_checks = 0 
     #num_move22 = 0
-    # num_move21 = 0
+    #num_move21 = 0
     #num_move11 = 0
 
     # (0) Konstruktionsverfahren: first fit descending
@@ -58,50 +58,48 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
     # Anzahl der Iterationen ist je nach gewuenschter Loesungsguete und vorhandener Rechenzeit festzulegen
     while (time.perf_counter() - tic <= time_given):
         iters += 1
-    #for iters in range(0,500):
+    #for iters in range(0,500): --> Falls Iterationen als Abbruchkriterium
         # (1) Teilmenge aus Loesung bildet Permutationsgruppe
         permutation = []
         solution, permutation = random_permutation(solution, permutation)
-        #solution, permutation = permutation_by_heuristic(solution,permutation)
+        #solution, permutation = permutation_by_heuristic(solution,permutation) --> deterministische Wahl
 
         # (2) Improvement procedure
-        change = [True]
+        change = [True] # Wiederhole Moves solange bis keine Änderung oder Zeitrestriktion erreicht
         while change[0] and time.perf_counter() - tic <= time_given: 
             solution, permutation = bpp_improvement_procedure(solution, permutation, bin_capacity, change)
-            #test_feasibility(permutation,bin_capacity)
-            #test_feasibility(solution,bin_capacity)
+            #test_feasibility(permutation,bin_capacity) --> assertion
+            #test_feasibility(solution,bin_capacity) --> assertion
 
         # (3a) fuege die permutationsgruppen der bisherigen Loesung hinzu
         for bin in permutation:
             solution.append(bin)
-
-        ##### Test
-        #test_feasibility(solution,bin_capacity)
-        #####    
-
+  
         # (3b) Shuffle die Bins/Gruppen nach Heuristik/ Random
         shuffle(solution)
-        #sort_by_average_capacity(solution)
+        #sort_by_average_capacity(solution) --> Veraenderter Shuffle
+        
         # (3c) Rufe Greedy-Algorithmus mit permutierter Loesung aus (3b) auf
         old_solution_length = len(solution)
         # wichtig: Greedy benoetigt "flache Itemlist"
         solution = [item for bin in solution for item in bin]
 
         solution = greedy(solution, bin_capacity)
+
         # schreibe Zwischenergebnis in Ergebnis DataFrame
     num_cols = df_results.shape[0] # aktuelle Zeile
-    hit = 0
+    hit = 0 
     if len(solution) == lower_bound:
-        hit = 1
+        hit = 1 # Falls LB getroffen
     else: hit = 0
     df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic]
     #     #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
     if len(solution) == lower_bound:
-        return lower_bound
-    return len(solution)
+        return lower_bound # Treffen der LB als weiteres Abbruchkriterium
+    return len(solution) # Gebe Anzahl Bins zurück
 
 def random_permutation(solution, permutation):
-    #permutation_index = []
+    #permutation_index = [] 
     probability = 1/len(solution)
     while len(permutation) == 0:
         for i, bin in enumerate(solution):
@@ -109,7 +107,7 @@ def random_permutation(solution, permutation):
                 permutation.append(solution[i])
                 #permutation_index.append(i)
                 solution.pop(i)
-    return solution, permutation    #, permutation_index
+    return solution, permutation    # permutation_index
 
 # waehle den ersten Bin mit der geringsten Anzahl an Items
 def permutation_by_heuristic(solution, permutation):
@@ -245,7 +243,7 @@ def shuffle(solution):
         solution = largest_first(solution)
     elif rnd_int <= 10:
         solution = solution.reverse()
-    #elif rnd_int <= 15:
+    #elif rnd_int <= 15: --> Falls Average in Shuffle integriert, zudem Randint auf (1,18) setzen
     #    solution = sort_by_average_capacity(solution)
     else:
         random.shuffle(solution)
@@ -262,6 +260,7 @@ def largest_first(solution):
     i = i +1 
   return shuffled_solution
 
+# zweite Möglichkeit des Reverse: für Experimente nicht genutzt
 def reverse(solution, permutation_index):
     # Sortiere die Indizes der Permutationsbins p,
     # damit sie wieder an die urspruengliche Stelle eingefuegt werden koennen
@@ -276,6 +275,7 @@ def reverse(solution, permutation_index):
     reversed_solution = solution.reverse()
     return reversed_solution
 
+# Modifikation des Shuffles
 def sort_by_average_capacity(solution):
   sorted_dict = {}
   for i, bin in enumerate(solution):
@@ -309,14 +309,14 @@ def generate_results():
     #Ergebnis DataFrame erstellen
     df_results = pd.DataFrame(columns = ['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'])
 
-    # instances_hard = read_instances("Instanzen/Scholl/Scholl_3")
+    # instances_hard = read_instances("04_Instanzen/Scholl/Scholl_3")
     # generate_results_of_instances(instances_hard, df_results, "hard")
     
-    instances_falkenauer_uniform = read_instances("Instanzen/Falkenauer/uniform")
+    instances_falkenauer_uniform = read_instances("04_Instanzen/Falkenauer/uniform")
     generate_results_of_instances(instances_falkenauer_uniform, df_results, "uniform")
     
-    # instances_falkenauer_triplet = read_instances("Instanzen/Falkenauer/triplet")
-    # generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
+    #instances_falkenauer_triplet = read_instances("04_Instanzen/Falkenauer/triplet")
+    #generate_results_of_instances(instances_falkenauer_triplet, df_results, "triplet")
 
     print(df_results.head(20))
     df_results.to_csv('results_zeitmessung_unif_StandardSEED123.csv',index=False, encoding='utf-8')
@@ -329,7 +329,7 @@ def generate_results_of_instances(instances, df_results, typ):
     for i in range(0,len(instances)):
         item_list, n_items, bin_capacity, lower_bound  = generate_instance(instances[i])
         # Hill Climbing
-        time_given = 150
+        time_given = 1 # maximale Rechenzeit 
         bins_hc = hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results, instance_index, time_given)
         instance_index +=1
         print("Anzahl Bins HC", bins_hc)
