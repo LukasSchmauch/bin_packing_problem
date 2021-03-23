@@ -11,5 +11,5 @@
 
 ### Öffnen der Ergebnisse
 - alle genutzten Ergebnisse befinden sich im Notebook 06_Ergebnisse.ipynb
-- entweder direkt in GitHub öffnen
-- besser: mit Google Colab öffnen
+- entweder direkt in GitHub öffnen ("Reload" kann erscheinen --> aktualisieren)
+- alternativ: mit Google Colab öffnen
