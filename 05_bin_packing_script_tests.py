@@ -87,15 +87,15 @@ def hill_climbing(item_list, bin_capacity, lower_bound,typ, n_items, df_results,
         solution = greedy(solution, bin_capacity)
 
         # schreibe Zwischenergebnis in Ergebnis DataFrame
-    num_cols = df_results.shape[0] # aktuelle Zeile
-    hit = 0 
-    if len(solution) == lower_bound:
-        hit = 1 # Falls LB getroffen
-    else: hit = 0
-    df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic]
-    #     #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
-    if len(solution) == lower_bound:
-        return lower_bound # Treffen der LB als weiteres Abbruchkriterium
+        num_cols = df_results.shape[0] # aktuelle Zeile
+        hit = 0 
+        if len(solution) == lower_bound:
+            hit = 1 # Falls LB getroffen
+        else: hit = 0
+        df_results.loc[num_cols] = [typ, instance_index, n_items, bin_capacity, lower_bound,len(solution), len(solution) - lower_bound, hit, iters, time.perf_counter()-tic]
+        #     #['Typ','Instanzindex','Anzahl_Items','Bin_Kapazitaet','LB','HC','Bins_beyond_LB','Hit_LB', 'Iteration','elapsed_time'] 
+        if len(solution) == lower_bound:
+            return lower_bound # Treffen der LB als weiteres Abbruchkriterium
     return len(solution) # Gebe Anzahl Bins zurück
 
 def random_permutation(solution, permutation):
